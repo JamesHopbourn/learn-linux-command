@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rm -rf ./build/*
+
 for file in $(find . -name "*.c")
 do {
     mkdir -p ./build 
