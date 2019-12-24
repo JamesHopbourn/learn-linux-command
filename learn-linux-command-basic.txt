@@ -1,0 +1,81 @@
+目录操作：
+  ls      显示文件 (简略显示：ls、详细显示：ls -la、指定目录：ls /path/to/dir)
+  pwd     显示路径 (pwd)
+  mkdir   新建目录 (mkdir 目录名、mkdir 目录一 目录二、mkdir -p 目录名、mkdir Dir{1..10})
+  cd      切换路径 (cd、cd ..、cd -、cd ~、cd /path/to/dir、模糊跳转：j 目录关键词)
+  tree    树状显示 (tree -N、tree —N /path/to/dir)
+  clear   历史清屏 (clear、command+K)
+
+符号指令：
+  .       当前目录 (open .)
+  ./      现目录下 (./test)
+  /       分隔符号 (ls /usr/bin)
+  ..      上级目录 (cd ..、open ..)
+  ~       用户目录 (cd ~)
+  -       上次目录 (cd /usr、cd -)
+  #       取消执行 (#ls、cd ..;ls、cd ..;#ls)
+  *       任意匹配 (ls *、file *)
+  ?       非空匹配 (touch AF、touch A{1..3}F、ls A?F)
+  *.txt   文本匹配 (ls *.txt 以此类推 mp4、png、py、sh...)
+  !       历史执行 (!历史命令行号、!20)
+  \       转义符号 (mkdir test\ dir、cd test\ dir)
+  ``      命令嵌套 (say `date`、say `cat word.txt`)
+  ''      定义变量 (text='Hello'、text='$(date)')
+  ""      定义变量 (text="Hello"、echo "$(date)"，遇到 $ 和 ` 作为变量和内嵌命令使用)
+  $       调用变量 (echo $text)
+  ()      指令群组 (echo $(date))
+  {}      变量设置 (touch File{A..G}、mkdir dir200{0..9})
+  []      条件判断 (rm File[ABC]、rm -rf dir200[!012345])
+  &       后台运行 (/Applications/v2ray-macos/v2ray &)
+  >       重新定向 (echo 'line 1' > new.txt、echo '' > new.txt)
+  :>      清空内容 (:> 文件名、:> test.py)
+  >>      追加内容 (echo 'line 2' >> new.txt)
+  <       重新定向 (将文本内容作为参数传递给命令 say < word.txt、pbcopy < word.txt)
+  <<<     文本输入 (将输入内容作为参数传递给命令 md5 <<< sting)
+  ;       顺序执行 (命令前后没有逻辑关系直接执行 vim test.py ; python test.py)
+  |       管道符号 (前面命令执行结果输入后面命令 history | grep ls)
+  &&      与运算符 (前面命令执行成功执行后面命令 vim test.py && python test.py)
+  ||      或运算符 (前面命令执行失败执行后面命令 python test.py || vim test.py)
+  
+文件处理：
+  touch   新建文件 (touch test.txt、touch hello\ world.txt、touch File{A..G})
+  cat     查看文件 (cat test.txt、cat hello\ world.txt)
+  file    类型判断 (file 文件名)
+  echo    标准输出 (echo 'hello'、echo 'line 1' > test.txt、echo 'line 2' >> test.txt、echo '' > test.txt)
+  grep    匹配字符 (grep -n 关键词 文件名、grep -Irn 关键词 目录名)
+  find    文件查找 (find /path/to/dir/ -name '文件名' (1>result.txt 2>/dev/null)、1：标准输出 2：标准错误 0：标准输入)
+  nl      显示行号 (nl 文件名)
+  cp      文件复制 (cp test test_bak、cp /path/to/dir1/* dir2、mkdir -p '备份文件夹';cp 数据 "备份文件夹/数据 $(date)")
+  mv      文件移动 (mv 文件名 /path/to/dir)
+  mv      重新命名 (mv 原文件名 新文件名、mv 文件名 /path/to/dir/新文件名)
+  md5     哈希计算 (md5 文件名、md5 文件一 文件二、md5 *)
+  vim     代码编辑 (编辑模式：i、下行开始编辑：o、退出编辑模式：esc、保存：w、退出：q、移到文件首行：gg、移到文件尾行：G、移到行首：^ 移到行尾：$、移到下一个括号：%、移到指定行：:行号、文本搜索：/keyword、整行删除：dd、撤销上步骤操作：u，U、清空文件所有内容：dG，ggdG  下翻：control+f、上翻、control+b)
+  diff    文件比较 (diff 文件一 文件二、diff -r 目录一 目录二)
+  pbcopy  文本复制 (cat 文件名 | pbcopy)
+  pbpaste 文本粘贴 (pbpaste、pbpaste > 文件名)
+  python  运行脚本 (python、python 文件名.py)
+  open    打开文件 (open 文件名、open 目录名)
+  git     代码管理 (克隆仓库：git clone [URL] (gcl [URL])、删除本地文件：git rm 文件名 (grm 文件名)、增加修改文件：git add -A (gaa)、查看文件状态：git status (gst)、添加提交备注：git commit -m '备注内容' (gcsm '备注内容')、推送至远程仓库：git push (gp) 查看历史版本记录：git log (glol)、撤销文件修改：git checkout 文件名 (gco 文件名)、修改本地的 HEAD：git reset --hard [commit] (grhh [commit])、获取远程仓库然后整合：git pull (gup))
+  gcc     代码编译 (gcc test.c -o test && ./test)
+  zip     解压缩包 (打包文件：zip 压缩包名.zip 文件名、打包目录：zip -r 压缩包名.zip 目录、解压：unzip 压缩包名.zip)
+  7z      打包文件 (打包文件、目录：7z a -tzip 压缩包名.zip 文件名或目录名 此压缩包可兼容安卓、Windows）
+  rm      删除文件 (rm 文件名、rm *、rm *.txt、rm File{A..G})
+  rm      删除目录 (rm -rf 目录名、rm -rf Dir{1..10})
+  chmod   更改权限 (赋予文件可执行权限：chmod 777 文件名、取消文件可执行权限：chmod 600 文件名、r=4，w=2，x=1)
+  history 历史命令 (history、history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -10)
+
+实用工具：
+  微服务器 python  -m SimpleHTTPServer (可用于局域网内传输大文件)
+  自动执行 fswatch -0 test.py | xargs -0 -n1 -I{} python test.py (监控 test.py 当保存改变后自动再运行)
+
+快捷按键：
+  control+A 行首    control+E 行尾    control+C 停止    control+D 退出    option+左/右   向左/右移动一个单词
+  control+N 下行    control+P 上行    control+D 前删    control+H 后删    control+左/右  向左/右移动一个字符
+   
+进阶学习：
+  https://github.com/jlevy/the-art-of-command-line
+  
+警告事项：
+  对于不懂的命令不要随意执行，不要随意使用 sudo、su 进行操作，不要执行类似 rm -rf / 的命令
+
+   													            制图软件：carbon.now.sh 作者：@JamesHopbourn 2019/12/20

@@ -1,0 +1,79 @@
+符号指令：
+  ^       开头匹配 (ls | grep -r "^A")
+  $       结尾匹配 (ls | grep -r "1$")
+  ‘       命令换行 (echo 'line1[return]line2[return]line3')
+  {}      定义函数 (findd(){ find "$1" -name "$2" 2>/dev/null; }、findd / stdio.h)
+
+软件管理：
+  brew    包管理器 (安装命令：brew install 命令名、安装软件：brew cask 软件名、搜索资源：brew search 关键词）
+  openssl
+  pip
+  brew
+
+网络命令：
+  curl
+  wget
+  ssh
+  scp
+  ssh-keygen
+  ssh-copy-id
+  nc
+  netcat
+  ifconfig
+  whois
+  ip
+
+文件处理：
+  python (python -m pdb test.py)
+  xxd
+  plutil
+  dd
+  od (od -tcx1 文件名）
+  ln
+  gpg
+  shasum
+  chflags
+  split
+  chflags
+  rsync
+  gshred
+
+
+其他命令：
+  ps
+  xargs
+  sleep
+  kill
+  alias
+  unalias
+  corntab
+  time
+  sudo -i
+  sudo
+  source
+  
+系统命令：
+  shutdown
+  reboot
+
+
+环境变量配置
+命令配置文件
+正则表达式
+
+
+https://github.com/alebcay/awesome-shell/blob/master/README_ZH-CN.md#命令行效率
+https://github.com/KaiZhang890/openssl-howto
+https://m.runoob.com/linux/linux-command-manual.html
+https://www.kawabangga.com/posts/3084
+https://blog.pytool.com/linux/cmd/linux-ack-ag-pt/
+https://man.linuxde.net/strings
+https://man.linuxde.net/hexdump
+http://tldp.org/LDP/abs/html/
+https://github.com/alebcay/awesome-shell
+https://www.zhihu.com/question/59227720
+https://blog.csdn.net/zhenguo26/article/details/84031661
+https://github.com/Ghohankawk/Blog/blob/master/src/linux-grep.md
+https://www.hi-linux.com/posts/15017.html
+https://zhuanlan.zhihu.com/p/37478384
+https://www.cnblogs.com/chijianqiang/archive/2012/12/17/vim-4.html

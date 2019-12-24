@@ -1,0 +1,4 @@
+./LLDB/*.dSYM
+.DS_Store
+./LLDB/.DS_Store
+./LLDB/build/*
