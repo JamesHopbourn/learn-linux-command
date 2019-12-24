@@ -1,4 +1,4 @@
-## 配置  
+## 配置 (~/.lldbinit)  
 settings set target.x86-disassembly-flavor intel  
 settings set target.max-memory-read-size 0x1000  
   
@@ -6,7 +6,8 @@ command alias bp breakpoint set -a %1
 command alias bl breakpoint list  
 command alias rtc breakpoint set -o -a %1  
 command alias pof expression -OAv -- %1  
-command alias conn process connect --plugin gdb-remote connect://127.0.0.1:4321 command alias fo target modules lookup -a %1  
+command alias conn process connect --plugin gdb-remote connect://127.0.0.1:4321   
+command alias fo target modules lookup -a %1  
 
 ## 调试  
 命令行lldb 文件名  
