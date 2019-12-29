@@ -1,0 +1,4 @@
+binwalk
+vim #foremost
+xxd
+
