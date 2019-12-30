@@ -103,5 +103,5 @@ find . -name "*.m"|xargs basename
 ------------------------------------------------------------
 tr
 压缩字符：echo "thissss is      a text linnnnnnne." | tr -s ' sn'
-替换字符：cat text | tr '\t' ' '
+替换字符：tr "\n" " " < source.txt > new.txt
 删除字符：echo "hello 123 world 456" | tr -d '0-9'
