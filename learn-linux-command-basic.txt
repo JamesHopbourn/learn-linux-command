@@ -34,6 +34,7 @@
   <<<     文本输入 (将输入内容作为参数传递给命令 md5 <<< sting)
   ;       顺序执行 (命令前后没有逻辑关系直接执行 vim test.py ; python test.py)
   |       管道符号 (前面命令执行结果输入后面命令 history | grep ls)
+  !       非运算符 (设置排除变量)
   &&      与运算符 (前面命令执行成功执行后面命令 vim test.py && python test.py)
   ||      或运算符 (前面命令执行失败执行后面命令 python test.py || vim test.py)
   
