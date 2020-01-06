@@ -28,6 +28,7 @@
   xxd
   plutil
   dd
+  grep (grep -E ^123 文件名)
   od (od -tcx1 文件名）
   ln
   gpg
@@ -41,7 +42,7 @@
 
 其他命令：
   ps
-  xargs
+  xargs (find ./ -name "*.c" | xargs rm)
   sleep
   kill
   alias
