@@ -25,6 +25,8 @@
 
 文件处理：
   python (python -m pdb test.py)
+  which 查找命令 (which python)
+  where 查找命令 (where python)
   xxd
   plutil
   dd
