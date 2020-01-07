@@ -52,6 +52,7 @@
   corntab
   time
   sudo -i
+  man  使用手册 (man ls)
   sudo
   source
   
