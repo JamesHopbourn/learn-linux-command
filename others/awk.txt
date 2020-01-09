@@ -1,0 +1,24 @@
+https://linuxhint.com/20_awk_examples/#content
+
+Contents:
+
+awk with printf
+awk to split on white space
+awk to change the delimiter
+awk with tab-delimited data
+awk with csv data
+awk regex
+awk case insensitive regex
+awk with nf (number of fields) variable
+awk gensub() function
+awk with rand() function
+awk user defined function
+awk if
+awk variables
+awk arrays
+awk loop
+awk to print the first column
+awk to print the last column
+awk with grep
+awk with the bash script file
+awk with sed
