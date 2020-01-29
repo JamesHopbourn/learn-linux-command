@@ -2,3 +2,4 @@ binwalk
 vim #foremost
 xxd
 
+exiftool -overwrite_original -rights="©2012 John Doe, all rights reserved" -CopyrightNotice="©2012 John Doe, all rights reserved" -Flag="JBCool" /Users/james/Desktop/屏幕快照\ 2019-12-29\ 上午1.36.53.png
