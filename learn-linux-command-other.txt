@@ -1,0 +1,65 @@
+Base64 相关
+
+```
+base64 <<< string
+base64 -D <<< string
+
+openssl base64 -in base.png > base.txt
+openssl base64 -d -in base.txt > base.png
+
+data:image/png;base64,
+data:image/svg+xml;base64,
+
+base64 -in file
+base64 -D -in file
+```
+
+md5 相关
+
+```
+md5 -s string
+md5 file
+```
+
+zip 显隐术
+
+```
+zip -P password output.zip input.txt
+cat test.png output.zip > final.png
+unzip final.png
+```
+
+批量按照文件名压缩
+
+```
+ls -1 * | xargs -n 1 bash -c 'zip "$0".zip "$0"'
+```
+
+二进制下编辑文件
+
+```
+ $ xxd file1 file1.dump
+ $ cat file1.dump 
+ 00000000: 736f 6d65 2063 6f6e 7465 6e74 206f 6620  some content of 
+ 00000010: 6669 6c65 310a                           file1.
+ $ vim file1.dump 
+ # magic editing...
+ $ cat file1.dump
+ 00000000: 736f 6d65 4d41 4749 4321 6e74 206f 6620  some content of 
+ 00000010: 6669 6c65 310a                           file1.
+ $ xxd -r file1.dump 
+ someMAGIC!nt of file1
+```
+
+ 以16进制文本显示
+
+```
+xxd -p -l 16 1.jpg
+ffd8ffe000104a464946000101010060
+
+十六进制转二进制
+echo -n 'ffd8ff' | xxd -b
+
+文件二进制显示
+xxd -b file
+```

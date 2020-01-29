@@ -5,6 +5,7 @@
   cd      切换路径 (cd、cd ..、cd -、cd ~、cd /path/to/dir、模糊跳转：j 目录关键词)
   tree    树状显示 (tree -N、tree —N /path/to/dir)
   clear   历史清屏 (clear、command+K)
+  chflags 隐藏目录 (chflags hidden /path/to/file、chflags nohidden /path/to/file)
 
 符号指令：
   .       当前目录 (open .)
@@ -68,6 +69,7 @@
 实用工具：
   微服务器 python  -m SimpleHTTPServer (可用于局域网内传输大文件)
   自动执行 fswatch -0 test.py | xargs -0 -n1 -I{} python test.py (监控 test.py 当保存改变后自动再运行)
+  文转为音 say '测试音频文件' -o 音频文件.aiff
 
 快捷按键：
   control+A 行首    control+E 行尾    control+C 停止    control+D 退出    option+左/右   向左/右移动一个单词

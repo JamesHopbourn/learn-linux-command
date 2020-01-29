@@ -5,13 +5,15 @@
   {}      定义函数 (findd(){ find "$1" -name "$2" 2>/dev/null; }、findd / stdio.h)
 
 软件管理：
-  brew    包管理器 (安装命令：brew install 命令名、安装软件：brew cask 软件名、搜索资源：brew search 关键词）
+  brew    包管理器 (安装命令：brew install 命令名、安装软件：brew cask 软件名、搜索资源：brew search 关键词、查找路径：brew --prefix 软件名）
   openssl
-  pip
+  pip    包管理器 (查找路径：pip show condo)
   brew
 
 网络命令：
-  curl
+  curl  头信息 (curl -i www.sina.com)
+  curl  通信过程 (curl -v www.sina.com)
+  curl  发送表单 (curl --form username=xxxx --form password=xxx https://sm.ms/api/v2/token)
   wget
   ssh
   scp
@@ -40,7 +42,7 @@
   chflags
   rsync
   gshred
-
+  time  计算时间 (time gcc test.c -o test)
 
 其他命令：
   ps
