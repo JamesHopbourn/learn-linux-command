@@ -5,6 +5,9 @@ echo "hi i'm kangkang"|sed 's/'"'"/'"''/'
 sed 行首添加
 sed '2,5s/^/ /' sed.txt
 
+sed 删除空格
+sed -i '' '/^$/d'
+
 echo "line 1
 line 2
 line 3
