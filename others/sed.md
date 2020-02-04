@@ -1,5 +1,3 @@
-macOS 使用 sed 建议：alias sed="sed -i ''"  
-  
 ## 添加字符  
 #### 行首添加
 ```
