@@ -84,3 +84,10 @@ sed '1,2c Hi' ab
 ## sed 详解  
 https://blog.csdn.net/gua___gua/article/details/49304699  
 https://www.linuxidc.com/Linux/2018-10/154768.htm  
+
+## 注意事项：
+macOS 上的 sed 并不是 GNU Project 的亲儿子，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
+如果你不习惯使用 macOS 的 sed 可以使用以下两个方案解决：
+brew install gnu-sed  安装后是: gsed
+brew install gnu-sed --with-default-names   安装后是: sed
+
