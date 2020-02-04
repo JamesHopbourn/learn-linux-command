@@ -80,7 +80,11 @@ sed '1c Hi' test.txt
 ```
 sed '1,2c Hi' test.txt  
 ```
-  
+##### 替换第2次匹配结果
+```
+sed 's/s/S/2'
+```
+
 ## sed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
