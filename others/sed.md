@@ -80,9 +80,13 @@ sed '1c Hi' test.txt
 ```
 sed '1,2c Hi' test.txt  
 ```
-##### 替换第2次匹配结果
+##### 替换第 2 次匹配结果
 ```
 sed 's/s/S/2'
+```
+##### 非贪婪匹配建议使用 perl
+```
+echo 'ssh://personal/JamesHopbourn/dotfile' | perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
 ```
 
 ## sed 参考资料  
