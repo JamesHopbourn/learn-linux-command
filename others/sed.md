@@ -81,10 +81,11 @@ sed '1c Hi' test.txt
 sed '1,2c Hi' test.txt  
 ```
   
-## sed 详解  
-https://blog.csdn.net/gua___gua/article/details/49304699  
-https://www.linuxidc.com/Linux/2018-10/154768.htm  
-
+## sed 参考资料  
+[SED 简明教程](https://coolshell.cn/articles/9104.html)  
+[三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
+[sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
+  
 ## 注意事项：  
 macOS 上的 sed 并不是 GNU Project 亲生的，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
 如果不习惯使用 macOS 的 sed 可以使用 gsed 替代：  
