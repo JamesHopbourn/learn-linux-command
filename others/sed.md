@@ -8,7 +8,7 @@ sed '2,5s/^/ /' test.txt
 行尾添加 多用于 GitHub README.md  
 sed 's/$/ /' test.txt  
 
-##### 匹配后添加
+#### 匹配后添加
 cat sed.md|sed 's/^删除/##### &/' sed.md
 
 ## 删除字符  
