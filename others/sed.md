@@ -74,11 +74,11 @@ echo "hi i'm kangkang"|sed 's/'"'"/'"''/'
 ```
 ##### 替换单行  
 ```
-sed '1c Hi' ab  
+sed '1c Hi' test.txt  
 ```
 ##### 替换多行  
 ```
-sed '1,2c Hi' ab  
+sed '1,2c Hi' test.txt  
 ```
   
 ## sed 详解  
