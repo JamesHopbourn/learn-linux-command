@@ -1,15 +1,19 @@
 macOS 使用 sed 建议：alias sed="sed -i ''"  
   
 ## 添加字符  
-#### 行首添加  
+#### 行首添加
+```
 sed 's/^/ /' test.txt  
+```
+#### 指定行添加  
+```
 sed '2,5s/^/ /' test.txt  
-  
+```
 #### 行尾添加 多用于 GitHub README.md  
 sed 's/$/ /' test.txt  
 
 #### 匹配后添加
-cat sed.md|sed 's/^删除/##### &/' sed.md
+cat sed.md|sed 's/^删除/#### &/' sed.md
 
 ## 删除字符  
 ##### 删除空行  
