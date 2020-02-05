@@ -79,11 +79,11 @@ sed '1c Hi' test.txt
 ```
 ##### 替换多行  
 ```
-sed '1,2c Hi' test.txt  
+sed '3,6s/my/your/g' test.txt  
 ```
 ##### 替换正则第 4 次匹配结果
 ```
-sed  -E '1s/[0-9]{4}/0100/4 test.txt
+sed -E '1s/[0-9]{4}/0100/4 test.txt
 ```
 ##### 非贪婪匹配建议使用 perl
 ```
@@ -94,11 +94,16 @@ https://github.com/JamesHopbourn/dotfile
 ## 其他用法
 #### 串联命令
 ```
+sed 's/ /0/g' ; 's/#/1/g' test.txt
 sed -e 's/ /0/g' -e 's/#/1/g' test.txt
 ```
 #### 合并为单行建议使用 tr
 ```
 tr  "\n" " " < old.txt > new.txt
+```
+#### 正则表达式
+```
+sed -E '1s/[0-9]{4}/0100/4 test.txt
 ```
 
 ## sed 参考资料  
