@@ -1,53 +1,70 @@
 ## 添加字符  
 #### 行首添加
 ```
-sed 's/^/ /' test.txt  
+➜ echo '文本'|sed 's/^/开头/'
+开头文本
 ```
 #### 指定行添加  
 ```
-sed '2,5s/^/ /' test.txt  
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,3s/^/  /'
+第一行
+  第二行
+  第三行
+第四行
+第五行
 ```
 #### 行尾添加 多用于 GitHub README.md  
 ```
-sed 's/$/ /' test.txt  
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,3s/$/结尾/'
+第一行
+第二行结尾
+第三行结尾
+第四行
+第五行
 ```
 #### 跨行添加
 ```
-sed $'s/匹配字符/\\\n&/g'
+➜ echo '一二'|sed  $'s/二/\\\n&/'
+一
+二
 
-sed -e '1i\
+➜ echo '一二'|gsed  's/二/\n&/'
+一
+二
+
+➜ sed -e '1i\
 在第一行之前添加一行' test.txt
 
-sed -e '1a\
+➜ sed -e '1a\
 在第一行之后添加一行' test.txt
 
-sed "/匹配字符/i\\
+➜ sed "/匹配字符/i\\
 字符上面添加一行\\
 " 文件名
 
-sed "/匹配字符/a\\
+➜ sed "/匹配字符/a\\
 字符下面添加一行\\
 " 文件名
 
-echo -e 'line 1\nline 2\nline 3' | gsed '1i test'
+➜  echo -e 'line 1\nline 2\nline 3' | gsed '1i test'
 test
 line 1
 line 2
 line 3
 
-echo -e 'line 1\nline 2\nline 3' | gsed '2i test'
+➜  echo -e 'line 1\nline 2\nline 3' | gsed '2i test'
 line 1
 test
 line 2
 line 3
 
-echo -e 'line 1\nline 2\nline 3' | gsed '$i test'
+➜  echo -e 'line 1\nline 2\nline 3' | gsed '$i test'
 line 1
 line 2
 test
 line 3
 
-echo -e 'line 1\nline 2\nline 3' | gsed '$a test'
+➜  echo -e 'line 1\nline 2\nline 3' | gsed '$a test'
 line 1
 line 2
 line 3
@@ -56,7 +73,10 @@ test
 
 #### 匹配后添加
 ```
-sed 's/^删除/#### &/' sed.md
+➜  echo -e "标题一\n标题二\n标题三" | sed 's/^标题/### &/'
+### 标题一
+### 标题二
+### 标题三
 ```
 
 ## 删除字符  
@@ -66,44 +86,65 @@ sed '/^$/d'
 ```
 ##### 删除首行  
 ```
-sed '1d' test.txt  
+➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '1d'
+第二行
+第三行
+第四行
+第五行
 ```
 ##### 删除末行  
 ```
-sed '$d' test.txt  
+➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '$d'
+第一行
+第二行
+第三行
+第四行
+
 ```
-##### 删除指定行，例如第5行  
+##### 删除指定行，例如第3行  
 ```
-sed '5d' test.txt  
+➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '3d'
+第一行
+第二行
+第四行
+第五行
 ```
 ##### 删除第1到2行：  
 ```
-sed '1,2d' test.txt  
+➜  echo -e "第一行\n第二行\n第三行\n第 四行\n第五行"|sed '1,2d'
+第三行
+第四行
+第五行
 ```
   
 ## 显示某行然后复制  
 ```
-sed -n '4,5p' test.txt|pbcopy  
-sed -n '4,$p' test.txt|pbcopy  
+➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '4,5p'|pbcopy
+➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '2,5p'|pbcopy
 ```
   
 ## 替换字符  
 #### 全局替换  
 ```
-sed 's/ruby/bird/g' test.txt  
+➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed 's/行/列/'
+第一列
+第二列
+第三列
+第四列
+第五列
 ```
 #### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)  
 ```
-$ echo "hi i'm kangkang"|sed 's/'"'"/'"''/'  
+➜  echo "hi i'm kangkang"|sed 's/'"'"/'"''/'  
 hi i"m kangkang
 ```
 ##### 替换单行  
 ```
-sed '1c Hi' test.txt  
+➜  sed '1c Hi' test.txt  
 ```
 ##### 替换多行  
 ```
-sed '3,6s/my/your/g' test.txt  
+➜  sed '3,6s/my/your/g' test.txt  
 ```
 ##### 替换正则第 4 次匹配结果
 ```
@@ -111,7 +152,7 @@ sed -E '1s/[0-9]{4}/0100/4 test.txt
 ```
 ##### 非贪婪匹配建议使用 perl
 ```
-$ echo 'ssh://personal/JamesHopbourn/dotfile' | perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
+➜  echo 'ssh://personal/JamesHopbourn/dotfile' | perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
 https://github.com/JamesHopbourn/dotfile
 ```
 
