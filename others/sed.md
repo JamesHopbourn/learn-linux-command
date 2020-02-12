@@ -114,7 +114,6 @@ test
 第二行
 第三行
 第四行
-
 ```
 ##### 删除指定行，例如第3行  
 ```
@@ -199,9 +198,7 @@ https://github.com/JamesHopbourn/dotfile
 ```
 #### 合并为单行建议使用 tr
 ```
-➜ echo -e "Make\nsed\ngreat\nagain" > old.txt
-➜ tr "\n" " " < old.txt > new.txt
-➜ cat new.txt
+➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain") 
 Make sed great again
 ```
 #### 正则表达式
