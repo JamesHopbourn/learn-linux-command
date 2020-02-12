@@ -46,25 +46,25 @@
 字符下面添加一行\\
 " 文件名
 
-➜  echo -e 'line 1\nline 2\nline 3' | gsed '1i test'
+➜ echo -e 'line 1\nline 2\nline 3' | gsed '1i test'
 test
 line 1
 line 2
 line 3
 
-➜  echo -e 'line 1\nline 2\nline 3' | gsed '2i test'
+➜ echo -e 'line 1\nline 2\nline 3' | gsed '2i test'
 line 1
 test
 line 2
 line 3
 
-➜  echo -e 'line 1\nline 2\nline 3' | gsed '$i test'
+➜ echo -e 'line 1\nline 2\nline 3' | gsed '$i test'
 line 1
 line 2
 test
 line 3
 
-➜  echo -e 'line 1\nline 2\nline 3' | gsed '$a test'
+➜ echo -e 'line 1\nline 2\nline 3' | gsed '$a test'
 line 1
 line 2
 line 3
@@ -73,7 +73,7 @@ test
 
 #### 匹配后添加
 ```
-➜  echo -e "标题一\n标题二\n标题三" | sed 's/^标题/### &/'
+➜ echo -e "标题一\n标题二\n标题三" | sed 's/^标题/### &/'
 ### 标题一
 ### 标题二
 ### 标题三
@@ -86,7 +86,7 @@ sed '/^$/d'
 ```
 ##### 删除首行  
 ```
-➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '1d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '1d'
 第二行
 第三行
 第四行
@@ -94,7 +94,7 @@ sed '/^$/d'
 ```
 ##### 删除末行  
 ```
-➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '$d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '$d'
 第一行
 第二行
 第三行
@@ -103,7 +103,7 @@ sed '/^$/d'
 ```
 ##### 删除指定行，例如第3行  
 ```
-➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '3d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '3d'
 第一行
 第二行
 第四行
@@ -111,7 +111,7 @@ sed '/^$/d'
 ```
 ##### 删除第1到2行：  
 ```
-➜  echo -e "第一行\n第二行\n第三行\n第 四行\n第五行"|sed '1,2d'
+➜ echo -e "第一行\n第二行\n第三行\n第 四行\n第五行"|sed '1,2d'
 第三行
 第四行
 第五行
@@ -119,14 +119,14 @@ sed '/^$/d'
   
 ## 显示某行然后复制  
 ```
-➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '4,5p'|pbcopy
-➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '2,5p'|pbcopy
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '4,5p'|pbcopy
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '2,5p'|pbcopy
 ```
   
 ## 替换字符  
 #### 全局替换  
 ```
-➜  echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed 's/行/列/'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed 's/行/列/'
 第一列
 第二列
 第三列
@@ -135,7 +135,7 @@ sed '/^$/d'
 ```
 #### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)  
 ```
-➜  echo "hi i'm kangkang"|sed 's/'"'"/'"''/'  
+➜ echo "hi i'm kangkang"|sed 's/'"'"/'"''/'  
 hi i"m kangkang
 ```
 ##### 替换单行  
@@ -152,7 +152,7 @@ sed -E '1s/[0-9]{4}/0100/4 test.txt
 ```
 ##### 非贪婪匹配建议使用 perl
 ```
-➜  echo 'ssh://personal/JamesHopbourn/dotfile' | perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
+➜ echo 'ssh://personal/JamesHopbourn/dotfile' | perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
 https://github.com/JamesHopbourn/dotfile
 ```
 
