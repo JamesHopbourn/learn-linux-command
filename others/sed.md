@@ -1,4 +1,11 @@
+## 注意事项：  
+macOS 上的 sed 并不是 GNU Project 亲生的，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
+如果不习惯使用 macOS 的 sed 可以使用 gsed 替代：  
+
 ## 添加字符  
+```
+brew install gnu-sed  
+```
 #### 行首添加
 ```
 ➜ echo '文本'|sed 's/^/开头/'
@@ -82,7 +89,7 @@ test
 ## 删除字符  
 ##### 删除空行  
 ```
-➜ echo -e "第一行\n第二行\n\n\n\n第四行\n第五行"|sed '/^$/d
+➜ echo -e "第一行\n第二行\n\n\n第四行\n第五行"|sed '/^$/d
 '
 第一行
 第二行
@@ -188,9 +195,3 @@ https://github.com/JamesHopbourn/dotfile
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
 [sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
   
-## 注意事项：  
-macOS 上的 sed 并不是 GNU Project 亲生的，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
-如果不习惯使用 macOS 的 sed 可以使用 gsed 替代：  
-```
-brew install gnu-sed  
-```
