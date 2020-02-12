@@ -39,11 +39,15 @@ brew install gnu-sed
 一
 二
 
-➜ sed -e '1i\
-在第一行之前添加一行' test.txt
+➜ echo '第一行'|sed -e '1i\
+pipe quote> 在第一行之前添加一行'
+在第一行之前添加一行
+第一行
 
-➜ sed -e '1a\
-在第一行之后添加一行' test.txt
+➜ echo '第一行'|sed -e '1a\
+pipe quote> 在第一行之后添加一行'
+第一行
+在第一行之后添加一行
 
 ➜ sed "/匹配字符/i\\
 字符上面添加一行\\
