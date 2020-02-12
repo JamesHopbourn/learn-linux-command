@@ -200,7 +200,10 @@ https://github.com/JamesHopbourn/dotfile
 ```
 #### 合并为单行建议使用 tr
 ```
+➜ echo -e "Make\nsed\ngreat\nagain" > old.txt
 ➜ tr "\n" " " < old.txt > new.txt
+➜ cat new.txt
+Make sed great again
 ```
 #### 正则表达式
 ```
