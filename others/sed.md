@@ -28,6 +28,30 @@ sed "/匹配字符/i\\
 sed "/匹配字符/a\\
 字符下面添加一行\\
 " 文件名
+
+echo -e 'line 1\nline 2\nline 3' | gsed '1i test'
+test
+line 1
+line 2
+line 3
+
+echo -e 'line 1\nline 2\nline 3' | gsed '2i test'
+line 1
+test
+line 2
+line 3
+
+echo -e 'line 1\nline 2\nline 3' | gsed '$i test'
+line 1
+line 2
+test
+line 3
+
+echo -e 'line 1\nline 2\nline 3' | gsed '$a test'
+line 1
+line 2
+line 3
+test
 ```
 
 #### 匹配后添加
