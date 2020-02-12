@@ -201,11 +201,6 @@ https://github.com/JamesHopbourn/dotfile
 ➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain") 
 Make sed great again
 ```
-#### 正则表达式
-```
-➜ sed -E '1s/[0-9]{4}/0100/4 test.txt
-0100 2222
-```
 
 ## sed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
