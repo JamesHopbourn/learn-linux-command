@@ -1,7 +1,9 @@
 # learn-linux-command
 Linux 命令学习
 
-![](vim.png){:height="700px" width="400px"} ![](git.png) ![](zsh.png)
+<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/vim.png" width="48">
+<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/git.png" width="48">
+<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/zsh.png" width="48">
 
 其他参考资料  
 [jaywcjlove/linux-command](https://github.com/jaywcjlove/linux-command/blob/master/README.md)  
