@@ -1,9 +1,7 @@
 # learn-linux-command
 Linux 命令学习
 
-<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/vim.png" width="48">
-<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/git.png" width="48">
-<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/zsh.png" width="48">
+<img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/vim.png" width="100"> <img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/git.png" width="100"> <img src="https://raw.githubusercontent.com/JamesHopbourn/learn-linux-command/master/zsh.png" width="100">
 
 其他参考资料  
 [jaywcjlove/linux-command](https://github.com/jaywcjlove/linux-command/blob/master/README.md)  
