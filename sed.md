@@ -97,7 +97,7 @@ test
 第三行
 
 ➜ brew list | xargs -n 1 printf "%s  平安，"
-adns 平安，aircrack-ng 平安，aom 平安，apr 平安，apr-util 平安，archey 平安，autoconf 平安，autojump 平安，automake 平安，autossh 平安，binutils 平安，binwalk 平安，brotli 平安，c-ares 平安，cairo 平安，cmake 平安，cocoapods 平安，coreutils 平安，docker 平安，duti 平安，ffmpeg 平安，findutils 平安，flac 平安，fontconfig 平安，foremost 平安，freetype 平安，frei0r 平安，fribidi 平安，fswatch 平安，fzf 平安
+adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 
 #### 匹配后添加
