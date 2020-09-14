@@ -193,7 +193,7 @@ xor    eax,eax
 pop    rbp
 ret
 
-➜ cat hh.s|sed -e 's/^.\{3\}//' -e 's/:.\{23\}/: /g'
+➜ cat if.s|sed -e 's/^.\{3\}//' -e 's/:.\{23\}/: /g'
 100003f70: push   rbp
 100003f71: mov    rbp,rsp
 100003f74: mov    DWORD PTR [rbp-0x4],0x0
