@@ -153,6 +153,45 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 第四行
 第五行
 ```
+
+#### 删除指定数量字符
+```
+➜ cat demo.s
+   100003f70:	55                   	push   %rbp
+   100003f71:	48 89 e5             	mov    %rsp,%rbp
+   100003f74:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+   100003f7b:	89 7d f8             	mov    %edi,-0x8(%rbp)
+   100003f7e:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+   100003f82:	c7 45 ec 01 00 00 00 	movl   $0x1,-0x14(%rbp)
+   100003f89:	c7 45 e8 02 00 00 00 	movl   $0x2,-0x18(%rbp)
+   100003f90:	8b 45 ec             	mov    -0x14(%rbp),%eax
+   100003f93:	3b 45 e8             	cmp    -0x18(%rbp),%eax
+   100003f96:	0f 8e 0c 00 00 00    	jle    100003fa8 <_main+0x38>
+   100003f9c:	c7 45 e4 03 00 00 00 	movl   $0x3,-0x1c(%rbp)
+   100003fa3:	e9 07 00 00 00       	jmpq   100003faf <_main+0x3f>
+   100003fa8:	c7 45 e4 04 00 00 00 	movl   $0x4,-0x1c(%rbp)
+   100003faf:	31 c0                	xor    %eax,%eax
+   100003fb1:	5d                   	pop    %rbp
+   100003fb2:	c3                   	retq
+
+➜ cat demo.s | sed 's/^.\{36\}//'
+push   %rbp
+mov    %rsp,%rbp
+movl   $0x0,-0x4(%rbp)
+mov    %edi,-0x8(%rbp)
+mov    %rsi,-0x10(%rbp)
+movl   $0x1,-0x14(%rbp)
+movl   $0x2,-0x18(%rbp)
+mov    -0x14(%rbp),%eax
+cmp    -0x18(%rbp),%eax
+jle    100003fa8 <_main+0x38>
+movl   $0x3,-0x1c(%rbp)
+jmpq   100003faf <_main+0x3f>
+movl   $0x4,-0x1c(%rbp)
+xor    %eax,%eax
+pop    %rbp
+retq
+```
   
 ## 显示某行
 ```
