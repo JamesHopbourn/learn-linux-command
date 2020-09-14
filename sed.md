@@ -156,41 +156,60 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 
 #### 删除指定数量字符
 ```
-➜ cat demo.s
-   100003f70:	55                   	push   %rbp
-   100003f71:	48 89 e5             	mov    %rsp,%rbp
-   100003f74:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
-   100003f7b:	89 7d f8             	mov    %edi,-0x8(%rbp)
-   100003f7e:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
-   100003f82:	c7 45 ec 01 00 00 00 	movl   $0x1,-0x14(%rbp)
-   100003f89:	c7 45 e8 02 00 00 00 	movl   $0x2,-0x18(%rbp)
-   100003f90:	8b 45 ec             	mov    -0x14(%rbp),%eax
-   100003f93:	3b 45 e8             	cmp    -0x18(%rbp),%eax
+➜ objdump -M intel -d if > if.s
+➜ cat if.s
+   100003f70:	55                   	push   rbp
+   100003f71:	48 89 e5             	mov    rbp,rsp
+   100003f74:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+   100003f7b:	89 7d f8             	mov    DWORD PTR [rbp-0x8],edi
+   100003f7e:	48 89 75 f0          	mov    QWORD PTR [rbp-0x10],rsi
+   100003f82:	c7 45 ec 01 00 00 00 	mov    DWORD PTR [rbp-0x14],0x1
+   100003f89:	c7 45 e8 02 00 00 00 	mov    DWORD PTR [rbp-0x18],0x2
+   100003f90:	8b 45 ec             	mov    eax,DWORD PTR [rbp-0x14]
+   100003f93:	3b 45 e8             	cmp    eax,DWORD PTR [rbp-0x18]
    100003f96:	0f 8e 0c 00 00 00    	jle    100003fa8 <_main+0x38>
-   100003f9c:	c7 45 e4 03 00 00 00 	movl   $0x3,-0x1c(%rbp)
-   100003fa3:	e9 07 00 00 00       	jmpq   100003faf <_main+0x3f>
-   100003fa8:	c7 45 e4 04 00 00 00 	movl   $0x4,-0x1c(%rbp)
-   100003faf:	31 c0                	xor    %eax,%eax
-   100003fb1:	5d                   	pop    %rbp
-   100003fb2:	c3                   	retq
+   100003f9c:	c7 45 e4 03 00 00 00 	mov    DWORD PTR [rbp-0x1c],0x3
+   100003fa3:	e9 07 00 00 00       	jmp    100003faf <_main+0x3f>
+   100003fa8:	c7 45 e4 04 00 00 00 	mov    DWORD PTR [rbp-0x1c],0x4
+   100003faf:	31 c0                	xor    eax,eax
+   100003fb1:	5d                   	pop    rbp
+   100003fb2:	c3                   	ret
 
-➜ cat demo.s | sed 's/^.\{36\}//'
-push   %rbp
-mov    %rsp,%rbp
-movl   $0x0,-0x4(%rbp)
-mov    %edi,-0x8(%rbp)
-mov    %rsi,-0x10(%rbp)
-movl   $0x1,-0x14(%rbp)
-movl   $0x2,-0x18(%rbp)
-mov    -0x14(%rbp),%eax
-cmp    -0x18(%rbp),%eax
+➜ cat if.s | sed 's/^.\{36\}//'
+push   rbp
+mov    rbp,rsp
+mov    DWORD PTR [rbp-0x4],0x0
+mov    DWORD PTR [rbp-0x8],edi
+mov    QWORD PTR [rbp-0x10],rsi
+mov    DWORD PTR [rbp-0x14],0x1
+mov    DWORD PTR [rbp-0x18],0x2
+mov    eax,DWORD PTR [rbp-0x14]
+cmp    eax,DWORD PTR [rbp-0x18]
 jle    100003fa8 <_main+0x38>
-movl   $0x3,-0x1c(%rbp)
-jmpq   100003faf <_main+0x3f>
-movl   $0x4,-0x1c(%rbp)
-xor    %eax,%eax
-pop    %rbp
-retq
+mov    DWORD PTR [rbp-0x1c],0x3
+jmp    100003faf <_main+0x3f>
+mov    DWORD PTR [rbp-0x1c],0x4
+xor    eax,eax
+pop    rbp
+ret
+
+➜ cat if.s|sed -e 's/:.\{23\}/: /g' -e 's/^.\{3\}//'
+100003f70: push   rbp
+100003f71: mov    rbp,rsp
+100003f74: mov    DWORD PTR [rbp-0x4],0x0
+100003f7b: mov    DWORD PTR [rbp-0x8],edi
+100003f7e: mov    QWORD PTR [rbp-0x10],rsi
+100003f82: mov    DWORD PTR [rbp-0x14],0x1
+100003f89: mov    DWORD PTR [rbp-0x18],0x2
+100003f90: mov    eax,DWORD PTR [rbp-0x14]
+100003f93: cmp    eax,DWORD PTR [rbp-0x18]
+100003f96: jle    100003fa8 <_main+0x38>
+100003f9c: mov    DWORD PTR [rbp-0x1c],0x3
+100003fa3: jmp    100003faf <_main+0x3f>
+100003fa8: mov    DWORD PTR [rbp-0x1c],0x4
+100003faf: xor    eax,eax
+100003fb1: pop    rbp
+100003fb2: ret
 ```
   
 ## 显示某行
