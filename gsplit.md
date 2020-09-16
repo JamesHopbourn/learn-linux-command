@@ -26,7 +26,8 @@ test xaa xab xac xad xae xaf xag xah xai xaj
 #### 按照每 10KB 进行分隔 加上 prefix 前缀
 ```
 gsplit -b 10k test prefix
-prefixaa prefixab prefixac prefixad prefixae prefixaf prefixag prefixah prefixai prefixaj
+prefixaa prefixab prefixac prefixad prefixae
+prefixaf prefixag prefixah prefixai prefixaj
 ```
 
 #### 按照每 10KB 进行分隔 加上 prefix 前缀和 .dat 后缀
@@ -61,7 +62,7 @@ Files0005 Files0006 Files0007 Files0008 Files0009
 cat Files* > restore
 ```
 
-#### 检查 md5 对比前后未发生改变
+#### 检查 md5 对比发现未发生改变
 ```
 md5 restore
 MD5 (restore) = 4c6426ac7ef186464ecbb0d81cbfcb1e
@@ -105,7 +106,7 @@ dd if=/dev/zero of=Movie.mp4 bs=1g count=1
 ```
 gsplit -C 100M -d Movie.mp4 Movie_Part
 Movie_Part00 Movie_Part01 Movie_Part02 Movie_Part03 Movie_Part04
-Movie_Part05Movie_Part06 Movie_Part07 Movie_Part08 Movie_Part09
+Movie_Part05 Movie_Part06 Movie_Part07 Movie_Part08 Movie_Part09
 ```
 
 #### 总结
