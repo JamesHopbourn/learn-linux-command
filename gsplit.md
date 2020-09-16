@@ -1,4 +1,4 @@
-#### 安装 gsplit 替换 macOS 自带的 BSD split
+#### 安装 GNU split 替换 macOS 自带的 BSD split
 ```
 ➜ brew install coreutils
 ```
@@ -111,7 +111,7 @@ Movie_Part05 Movie_Part06 Movie_Part07 Movie_Part08 Movie_Part09
 
 #### 总结
 ```
-gsplit (-b/-l/-M) 原始文件 前缀文字 (-d -a 数字位数) --additional-suffix=.(后缀文字) 
+gsplit (-b/-l/-M) 原始文件 前缀文字 (-d -a 数字位数) --additional-suffix=.(后缀格式) 
 ```
 
 1. -b/-l/-M：-b 用于处理二进制文件，-l 用于处理纯文本指定分隔行树，-M 用于处理其他文件按照指定大小进行分隔
