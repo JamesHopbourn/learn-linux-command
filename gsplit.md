@@ -32,24 +32,28 @@ prefixaa prefixab prefixac prefixad prefixae prefixaf prefixag prefixah prefixai
 #### 按照每 10KB 进行分隔 加上 prefix 前缀和 .dat 后缀
 ```
 gsplit -b 10k test prefix --additional-suffix=.dat
-prefixaa.dat prefixab.dat prefixac.dat prefixad.dat prefixae.dat prefixaf.dat prefixag.dat prefixah.dat prefixai.dat prefixaj.dat
+prefixaa.dat prefixab.dat prefixac.dat prefixad.dat prefixae.dat
+prefixaf.dat prefixag.dat prefixah.dat prefixai.dat prefixaj.dat
 ```
 #### 按照每 10KB 进行分隔 加上 prefix 前缀和 .txt 后缀
 ```
 gsplit -b 10k test prefix --additional-suffix=.txt
-prefixaa.txt prefixab.txt prefixac.txt prefixad.txt prefixae.txt prefixaf.txt prefixag.txt prefixah.txt prefixai.txt prefixaj.txt
+prefixaa.txt prefixab.txt prefixac.txt prefixad.txt prefixae.txt
+prefixaf.txt prefixag.txt prefixah.txt prefixai.txt prefixaj.txt
 ```
 
 #### 按照每 10KB 进行分隔 加上 Number 前缀和三位数后缀
 ```
 gsplit -b 10k test Number -d -a 3
-Number000 Number001 Number002 Number003 Number004 Number005 Number006 Number007 Number008 Number009
+Number000 Number001 Number002 Number003 Number004
+Number005 Number006 Number007 Number008 Number009
 ```
 
 #### 按照每 10KB 进行分隔 加上 Files 前缀和四位数后缀
 ```
 gsplit -b 10k test Files -d -a 4
-Files0000 Files0001 Files0002 Files0003 Files0004 Files0005 Files0006 Files0007 Files0008 Files0009
+Files0000 Files0001 Files0002 Files0003 Files0004
+Files0005 Files0006 Files0007 Files0008 Files0009
 ```
 
 #### 合并 Files 开头的文件保存为 restore
@@ -100,7 +104,8 @@ dd if=/dev/zero of=Movie.mp4 bs=1g count=1
 #### 按照每个文件 100MB 进行分隔 加上 Movie_Part 前缀
 ```
 gsplit -C 100M -d Movie.mp4 Movie_Part
-Movie_Part00 Movie_Part01 Movie_Part02 Movie_Part03 Movie_Part04 Movie_Part05 Movie_Part06 Movie_Part07 Movie_Part08 Movie_Part09 Movie_Part10
+Movie_Part00 Movie_Part01 Movie_Part02 Movie_Part03 Movie_Part04
+Movie_Part05Movie_Part06 Movie_Part07 Movie_Part08 Movie_Part09
 ```
 
 #### 总结
