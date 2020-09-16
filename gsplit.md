@@ -1,4 +1,4 @@
-#### 安装 gsplit 替换 split
+#### 安装 gsplit 替换 macOS 自带的 BSD split
 ```
 brew install coreutils
 ```
@@ -117,3 +117,4 @@ gsplit (-b/-l/-M) 原始文件 前缀文字 (-d -a 数字位数) --additional-su
 1. -b/-l/-M：-b 用于处理二进制文件，-l 用于处理纯文本指定分隔行树，-M 用于处理其他文件按照指定大小进行分隔
 2. -d -a 数字位数：默认是两位数字，可以根据需要改成 3 或者 4，如果不使用这个选项，默认使用 a-z 添加文件后缀
 3. --additional-suffix=：可以根据需要自行添加后缀，例如 txt、mov
+4. macOS 上默认的 dd 命令生成文件大小必须使用小写字母，例如：b、k、m、g
