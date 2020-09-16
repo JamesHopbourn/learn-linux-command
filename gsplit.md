@@ -111,10 +111,11 @@ Movie_Part05 Movie_Part06 Movie_Part07 Movie_Part08 Movie_Part09
 
 #### 总结
 ```
-gsplit (-b/-l/-M) 原始文件 前缀文字 (-d -a 数字位数) --additional-suffix=.(后缀格式) 
+gsplit -b/-l/-M 大小 原始文件 (前缀文字) (-d -a 数字位数) (--additional-suffix=.后缀格式) 
 ```
 
 1. -b/-l/-M：-b 用于处理二进制文件，-l 用于处理纯文本指定分隔行树，-M 用于处理其他文件按照指定大小进行分隔
+2. 大小：二进制文件和其他文件使用 k、M 等单位表示，纯文本指定分割行数使用 l 表示
 2. -d -a 数字位数：默认是两位数字，可以根据需要改成 3 或者 4，如果不使用这个选项，默认使用 aa-zz 添加文件后缀
 3. --additional-suffix=：可以根据需要自行添加后缀，例如 txt、mov
 4. macOS 上默认的 dd 命令生成文件大小必须使用小写字母，例如：b、k、m、g
