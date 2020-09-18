@@ -1,6 +1,6 @@
 #### gseq 生成数字列表
 ```
-gseq 1 10
+➜ gseq 1 10
 1
 2
 3
@@ -13,9 +13,38 @@ gseq 1 10
 10
 ```
 
+#### echo 生成字母列表
+```
+➜ echo {a..z}
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+➜ printf "%s\n" {a..z}
+a
+b
+c
+d
+e
+...
+```
+
+#### seq 生成数字矩阵
+```
+seq 100 | pr -10t
+1      11     21     31     41     51     61     71     81     91
+2      12     22     32     42     52     62     72     82     92
+3      13     23     33     43     53     63     73     83     93
+4      14     24     34     44     54     64     74     84     94
+5      15     25     35     45     55     65     75     85     95
+6      16     26     36     46     56     66     76     86     96
+7      17     27     37     47     57     67     77     87     97
+8      18     28     38     48     58     68     78     88     98
+9      19     29     39     49     59     69     79     89     99
+10     20     30     40     50     60     70     80     90     100
+```
+
 #### gseq 指定数字间隔
 ```
-gseq 10 10 100
+➜ gseq 10 10 100
 10
 20
 30
@@ -28,9 +57,9 @@ gseq 10 10 100
 100
 ```
 
-#### gseq 指定输出数字格式
+#### gseq 两种方式指定输出数字格式
 ```
-gseq -f "%02g" 1 10
+➜ gseq -f "%02g" 1 10
 01
 02
 03
@@ -42,7 +71,7 @@ gseq -f "%02g" 1 10
 09
 10
 
-gseq -w 1 10
+➜ gseq -w 1 10
 01
 02
 03
@@ -57,41 +86,44 @@ gseq -w 1 10
 
 #### gseq 横向输出
 ```
-gseq -s " " 1 10
+➜ gseq -s " " 1 10
 1 2 3 4 5 6 7 8 9 10
 ```
 
 #### gseq 生成指定数量文字
 ```
-gseq -s '#' 30 | sed -e 's/[0-9]*//g'
+➜ gseq -s '#' 30 | sed -e 's/[0-9]*//g'
 ##############################
+
+➜ gseq -s '%d ' 10 | sed -e 's/[0-9]*//g'
+%d %d %d %d %d %d %d %d %d
 ```
 
 #### gseq 生成数字数组
 ```
-gseq -s ',' 15
+➜ gseq -s ',' 15
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
 ```
 
 #### gseq 生成数字列表带后缀
 ```
-gseq -f "%03g." 0 10
-000.
-001.
-002.
-003.
-004.
-005.
-006.
-007.
-008.
-009.
-010.
+➜ gseq -f "%03g. " 0 10
+000. 
+001. 
+002. 
+003. 
+004. 
+005. 
+006. 
+007. 
+008. 
+009. 
+010. 
 ```
 
 #### 查看名字列表
 ```
-cat name.txt
+➜ cat name.txt
 侯亮平
 李达康
 高育良
@@ -106,23 +138,24 @@ cat name.txt
 
 #### paste 生成数字序列
 ```
-gseq -f "%02g." 1 10 > number.txt
+➜ gseq -f "%02g. " 1 10 > number.txt
 
-cat number.txt
-01.
-02.
-03.
-04.
-05.
-06.
-07.
-08.
-09.
-10.
+➜ cat number.txt
+01. 
+02. 
+03. 
+04. 
+05. 
+06. 
+07. 
+08. 
+09. 
+10. 
+```
 
 #### paste 合并序列和名字
 ````
-gpaste number.txt name.txt
+➜ gpaste number.txt name.txt
 01.	侯亮平
 02.	李达康
 03.	高育良
@@ -137,70 +170,70 @@ gpaste number.txt name.txt
 
 #### paste 横向合并文件
 ```
-gpaste -s number.txt name.txt
+➜ gpaste -s number.txt name.txt
 1	2	3	4	5	6	7	8	9	10
 侯亮平	李达康	高育良	祁同伟	沙瑞金	季昌明	易学习	陈岩石	赵东来	郑西坡
 ```
 
 #### paste 指定分隔符号
 ```
-gpaste -s -d '|' number.txt name.txt
+➜ gpaste -s -d '|' number.txt name.txt
 1|2|3|4|5|6|7|8|9|10
 侯亮平|李达康|高育良|祁同伟|沙瑞金|季昌明|易学习|陈岩石|赵东来|郑西坡
 ```
 
 #### paste 指定分隔符号输出保存到 list.txt
 ```
-gpaste -s -d '|' number.txt name.txt > list.txt
+➜ gpaste -s -d '|' number.txt name.txt > list.txt
 1|2|3|4|5|6|7|8|9|10
 侯亮平|李达康|高育良|祁同伟|沙瑞金|季昌明|易学习|陈岩石|赵东来|郑西坡
 ```
 
 #### 打印第一列人名
 ```
-gcut -f 1 -d "|" list.txt
+➜ gcut -f 1 -d "|" list.txt
 1
 侯亮平
 ```
 
 #### 打印第三第六列人名
 ```
-gcut -f 3,6 -d "|" list.txt
+➜ gcut -f 3,6 -d "|" list.txt
 3|6
 高育良|季昌明
 ```
 
 #### 打印第三到第六列人名
 ```
-gcut -f 3-6 -d "|" list.txt
+➜ gcut -f 3-6 -d "|" list.txt
 3|4|5|6
 高育良|祁同伟|沙瑞金|季昌明
 ```
 
 #### 排除第一列人名打印
 ```
-gcut -f 1 -d "|" --complement list.txt
+➜ gcut -f 1 -d "|" --complement list.txt
 2|3|4|5|6|7|8|9|10
 李达康|高育良|祁同伟|沙瑞金|季昌明|易学习|陈岩石|赵东来|郑西坡
 ```
 
 #### 排除第一第二列人名打印
 ```
-gcut -f 1,2 -d "|" --complement list.txt
+➜ gcut -f 1,2 -d "|" --complement list.txt
 3|4|5|6|7|8|9|10
 高育良|祁同伟|沙瑞金|季昌明|易学习|陈岩石|赵东来|郑西坡
 ```
 
 #### 排除第一到第五列人名打印
 ```
-gcut -f 1-5 -d "|" --complement list.txt
+➜ gcut -f 1-5 -d "|" --complement list.txt
 6|7|8|9|10
 季昌明|易学习|陈岩石|赵东来|郑西坡
 ```
 
 #### head 默认查看前面十行
 ```
-ghead number.txt
+➜ ghead number.txt
 1
 2
 3
@@ -215,7 +248,7 @@ ghead number.txt
 
 #### head 指定查看前五行
 ```
-ghead -n 5 number.txt
+➜ ghead -n 5 number.txt
 1
 2
 3
@@ -225,7 +258,7 @@ ghead -n 5 number.txt
 
 #### head 排除最后两行查看
 ```
-ghead -n -2 number.txt
+➜ ghead -n -2 number.txt
 1
 2
 3
@@ -238,7 +271,7 @@ ghead -n -2 number.txt
 
 #### head 显示前面 5 个字节
 ```
-ghead -c 5 number.txt
+➜ ghead -c 5 number.txt
 1
 2
 3%
@@ -246,7 +279,7 @@ ghead -c 5 number.txt
 
 #### tail 默认显示后面十行
 ```
-gtail number.txt
+➜ gtail number.txt
 1
 2
 3
@@ -261,7 +294,7 @@ gtail number.txt
 
 #### tail 显示后面五行
 ```
-gtail -n 5 number.txt
+➜ gtail -n 5 number.txt
 6
 7
 8
@@ -271,7 +304,7 @@ gtail -n 5 number.txt
 
 #### tail 显示后面 5 个字节
 ```
-gtail -c 5 number.txt
+➜ gtail -c 5 number.txt
 9
 10
 
@@ -279,7 +312,7 @@ gtail -c 5 number.txt
 
 #### 总结
 ```
-seq (-f "%03g.") (起始数字) (数字间隔) 结束数字
+➜ seq (-f "%03g.") (起始数字) (数字间隔) 结束数字
 
-paste (-s) (-d '间隔符号') 文件名一 文件名二 ...
+➜ paste (-s) (-d '间隔符号') 文件名一 文件名二 ...
 ```
