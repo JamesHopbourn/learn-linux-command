@@ -13,20 +13,20 @@ brew install gnu-sed
 ```
 #### 指定行添加  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,3s/^/  /'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,4s/^/  /'
 第一行
   第二行
   第三行
-第四行
+  第四行
 第五行
 ```
 #### 行尾添加 多用于 GitHub README.md  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,3s/$/结尾/'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,4s/$/结尾/'
 第一行
 第二行结尾
 第三行结尾
-第四行
+第四行结尾
 第五行
 ```
 #### 跨行添加
@@ -276,8 +276,8 @@ ret
 ```
 #### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)  
 ```
-➜ echo "hi i'm kangkang"|sed 's/'"'"/'"''/'  
-hi i"m kangkang
+➜ echo "Hi,I'm James"|sed 's/'"'"/'"''/'  
+Hi,I"m James
 ```
 #### 替换单行  
 ```
