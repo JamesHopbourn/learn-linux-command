@@ -154,6 +154,45 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 第五行
 ```
 
+#### 删除开头或者末尾指定数量字符
+```
+cat test.txt
+- [x] 01 卞XX
+- [x] 02 蔡XX
+- [x] 03 陈XX
+- [x] 04 陈XX
+- [x] 05 陈XX
+- [x] 06 陈XX
+- [x] 07 陈XX
+- [x] 08 陈XX
+- [x] 09 陈XX
+- [x] 10 陈XX
+
+cat test.txt|sed 's/^......//g'
+01 卞XX
+02 蔡XX
+03 陈XX
+04 陈XX
+05 陈XX
+06 陈XX
+07 陈XX
+08 陈XX
+09 陈XX
+10 陈XX
+
+cat test.txt|sed 's/..$//g'
+- [x] 01 卞
+- [x] 02 蔡
+- [x] 03 陈
+- [x] 04 陈
+- [x] 05 陈
+- [x] 06 陈
+- [x] 07 陈
+- [x] 08 陈
+- [x] 09 陈
+- [x] 10 陈
+```
+
 #### 删除指定数量字符
 ```
 ➜ objdump -M intel -d if > if.s
@@ -211,7 +250,7 @@ ret
 100003fb1: pop    rbp
 100003fb2: ret
 ```
-  
+
 ## 显示某行
 ```
 ➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '4,5p'
