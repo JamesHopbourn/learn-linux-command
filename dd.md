@@ -49,41 +49,60 @@
 ## 编辑二进制文件
 #### 编辑代码
 ```
-➜ vim dd.c
+➜ vim Hello.c
 #include <stdio.h>
 
-int main(int argc, char const *argv[]) { printf("Hello World\n"); }
+int main() { printf("Hello World\n"); }
 
 [ESC]:wq
 ```
 
 #### 编译代码 运行程序
 ```
-➜ gcc dd.c -o dd;./dd
+➜ gcc Hello.c -o Hello;./Hello
 Hello World
 ```
 
 #### 打印字符串十进制偏移量
 ```
-➜ strings -t d dd | grep  'Hello World'
-16298 Hello World
+➜ strings -t d Hello | grep  'Hello World'
+16294 Hello World
 ```
 
-#### 创建字符串替换文件
+#### 创建英文字符串替换文件
 ```
 ➜ printf "Hello Github\x0A" > strings
 ```
 
 #### 替换字符串
 ```
-➜ dd if=strings of=dd obs=1 seek=16298  conv=notrunc
+➜ dd if=strings of=Hello obs=1 seek=16294  conv=notrunc
 0+1 records in
 13+0 records out
-13 bytes copied, 0.0004 s, 32 kB/s
+13 bytes copied, 0.000298 s, 43.6 kB/s
 ```
 
 #### 运行修改后的程序
 ```
-➜ ./dd
+➜ ./Hello
 Hello Github
+```
+
+#### 创建中文字符串替换文件
+```
+➜ printf "你好世界\x0A" > strings
+```
+
+#### 替换字符串
+```
+➜ dd if=strings of=Hello obs=1 seek=16294  conv=notrunc
+0+1 records in
+13+0 records out
+13 bytes copied, 0.000529 s, 24.6 kB/s
+```
+
+#### 运行修改后的程序
+```
+➜ ./Hello
+你好世界
 ```
