@@ -307,7 +307,7 @@ Hi,I"m James
 
 #### 特殊字符转义
 ```
-pbpaste|gsed "s/\[.*\]/[X]/g"
+➜ cat name.txt|gsed "s/\[.*\]/[X]/g"
 - [X] 01 侯亮平
 - [X] 02 李达康
 - [X] 03 高育良
