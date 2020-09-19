@@ -144,7 +144,26 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 
 第四行
 第五行
+
+➜ cat test
+1
+
+
+2
+
+
+3
+
+➜ cat -s test|pbcopy&&pbpaste > test
+
+➜ cat test
+1
+
+2
+
+3
 ```
+
 
 #### 删除开头或者末尾指定数量字符
 ```
