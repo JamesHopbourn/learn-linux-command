@@ -154,7 +154,7 @@ seq 100 | pr -10t
 ```
 
 #### paste 合并序列和名字
-````
+```
 ➜ gpaste number.txt name.txt
 01.	侯亮平
 02.	李达康
