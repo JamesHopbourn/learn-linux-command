@@ -8,12 +8,12 @@ brew install gnu-sed
 ## 添加字符  
 #### 行首添加
 ```
-➜ echo '文本'|sed 's/^/开头/'
+➜ echo '文本'|gsed 's/^/开头/'
 开头文本
 ```
 #### 指定行添加  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,4s/^/  /'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '2,4s/^/  /'
 第一行
   第二行
   第三行
@@ -22,7 +22,7 @@ brew install gnu-sed
 ```
 #### 行尾添加 多用于 GitHub README.md  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '2,4s/$/结尾/'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '2,4s/$/结尾/'
 第一行
 第二行结尾
 第三行结尾
@@ -31,7 +31,7 @@ brew install gnu-sed
 ```
 #### 跨行添加
 ```
-➜ echo '一二'|sed  $'s/二/\\\n&/'
+➜ echo '一二'|gsed  $'s/二/\\\n&/'
 一
 二
 
@@ -39,47 +39,29 @@ brew install gnu-sed
 一
 二
 
-➜ echo '第一行'|sed -e '1i\
-pipe quote> 在第一行之前添加一行'
-在第一行之前添加一行
+➜ echo -e '第一行\n第二行\n第三行'|gsed '1i 测试行'
+测试行
 第一行
+第二行
+第三行
 
-➜ echo '第一行'|sed -e '1a\
-pipe quote> 在第一行之后添加一行'
+➜ echo -e '第一行\n第二行\n第三行'|gsed '2i 测试行'
 第一行
-在第一行之后添加一行
+测试行
+第二行
+第三行
 
-➜ sed "/匹配字符/i\\
-字符上面添加一行\\
-" 文件名
+➜ echo -e '第一行\n第二行\n第三行'|gsed '$i 测试行'
+第一行
+第二行
+测试行
+第三行
 
-➜ sed "/匹配字符/a\\
-字符下面添加一行\\
-" 文件名
-
-➜ echo -e 'line 1\nline 2\nline 3'|gsed '1i test'
-test
-line 1
-line 2
-line 3
-
-➜ echo -e 'line 1\nline 2\nline 3'|gsed '2i test'
-line 1
-test
-line 2
-line 3
-
-➜ echo -e 'line 1\nline 2\nline 3'|gsed '$i test'
-line 1
-line 2
-test
-line 3
-
-➜ echo -e 'line 1\nline 2\nline 3'|gsed '$a test'
-line 1
-line 2
-line 3
-test
+➜ echo -e '第一行\n第二行\n第三行'|gsed '$a 测试行'
+第一行
+第二行
+第三行
+测试行
 ```
 
 #### 每行之后添加换行或者字符 建议使用 printf 实现
@@ -102,21 +84,21 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 
 #### 匹配后添加
 ```
-➜ echo -e "标题一\n标题二\n标题三"|sed 's/^标题/### &/'
+➜ echo -e "标题一\n标题二\n标题三"|gsed 's/^标题/### &/'
 ### 标题一
 ### 标题二
 ### 标题三
 ```
 #### 间隔添加
 ```
-➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | sed 's/.\{2\}/\\x&/g'
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/g'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
 ```
 
 ## 删除字符  
 #### 删除空行  
 ```
-➜ echo -e "第一行\n第二行\n\n\n第四行\n第五行"|sed '/^$/d'
+➜ echo -e "第一行\n第二行\n\n\n第四行\n第五行"|gsed '/^$/d'
 第一行
 第二行
 第四行
@@ -124,7 +106,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 删除首行  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '1d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '1d'
 第二行
 第三行
 第四行
@@ -132,7 +114,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 删除末行  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '$d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '$d'
 第一行
 第二行
 第三行
@@ -140,7 +122,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 删除指定行，例如第3行  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '3d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '3d'
 第一行
 第二行
 第四行
@@ -148,7 +130,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 删除第1到2行：  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed '1,2d'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '1,2d'
 第三行
 第四行
 第五行
@@ -178,7 +160,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 - [] 09 赵东来
 - [] 10 郑西坡
 
-➜ cat name.txt|sed 's/^.....//g'
+➜ cat name.txt|gsed 's/^.....//g'
 01 侯亮平
 02 李达康
 03 高育良
@@ -190,7 +172,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 09 赵东来
 10 郑西坡
 
-➜ cat name.txt|sed 's/..$/某某/g'
+➜ cat name.txt|gsed 's/..$/某某/g'
 - [] 01 侯某某
 - [] 02 李某某
 - [] 03 高某某
@@ -224,7 +206,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
    100003fb1:	5d                   	pop    rbp
    100003fb2:	c3                   	ret
 
-➜ cat if.s | sed 's/^.\{36\}//'
+➜ cat if.s|gsed 's/^.\{36\}//'
 push   rbp
 mov    rbp,rsp
 mov    DWORD PTR [rbp-0x4],0x0
@@ -242,7 +224,7 @@ xor    eax,eax
 pop    rbp
 ret
 
-➜ cat if.s|sed -e 's/^.\{3\}//' -e 's/:.\{23\}/: /g'
+➜ cat if.s|gsed -e 's/^.\{3\}//' -e 's/:.\{23\}/: /g'
 100003f70: push   rbp
 100003f71: mov    rbp,rsp
 100003f74: mov    DWORD PTR [rbp-0x4],0x0
@@ -263,11 +245,11 @@ ret
 
 ## 显示某行
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '4,5p'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed -n '4,5p'
 第四行
 第五行 
 
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed -n '2,5p'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed -n '2,5p'
 第二行
 第三行
 第四行
@@ -277,7 +259,7 @@ ret
 ## 替换字符  
 #### 全局替换  
 ```
-➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|sed 's/行/列/'
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed 's/行/列/'
 第一列
 第二列
 第三列
@@ -286,7 +268,7 @@ ret
 ```
 #### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)  
 ```
-➜ echo "Hi,I'm James"|sed 's/'"'"/'"''/'  
+➜ echo "Hi,I'm James"|gsed 's/'"'"/'"''/'  
 Hi,I"m James
 ```
 #### 替换单行  
@@ -322,12 +304,12 @@ Hi,I"m James
 
 #### 替换正则第 1 次匹配结果 
 ```
-➜ echo '1111 2222'|sed -E '1s/[0-9]{4}/0100/'
+➜ echo '1111 2222'|gsed -E '1s/[0-9]{4}/0100/'
 0100 2222
 ```
 #### 替换正则第 4 次匹配结果
 ```
-➜ echo '1111 2222 3333 4444'|sed -E '1s/[0-9]{4}/0100/4'
+➜ echo '1111 2222 3333 4444'|gsed -E '1s/[0-9]{4}/0100/4'
 1111 2222 3333 0100
 ```
 #### 非贪婪匹配建议使用 perl
@@ -339,8 +321,8 @@ https://github.com/JamesHopbourn/dotfile
 ## 其他用法
 #### 串联命令
 ```
-➜ sed 's/ /0/g' ; 's/#/1/g' test.txt
-➜ sed -e 's/ /0/g' -e 's/#/1/g' test.txt
+➜ gsed 's/ /0/g' ; 's/#/1/g' test.txt
+➜ gsed -e 's/ /0/g' -e 's/#/1/g' test.txt
 ```
 #### 合并为单行建议使用 tr
 ```
