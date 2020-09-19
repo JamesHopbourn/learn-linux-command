@@ -14,3 +14,16 @@ echo github.com/\\ >> command
 echo feicong/\\ >> command
 echo macbook >> command
 ```
+
+#### strings 搜索关键词并过滤
+```
+strings *|grep -v '@\|__\|_\|/'
+2:29x
+Welcome to C program!
+!main
+!main
+%d %d
+%d + %d = %d
+&main
+*add
+```
