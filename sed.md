@@ -31,7 +31,7 @@ brew install gnu-sed
 ```
 #### 跨行添加
 ```
-➜ echo '一二'|gsed  $'s/二/\\\n&/'
+➜ echo '一二'|gsed  $'s/二/\\n&/'
 一
 二
 
