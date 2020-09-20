@@ -306,6 +306,17 @@ Hi,I"m James
 第五行 
 ```
 
+#### 替换二进制字符串
+```
+➜ gcc main.c -o main;./main
+您
+
+➜ sed -i "s/\xe6\x82\xa8/\xe6\x88\x91/" main
+
+➜ ./main
+我
+```
+
 #### 特殊字符转义
 ```
 ➜ cat name.txt|gsed "s/\[.*\]/[X]/g"
