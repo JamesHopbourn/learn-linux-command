@@ -297,18 +297,18 @@ ret
 ```
 #### 反向输出字符
 ```
+➜ md5 -qs 'JamesHopbourn'
+271929258c8693b89c6f7d4e8234f98f
+
 ➜ md5 -qs 'JamesHopbourn' | rev
 f89f4328e4d7f6c98b3968c852929172
 ```
 #### 显示特定位置字符
 ```
-➜ md5 -qs 'JamesHopbourn'
-271929258c8693b89c6f7d4e8234f98f
-
 ➜ md5 -qs 'JamesHopbourn'|cut -b 1-6
 271929
 ```
-#### 串联命令删除字符
+#### 串联命令删除字符 要求保留字符串
 ```
 ➜ md5 -s 'JamesHopbourn'
 MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
@@ -388,7 +388,7 @@ Hi,I"m James
 替换文本
 第五行 
 ```
-#### 空格替换为\x
+#### 空格替换为 \x
 ```
 ➜ hexyl test.txt
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
@@ -406,7 +406,13 @@ Hi,I"m James
 ➜ gcc main.c -o main;./main
 您
 
-➜ sed -i "s/\xe6\x82\xa8/\xe6\x88\x91/" main
+➜ python3 -c 'print("您".encode("utf-8"))'
+b'\xe6\x82\xa8'
+
+➜ python3 -c 'print("我".encode("utf-8"))'
+b'\xe6\x88\x91'
+
+➜ sed -i 's/\xe6\x82\xa8/\xe6\x88\x91/' main
 
 ➜ ./main
 我
@@ -444,7 +450,7 @@ https://github.com/JamesHopbourn/dotfile
 ## 其他用法
 #### 串联命令
 ```
-➜ gsed 's/ /0/g' ; 's/#/1/g' test.txt
+➜ gsed 's/ /0/g ; s/#/1/g' test.txt
 ➜ gsed -e 's/ /0/g' -e 's/#/1/g' test.txt
 ```
 #### 合并为单行建议使用 tr
