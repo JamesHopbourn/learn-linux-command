@@ -393,9 +393,9 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 第四列
 第五列
 ```
-#### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)  
+#### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)
 ```
-➜ echo "Hi,I'm James"|gsed 's/'"'"/'"''/'  
+➜ echo "Hi,I'm James"|gsed 's/'"'"/'"''/'
 Hi,I"m James
 ```
 #### 替换单行  
@@ -480,7 +480,7 @@ https://github.com/JamesHopbourn/dotfile
 ```
 #### 合并为单行建议使用 tr
 ```
-➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain") 
+➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain")
 Make sed great again
 ```
 
