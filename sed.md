@@ -164,6 +164,28 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 3
 ```
 
+#### 封装删除多余空行函数
+```
+➜ echo "function unline(){cat -s \$1|pbcopy&&pbpaste > \$1}" >> ~/.zshrc
+
+➜ source ~/.zshrc
+
+➜ cat new.txt
+1
+
+
+2
+
+
+3
+
+➜ unline new.txt;cat new.txt
+1
+
+2
+
+3
+```
 
 #### 删除开头或者末尾指定数量字符
 ```
@@ -243,7 +265,7 @@ xor    eax,eax
 pop    rbp
 ret
 
-➜ cat if.s|gsed -e 's/^.\{3\}//' -e 's/:.\{23\}/: /g'
+➜ cat if.s|gsed -e 's/^.\{3\}// ; s/:.\{23\}/: /g'
 100003f70: push   rbp
 100003f71: mov    rbp,rsp
 100003f74: mov    DWORD PTR [rbp-0x4],0x0
@@ -261,8 +283,7 @@ ret
 100003fb1: pop    rbp
 100003fb2: ret
 ```
-
-## 显示某行
+#### 显示某行
 ```
 ➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed -n '4,5p'
 第四行
@@ -274,7 +295,69 @@ ret
 第四行
 第五行 
 ```
-  
+#### 反向输出字符
+```
+➜ md5 -qs 'JamesHopbourn' | rev
+f89f4328e4d7f6c98b3968c852929172
+```
+#### 显示特定位置字符
+```
+➜ md5 -qs 'JamesHopbourn'
+271929258c8693b89c6f7d4e8234f98f
+
+➜ md5 -qs 'JamesHopbourn'|cut -b 1-6
+271929
+```
+#### 串联命令删除字符
+```
+➜ md5 -s 'JamesHopbourn'
+MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
+
+➜ md5 -s 'JamesHopbourn'|sed 's/MD5 ("// ; s/")// ; s/ //g'
+JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
+
+md5 -s 'JamesHopbourn'|sed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
+JamesHopbourn=271929
+```
+#### 两种方法乱序显示文本的行
+```
+➜ head test.dat
+MD5 ("1000000") = 8155bc545f84d9652f1012ef2bdfb6eb
+MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
+MD5 ("1000002") = 877466ffd21fe26dd1b3366330b7b560
+MD5 ("1000003") = f31c147335274c56d801f833d3c26a70
+MD5 ("1000004") = f68ec4f0c6df90137749af75a929a3eb
+MD5 ("1000005") = 0f190e6e164eafe66f011073b4486975
+MD5 ("1000006") = a9588aa82388c0579d8f74b4d02b895f
+MD5 ("1000007") = 66a516f865fca1c921dba625ede4a693
+MD5 ("1000008") = 7cebd0178b69b2e88774529e1e59a7b0
+MD5 ("1000009") = ad1df793247a0e650d0d7166341b8d97
+
+➜ head test.dat|gshuf
+MD5 ("1000005") = 0f190e6e164eafe66f011073b4486975
+MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
+MD5 ("1000000") = 8155bc545f84d9652f1012ef2bdfb6eb
+MD5 ("1000002") = 877466ffd21fe26dd1b3366330b7b560
+MD5 ("1000008") = 7cebd0178b69b2e88774529e1e59a7b0
+MD5 ("1000006") = a9588aa82388c0579d8f74b4d02b895f
+MD5 ("1000007") = 66a516f865fca1c921dba625ede4a693
+MD5 ("1000004") = f68ec4f0c6df90137749af75a929a3eb
+MD5 ("1000003") = f31c147335274c56d801f833d3c26a70
+MD5 ("1000009") = ad1df793247a0e650d0d7166341b8d97
+
+➜ head test.dat|sort -R
+MD5 ("1000005") = 0f190e6e164eafe66f011073b4486975
+MD5 ("1000009") = ad1df793247a0e650d0d7166341b8d97
+MD5 ("1000006") = a9588aa82388c0579d8f74b4d02b895f
+MD5 ("1000004") = f68ec4f0c6df90137749af75a929a3eb
+MD5 ("1000008") = 7cebd0178b69b2e88774529e1e59a7b0
+MD5 ("1000007") = 66a516f865fca1c921dba625ede4a693
+MD5 ("1000002") = 877466ffd21fe26dd1b3366330b7b560
+MD5 ("1000000") = 8155bc545f84d9652f1012ef2bdfb6eb
+MD5 ("1000003") = f31c147335274c56d801f833d3c26a70
+MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
+```
+
 ## 替换字符  
 #### 全局替换  
 ```
@@ -305,7 +388,19 @@ Hi,I"m James
 替换文本
 第五行 
 ```
+#### 空格替换为\x
+```
+➜ hexyl test.txt
+┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
+│00000000│ e6 b5 8b e8 af 95 e6 96 ┊ 87 e6 9c ac 0a          │××××××××┊××××_   │
+└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 
+➜ echo 'e6 b5 8b e8 af 95'|sed 's/ /\\x/g ; s/^/\\x/g'
+\xe6\xb5\x8b\xe8\xaf\x95
+
+➜ echo '\xe6\xb5\x8b\xe8\xaf\x95'
+测试
+```
 #### 替换二进制字符串
 ```
 ➜ gcc main.c -o main;./main
@@ -316,7 +411,6 @@ Hi,I"m James
 ➜ ./main
 我
 ```
-
 #### 特殊字符转义
 ```
 ➜ cat name.txt|gsed "s/\[.*\]/[X]/g"
@@ -331,7 +425,6 @@ Hi,I"m James
 - [X] 09 赵东来
 - [X] 10 郑西坡
 ```
-
 #### 替换正则第 1 次匹配结果 
 ```
 ➜ echo '1111 2222'|gsed -E '1s/[0-9]{4}/0100/'
