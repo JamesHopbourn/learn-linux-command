@@ -92,7 +92,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 间隔添加
 ```
-➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/g'
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
 ```
 
@@ -341,7 +341,7 @@ MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
 ➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //'
 JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
 
-➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
+➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ = /=/ ; s/.\{26\}$//'
 JamesHopbourn=271929
 ```
 #### 两种方法乱序输出文本的行
@@ -393,9 +393,9 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 第四列
 第五列
 ```
-#### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)  
+#### [替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)
 ```
-➜ echo "Hi,I'm James"|gsed 's/'"'"/'"''/'  
+➜ echo "Hi,I'm James"|gsed 's/'"'"/'"''/'
 Hi,I"m James
 ```
 #### 替换单行  
@@ -480,7 +480,7 @@ https://github.com/JamesHopbourn/dotfile
 ```
 #### 合并为单行建议使用 tr
 ```
-➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain") 
+➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain")
 Make sed great again
 ```
 
