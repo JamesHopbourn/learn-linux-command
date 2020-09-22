@@ -92,7 +92,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 间隔添加
 ```
-➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/g'
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
 ```
 
@@ -341,7 +341,7 @@ MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
 ➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //'
 JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
 
-➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
+➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ = /=/ ; s/.\{26\}$//'
 JamesHopbourn=271929
 ```
 #### 两种方法乱序输出文本的行
