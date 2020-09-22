@@ -65,21 +65,16 @@ Hello World
 
 #### 打印字符串十进制偏移量
 ```
-➜ strings -t d Hello | grep  'Hello World'
+➜ strings -t d Hello|grep  'Hello World'
 16294 Hello World
-```
-
-#### 创建英文字符串替换文件
-```
-➜ printf "Hello Github\x0A" > strings
 ```
 
 #### 替换字符串
 ```
-➜ dd if=strings of=Hello obs=1 seek=16294  conv=notrunc
+➜ printf "Hello Github\x0A"|dd of=Hello obs=1 seek=16294  conv=notrunc
 0+1 records in
 13+0 records out
-13 bytes copied, 0.000298 s, 43.6 kB/s
+13 bytes copied, 0.000482 s, 27.0 kB/s
 ```
 
 #### 运行修改后的程序
@@ -88,17 +83,12 @@ Hello World
 Hello Github
 ```
 
-#### 创建中文字符串替换文件
-```
-➜ printf "你好世界\x0A" > strings
-```
-
 #### 替换字符串
 ```
-➜ dd if=strings of=Hello obs=1 seek=16294  conv=notrunc
+➜ printf "你好世界\x0A"|dd of=Hello obs=1 seek=16294 conv=notrunc
 0+1 records in
 13+0 records out
-13 bytes copied, 0.000529 s, 24.6 kB/s
+13 bytes copied, 0.000429 s, 30.3 kB/s
 ```
 
 #### 运行修改后的程序
