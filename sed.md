@@ -1,6 +1,6 @@
 ## 注意事项   
 macOS 上的 sed 并不是 GNU Project 亲生的，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
-如果不习惯使用 macOS 的 sed 可以使用 gsed 替代：  
+如果不习惯使用 macOS 的 sed 可以使用 gsed 替代
 ```
 brew install gcc prel hexyl gnu-sed coreutils binutils python3
 ```
@@ -166,7 +166,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 
 #### 封装删除多余空行函数
 ```
-➜ echo "function unline(){cat -s \$1|pbcopy&&pbpaste > \$1}" >> ~/.zshrc
+➜ echo "function unline(){cat -s \$1|pbcopy&&pbpaste > \$1;cat $1}" >> ~/.zshrc
 
 ➜ source ~/.zshrc
 
@@ -179,7 +179,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 
 3
 
-➜ unline new.txt;cat new.txt
+➜ unline new.txt
 1
 
 2
@@ -331,7 +331,7 @@ JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
 md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
 JamesHopbourn=271929
 ```
-#### 两种方法乱序显示文本的行
+#### 两种方法乱序输出文本的行
 ```
 ➜ head test.dat
 MD5 ("1000000") = 8155bc545f84d9652f1012ef2bdfb6eb
