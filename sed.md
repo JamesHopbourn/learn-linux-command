@@ -2,7 +2,7 @@
 macOS 上的 sed 并不是 GNU Project 亲生的，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
 如果不习惯使用 macOS 的 sed 可以使用 gsed 替代：  
 ```
-brew install gnu-sed  
+brew install gnu-sed [coreutils](https%3A%2F%2Fgithub.com%2FJamesHopbourn%2Flearn-linux-command%2Fblob%2Fmaster%2Fsed.md%23%E6%98%BE%E7%A4%BA%E7%89%B9%E5%AE%9A%E4%BD%8D%E7%BD%AE%E5%AD%97%E7%AC%A6) [binutils](https%3A%2F%2Fgithub.com%2FJamesHopbourn%2Flearn-linux-command%2Fblob%2Fmaster%2Fsed.md%23%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E6%95%B0%E9%87%8F%E5%AD%97%E7%AC%A6) [prel](https%3A%2F%2Fgithub.com%2FJamesHopbourn%2Flearn-linux-command%2Fblob%2Fmaster%2Fsed.md%23%E9%9D%9E%E8%B4%AA%E5%A9%AA%E5%8C%B9%E9%85%8D%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8-perl) [hexyl](https%3A%2F%2Fgithub.com%2FJamesHopbourn%2Flearn-linux-command%2Fblob%2Fmaster%2Fsed.md%23%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2%E4%B8%BA-x)
 ```
 
 ## 添加字符  
@@ -317,7 +317,7 @@ f89f4328e4d7f6c98b3968c852929172
 ```
 #### 显示特定位置字符
 ```
-➜ md5 -qs 'JamesHopbourn'|cut -b 1-6
+➜ md5 -qs 'JamesHopbourn'|gcut -b 1-6
 271929
 ```
 #### 串联命令删除字符 要求保留字符串
@@ -325,10 +325,10 @@ f89f4328e4d7f6c98b3968c852929172
 ➜ md5 -s 'JamesHopbourn'
 MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
 
-➜ md5 -s 'JamesHopbourn'|sed 's/MD5 ("// ; s/")// ; s/ //g'
+➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g'
 JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
 
-md5 -s 'JamesHopbourn'|sed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
+md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
 JamesHopbourn=271929
 ```
 #### 两种方法乱序显示文本的行
