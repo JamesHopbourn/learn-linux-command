@@ -202,7 +202,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 - [] 09 赵东来
 - [] 10 郑西坡
 
-➜ cat name.txt|gsed 's/^.....//g'
+➜ cat name.txt|gsed 's/^.....//'
 01 侯亮平
 02 李达康
 03 高育良
@@ -214,7 +214,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 09 赵东来
 10 郑西坡
 
-➜ cat name.txt|gsed 's/^.\{5\}//g'
+➜ cat name.txt|gsed 's/^.\{5\}//'
 01 侯亮平
 02 李达康
 03 高育良
@@ -226,7 +226,19 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 09 赵东来
 10 郑西坡
 
-➜ cat name.txt|gsed 's/..$/某某/g'
+➜ cat name.txt|gsed 's/..$/某某/'
+- [] 01 侯某某
+- [] 02 李某某
+- [] 03 高某某
+- [] 04 祁某某
+- [] 05 沙某某
+- [] 06 季某某
+- [] 07 易某某
+- [] 08 陈某某
+- [] 09 赵某某
+- [] 10 郑某某
+
+➜ cat name.txt|gsed 's/.\{2\}$/某某/'
 - [] 01 侯某某
 - [] 02 李某某
 - [] 03 高某某
@@ -278,7 +290,7 @@ xor    eax,eax
 pop    rbp
 ret
 
-➜ cat if.s|gsed -e 's/^.\{3\}// ; s/:.\{23\}/: /g'
+➜ cat if.s|gsed -e 's/^.\{3\}// ; s/:.\{23\}/: /'
 100003f70: push   rbp
 100003f71: mov    rbp,rsp
 100003f74: mov    DWORD PTR [rbp-0x4],0x0
@@ -326,7 +338,7 @@ f89f4328e4d7f6c98b3968c852929172
 ➜ md5 -s 'JamesHopbourn'
 MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
 
-➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g'
+➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //'
 JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
 
 ➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
@@ -408,7 +420,7 @@ Hi,I"m James
 │00000000│ e6 b5 8b e8 af 95 e6 96 ┊ 87 e6 9c ac 0a          │××××××××┊××××_   │
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 
-➜ echo 'e6 b5 8b e8 af 95'|sed 's/ /\\x/g ; s/^/\\x/g'
+➜ echo 'e6 b5 8b e8 af 95'|sed 's/ /\\x/g ; s/^/\\x/'
 \xe6\xb5\x8b\xe8\xaf\x95
 
 ➜ echo '\xe6\xb5\x8b\xe8\xaf\x95'
@@ -432,7 +444,7 @@ b'\xe6\x88\x91'
 ```
 #### 特殊字符转义
 ```
-➜ cat name.txt|gsed "s/\[.*\]/[X]/g"
+➜ cat name.txt|gsed "s/\[.*\]/[X]/"
 - [X] 01 侯亮平
 - [X] 02 李达康
 - [X] 03 高育良
@@ -474,6 +486,6 @@ Make sed great again
 
 ## sed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
-[三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
+[三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)
 [sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
   
