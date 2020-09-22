@@ -328,7 +328,7 @@ MD5 ("JamesHopbourn") = 271929258c8693b89c6f7d4e8234f98f
 ➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g'
 JamesHopbourn=271929258c8693b89c6f7d4e8234f98f
 
-md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
+➜ md5 -s 'JamesHopbourn'|gsed 's/MD5 ("// ; s/")// ; s/ //g ; s/.\{26\}$//'
 JamesHopbourn=271929
 ```
 #### 两种方法乱序输出文本的行
