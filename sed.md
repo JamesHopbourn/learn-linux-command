@@ -213,6 +213,18 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 09 赵东来
 10 郑西坡
 
+➜ cat name.txt|gsed 's/^.\{5\}//g'
+01 侯亮平
+02 李达康
+03 高育良
+04 祁同伟
+05 沙瑞金
+06 季昌明
+07 易学习
+08 陈岩石
+09 赵东来
+10 郑西坡
+
 ➜ cat name.txt|gsed 's/..$/某某/g'
 - [] 01 侯某某
 - [] 02 李某某
@@ -300,7 +312,7 @@ ret
 ➜ md5 -qs 'JamesHopbourn'
 271929258c8693b89c6f7d4e8234f98f
 
-➜ md5 -qs 'JamesHopbourn' | rev
+➜ md5 -qs 'JamesHopbourn'|rev
 f89f4328e4d7f6c98b3968c852929172
 ```
 #### 显示特定位置字符
