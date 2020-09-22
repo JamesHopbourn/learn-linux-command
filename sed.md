@@ -32,10 +32,6 @@ brew install gcc prel hexyl gnu-sed coreutils binutils python3
 ```
 #### 跨行添加
 ```
-➜ echo '一二'|gsed  $'s/二/\\n&/'
-一
-二
-
 ➜ echo '一二'|gsed  's/二/\n&/'
 一
 二
