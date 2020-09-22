@@ -486,6 +486,6 @@ Make sed great again
 
 ## sed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
-[三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)
+[三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
 [sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
   
