@@ -3,7 +3,7 @@
 - [添加字符](#添加字符)
     - [行首添加](#行首添加)
     - [指定行添加](#指定行添加)
-    - [行尾添加 多用于 GitHub README.md](#行尾添加-多用于-GitHub-README.md)
+    - [行尾添加](#行尾添加)
     - [跨行添加](#跨行添加)
     - [每行之后添加换行或者字符 建议使用 printf 实现](#每行之后添加换行或者字符-建议使用-printf-实现)
     - [匹配后添加](#匹配后添加)
@@ -65,7 +65,7 @@ brew install gcc prel hexyl gnu-sed coreutils binutils python3
   第四行
 第五行
 ```
-#### 行尾添加 多用于 GitHub README.md  
+#### 行尾添加 
 ```
 ➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '2,4s/$/结尾/'
 第一行
