@@ -549,6 +549,30 @@ Make sed great again
 #### 综合测验 生成本文目录
 ```
 grep -E '^##' sed.md | sed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; 1i ## 目录'|pbcopy
+
+
+grep -E '^##' sed.md | grep 过滤出所有 # 开头的行
+sed 开始使用 sed 处理文本
+'s/[[:blank:]]*$//   ; 删除末尾的空格
+s/^## /- /g          ; 二级标题转为列表
+s/^-.*/- \[&\](&)/   ; 二级标题添加链接
+s/- //2              ; 删除首次匹配横杆
+s/- /#/2             ; 替换括号内的横杆
+s/####/    tag/g     ; 四级标题转为临时标签
+s/tag /\- [/g        ; 添加左中括号
+s/    - \[.*/&\](&)/ ; 添加右中括号和链接
+s/    - \[/#/2       ; 删除括号内的横杠
+s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
+s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
+s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
+s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
+1i ## 目录'           | 在第一行添加二级标题目录
+pbcopy                 将处理好的文本复制到剪切板
+
 ```
 
 ## sed 参考资料  
