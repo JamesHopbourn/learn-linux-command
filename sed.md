@@ -1,4 +1,5 @@
 ## 目录
+- [目录](#目录)
 - [注意事项](#注意事项)
 - [添加字符](#添加字符)
     - [行首添加](#行首添加)
@@ -25,7 +26,7 @@
     - [两种方法乱序输出文本的行](#两种方法乱序输出文本的行)
 - [替换字符](#替换字符)
     - [全局替换](#全局替换)
-    - [替换单引号](#替换单引号)
+    - [[替换单引号](https://blog.csdn.net/wangbole/article/details/8250271)](#[替换单引号](https://blog.csdn.net/wangbole/article/details/8250271))
     - [替换单行](#替换单行)
     - [替换多行](#替换多行)
     - [空格替换为 \x](#空格替换为-\x)
@@ -38,6 +39,7 @@
 - [其他用法](#其他用法)
     - [串联命令](#串联命令)
     - [合并为单行建议使用 tr](#合并为单行建议使用-tr)
+    - [综合测验 生成本文目录](#综合测验-生成本文目录)
 - [sed 参考资料](#sed-参考资料)
 
 
@@ -168,7 +170,7 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 第四行
 第五行
 ```
-#### 删除第1到2行：  
+#### 删除第1到2行  
 ```
 ➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '1,2d'
 第三行
@@ -541,6 +543,11 @@ https://github.com/JamesHopbourn/dotfile
 ```
 ➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain")
 Make sed great again
+```
+
+#### 综合测验 生成本文目录
+```
+grep -E '^##' sed.md | sed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; 1i ## 目录'|pbcopy
 ```
 
 ## sed 参考资料  
