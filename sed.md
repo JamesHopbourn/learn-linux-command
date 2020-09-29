@@ -27,6 +27,7 @@
 - [替换字符](#替换字符)
     - [全局替换](#全局替换)
     - [替换单引号](#替换单引号)
+    - [多个字符匹配](#多个字符匹配)
     - [替换单行](#替换单行)
     - [替换多行](#替换多行)
     - [空格替换为十六进制标志](#空格替换为十六进制标志)
@@ -42,7 +43,6 @@
     - [综合测验 生成本文目录](#综合测验-生成本文目录)
     - [生成 TOC 命令注释](#生成-TOC-命令注释)
 - [sed 参考资料](#sed-参考资料)
-
 
 ## 注意事项   
 macOS 上的 sed 并不是 GNU Project 亲生的，苹果对其稍微进行了修改，主要体现在需要添加备份参数和 \n 转义上。
@@ -136,6 +136,11 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 ➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
+```
+#### 中英文间添加空格
+```
+➜ echo '这是test文本，sed真的很强大'|sed  's/\([[:upper:][:lower:][:digit:]]\+\)\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)/\1 \2/g'| sed 's/\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)\([[:upper:][:lower:][:digit:]]\+\)/\1 \2/g'
+这是 test 文本，sed 真的很强大
 ```
 
 ## 删除字符  
@@ -443,6 +448,26 @@ Hi,I"m James
 
 参考：https://blog.csdn.net/wangbole/article/details/8250271
 ```
+#### 多个字符匹配
+```
+➜ echo '0123456789'|sed 's/\(1\|2\)/X/g'
+0XX3456789
+
+➜ echo '你发这些有什么目的？谁指使你的？你的动机是什么？你取得有关部门许可了吗？他们容许你发了吗？你背后是谁，发这些想做 什么？你在讽刺谁？想颠覆什么？破坏什么？影射什么？回答不上来？那么跟我走一趟，顺便把你家户口本带上取证！别说我们瞎抓你，都是有理有据的！'|sed 's/\(？\|！\)/&\n/g'
+你发这些有什么目的？
+谁指使你的？
+你的动机是什么？
+你取得有关部门许可了吗？
+他们容许你发了吗？
+你背后是谁，发这些想做什么？
+你在讽刺谁？
+想颠覆什么？
+破坏什么？
+影射什么？
+回答不上来？
+那么跟我走一趟，顺便把你家户口本带上取证！
+别说我们瞎抓你，都是有理有据的！
+```
 #### 替换单行  
 ```
 ➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '1c 替换文本'
@@ -551,36 +576,37 @@ Make sed great again
 
 #### 综合测验 生成本文目录
 ```
-grep -E '^##' sed.md | sed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; 1i ## 目录'|pbcopy
+grep -E '^##' sed.md | sed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; /- \[目录\]\(.*\)/d ; /^###/d ; 2i 目录'|pbcopy
 ```
 
 #### 生成 TOC 命令注释
 ```
-grep -E '^##' sed.md | grep 过滤出所有 # 开头的行
-sed '                  开始使用 sed 命令处理文本
-s/[[:blank:]]*$//    ; 删除末尾的空格
-s/^## /- /g          ; 二级标题转为列表
-s/^-.*/- \[&\](&)/   ; 二级标题添加链接
-s/- //2              ; 删除二次匹配横杆
-s/- /#/2             ; 替换括号内的横杆
-s/####/    tag/g     ; 四级标题转为临时标签
-s/tag /\- [/g        ; 添加左中括号
-s/    - \[.*/&\](&)/ ; 添加右中括号和链接
-s/    - \[/#/2       ; 删除括号内的横杠
-s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
-s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
-s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
-s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
-s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
-s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
-s/(#.* /&ITISSP/g    ; 括号内的空格转为 ITISSP 临时标签
-s/ ITISSP/-/         ; 删除 ITISSP 临时标签及空格
-1i ## Content'       | 在第一行添加二级标题目录
-pbcopy                 将处理好的文本复制到剪切板
+grep -E '^##' sed.md     | grep 过滤出所有 # 开头的行
+sed '                      开始使用 sed 命令处理文本
+s/[[:blank:]]*$//        ; 删除末尾的空格
+s/^## /- /g              ; 二级标题转为列表
+s/^-.*/- \[&\](&)/       ; 二级标题添加链接
+s/- //2                  ; 删除二次匹配横杆
+s/- /#/2                 ; 替换括号内的横杆
+s/####/    tag/g         ; 四级标题转为临时标签
+s/tag /\- [/g            ; 添加左中括号
+s/    - \[.*/&\](&)/     ; 添加右中括号和链接
+s/    - \[/#/2           ; 删除括号内的横杠
+s/(#.* /&ITISSP/g        ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
+s/(#.* /&ITISSP/g        ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
+s/(#.* /&ITISSP/g        ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
+s/(#.* /&ITISSP/g        ; 括号内的空格转为 ITISSP 临时标签
+s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
+/- \[Content\]\(.*\)/d   ; 删除之前生成的目录标题
+/^###/d                  ; 排除代码区的干扰文本
+2i ## Content'           | 在第一行添加二级标题目录
+pbcopy                     将处理好的文本复制到剪切板
 ```
 
 ## sed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
 [sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
-  
