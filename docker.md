@@ -3,6 +3,9 @@
 docker pull nginx:latest
 docker images
 docker run --name nginx-test -p 8080:80 -d nginx
+
+docker stop nginx-test
+docker start nginx-test
 ```
 
 #### 安装 PHP
