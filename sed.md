@@ -41,7 +41,6 @@
     - [非贪婪匹配建议使用 perl](#非贪婪匹配建议使用-perl)
     - [非贪婪匹配处理 post 请求](#非贪婪匹配处理-post-请求)
 - [其他用法](#其他用法)
-    - [串联命令](#串联命令)
     - [合并为单行建议使用 tr](#合并为单行建议使用-tr)
     - [综合测验 生成本文目录](#综合测验-生成本文目录)
     - [生成 TOC 命令注释](#生成-TOC-命令注释)
@@ -453,7 +452,7 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 ➜ echo 1000|gsed '/^1/ s/1/N/ ; /^0/ s/0/P/'
 N000
 
-➜ echo 0000|gsed '/^1/ s/1/P/ ; /^0/ s/0/P/'
+➜ echo 0000|gsed '/^1/ s/1/N/ ; /^0/ s/0/P/'
 P000
 
 ➜ (lldb) p/t 19260817
@@ -598,12 +597,12 @@ b'\xe6\x88\x91'
 ```
 #### 替换正则第 1 次匹配结果 
 ```
-➜ echo '1111 2222'|gsed -E '1s/[0-9]{4}/0100/'
+➜ echo '1111 2222'|gsed -E 's/[0-9]{4}/0100/'
 0100 2222
 ```
 #### 替换正则第 4 次匹配结果
 ```
-➜ echo '1111 2222 3333 4444'|gsed -E '1s/[0-9]{4}/0100/4'
+➜ echo '1111 2222 3333 4444'|gsed -E 's/[0-9]{4}/0100/4'
 1111 2222 3333 0100
 ```
 #### 非贪婪匹配建议使用 perl
@@ -629,13 +628,7 @@ curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connect
  --data "userId=<宽带账号>&password=<宽带密码>&service=&queryString=userip%253D${CURRENT_IP}%2526wlanacname%253D%2526nasip%253D171.88.130.251%2526wlanparameter%253D${MAC_ADDRESS}%2526url%253Dhttp%253A%252F%252Fbaidu.com%252F%2526userlocation%253Dethtrunk%252F3%253A691.3201&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false"
 ```
 
-
 ## 其他用法
-#### 串联命令
-```
-➜ gsed 's/ /0/g ; s/#/1/g' test.txt
-➜ gsed -e 's/ /0/g' -e 's/#/1/g' test.txt
-```
 #### 合并为单行建议使用 tr
 ```
 ➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain")
