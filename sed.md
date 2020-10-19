@@ -27,6 +27,7 @@
     - [两种方法乱序输出文本的行](#两种方法乱序输出文本的行)
 - [替换字符](#替换字符)
     - [全局替换](#全局替换)
+    - [指定位置替换](#指定位置替换)
     - [匹配字符后再替换](#匹配字符后再替换)
     - [替换单引号](#替换单引号)
     - [多个字符匹配](#多个字符匹配)
@@ -306,60 +307,104 @@ X111 1111 1111 1111 1111 1111 1111 1101
 
 #### 删除指定数量字符
 ```
-➜ objdump -M intel -d if > if.s
-➜ cat if.s
-   100003f70:	55                   	push   rbp
-   100003f71:	48 89 e5             	mov    rbp,rsp
-   100003f74:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
-   100003f7b:	89 7d f8             	mov    DWORD PTR [rbp-0x8],edi
-   100003f7e:	48 89 75 f0          	mov    QWORD PTR [rbp-0x10],rsi
-   100003f82:	c7 45 ec 01 00 00 00 	mov    DWORD PTR [rbp-0x14],0x1
-   100003f89:	c7 45 e8 02 00 00 00 	mov    DWORD PTR [rbp-0x18],0x2
-   100003f90:	8b 45 ec             	mov    eax,DWORD PTR [rbp-0x14]
-   100003f93:	3b 45 e8             	cmp    eax,DWORD PTR [rbp-0x18]
-   100003f96:	0f 8e 0c 00 00 00    	jle    100003fa8 <_main+0x38>
-   100003f9c:	c7 45 e4 03 00 00 00 	mov    DWORD PTR [rbp-0x1c],0x3
-   100003fa3:	e9 07 00 00 00       	jmp    100003faf <_main+0x3f>
-   100003fa8:	c7 45 e4 04 00 00 00 	mov    DWORD PTR [rbp-0x1c],0x4
-   100003faf:	31 c0                	xor    eax,eax
-   100003fb1:	5d                   	pop    rbp
-   100003fb2:	c3                   	ret
+➜ objdump -d -j .text -M intel sum
 
-➜ cat if.s|gsed 's/^.\{36\}//'
+sum:     file format mach-o-x86-64
+
+
+Disassembly of section .text:
+
+0000000100003f40 <_main>:
+   100003f40: 55                    push   rbp
+   100003f41: 48 89 e5              mov    rbp,rsp
+   100003f44: 48 83 ec 20           sub    rsp,0x20
+   100003f48: c7 45 fc 00 00 00 00  mov    DWORD PTR [rbp-0x4],0x0
+   100003f4f: 89 7d f8              mov    DWORD PTR [rbp-0x8],edi
+   100003f52: 48 89 75 f0           mov    QWORD PTR [rbp-0x10],rsi
+   100003f56: c7 45 ec 01 00 00 00  mov    DWORD PTR [rbp-0x14],0x1
+   100003f5d: c7 45 e8 02 00 00 00  mov    DWORD PTR [rbp-0x18],0x2
+   100003f64: 8b 45 ec              mov    eax,DWORD PTR [rbp-0x14]
+   100003f67: 03 45 e8              add    eax,DWORD PTR [rbp-0x18]
+   100003f6a: 89 45 e4              mov    DWORD PTR [rbp-0x1c],eax
+   100003f6d: 8b 75 e4              mov    esi,DWORD PTR [rbp-0x1c]
+   100003f70: 48 8d 3d 37 00 00 00  lea    rdi,[rip+0x37]        # 100003fae <_main+0x6e>
+   100003f77: b0 00                 mov    al,0x0
+   100003f79: e8 0e 00 00 00        call   100003f8c <_main+0x4c>
+   100003f7e: 31 c9                 xor    ecx,ecx
+   100003f80: 89 45 e0              mov    DWORD PTR [rbp-0x20],eax
+   100003f83: 89 c8                 mov    eax,ecx
+   100003f85: 48 83 c4 20           add    rsp,0x20
+   100003f89: 5d                    pop    rbp
+   100003f8a: c3                    ret
+
+➜ objdump -d -j .text -M intel sum|gsed '1,7d ; s/^.\{36\}//'
 push   rbp
 mov    rbp,rsp
+sub    rsp,0x20
 mov    DWORD PTR [rbp-0x4],0x0
 mov    DWORD PTR [rbp-0x8],edi
 mov    QWORD PTR [rbp-0x10],rsi
 mov    DWORD PTR [rbp-0x14],0x1
 mov    DWORD PTR [rbp-0x18],0x2
 mov    eax,DWORD PTR [rbp-0x14]
-cmp    eax,DWORD PTR [rbp-0x18]
-jle    100003fa8 <_main+0x38>
-mov    DWORD PTR [rbp-0x1c],0x3
-jmp    100003faf <_main+0x3f>
-mov    DWORD PTR [rbp-0x1c],0x4
-xor    eax,eax
+add    eax,DWORD PTR [rbp-0x18]
+mov    DWORD PTR [rbp-0x1c],eax
+mov    esi,DWORD PTR [rbp-0x1c]
+lea    rdi,[rip+0x37]        # 100003fae <_main+0x6e>
+mov    al,0x0
+call   100003f8c <_main+0x4c>
+xor    ecx,ecx
+mov    DWORD PTR [rbp-0x20],eax
+mov    eax,ecx
+add    rsp,0x20
 pop    rbp
 ret
 
-➜ cat if.s|gsed -e 's/^.\{3\}// ; s/:.\{23\}/: /'
-100003f70: push   rbp
-100003f71: mov    rbp,rsp
-100003f74: mov    DWORD PTR [rbp-0x4],0x0
-100003f7b: mov    DWORD PTR [rbp-0x8],edi
-100003f7e: mov    QWORD PTR [rbp-0x10],rsi
-100003f82: mov    DWORD PTR [rbp-0x14],0x1
-100003f89: mov    DWORD PTR [rbp-0x18],0x2
-100003f90: mov    eax,DWORD PTR [rbp-0x14]
-100003f93: cmp    eax,DWORD PTR [rbp-0x18]
-100003f96: jle    100003fa8 <_main+0x38>
-100003f9c: mov    DWORD PTR [rbp-0x1c],0x3
-100003fa3: jmp    100003faf <_main+0x3f>
-100003fa8: mov    DWORD PTR [rbp-0x1c],0x4
-100003faf: xor    eax,eax
-100003fb1: pop    rbp
-100003fb2: ret
+➜ objdump -d -j .text -M intel sum|gsed '1,7d ; s/^.\{3\}// ; s/:.\{23\}/ /'
+100003f40 push   rbp
+100003f41 mov    rbp,rsp
+100003f44 sub    rsp,0x20
+100003f48 mov    DWORD PTR [rbp-0x4],0x0
+100003f4f mov    DWORD PTR [rbp-0x8],edi
+100003f52 mov    QWORD PTR [rbp-0x10],rsi
+100003f56 mov    DWORD PTR [rbp-0x14],0x1
+100003f5d mov    DWORD PTR [rbp-0x18],0x2
+100003f64 mov    eax,DWORD PTR [rbp-0x14]
+100003f67 add    eax,DWORD PTR [rbp-0x18]
+100003f6a mov    DWORD PTR [rbp-0x1c],eax
+100003f6d mov    esi,DWORD PTR [rbp-0x1c]
+100003f70 lea    rdi,[rip+0x37]        # 100003fae <_main+0x6e>
+100003f77 mov    al,0x0
+100003f79 call   100003f8c <_main+0x4c>
+100003f7e xor    ecx,ecx
+100003f80 mov    DWORD PTR [rbp-0x20],eax
+100003f83 mov    eax,ecx
+100003f85 add    rsp,0x20
+100003f89 pop    rbp
+100003f8a ret
+
+➜ objdump -d -j .text -M intel sum|gsed '1,7d ; s/^.\{3\}// ; s/:.\{23\}/ / ; /^.\{14\}/ s/  //'
+100003f40 push rbp
+100003f41 mov  rbp,rsp
+100003f44 sub  rsp,0x20
+100003f48 mov  DWORD PTR [rbp-0x4],0x0
+100003f4f mov  DWORD PTR [rbp-0x8],edi
+100003f52 mov  QWORD PTR [rbp-0x10],rsi
+100003f56 mov  DWORD PTR [rbp-0x14],0x1
+100003f5d mov  DWORD PTR [rbp-0x18],0x2
+100003f64 mov  eax,DWORD PTR [rbp-0x14]
+100003f67 add  eax,DWORD PTR [rbp-0x18]
+100003f6a mov  DWORD PTR [rbp-0x1c],eax
+100003f6d mov  esi,DWORD PTR [rbp-0x1c]
+100003f70 lea  rdi,[rip+0x37]        # 100003fae <_main+0x6e>
+100003f77 mov  al,0x0
+100003f79 call 100003f8c <_main+0x4c>
+100003f7e xor  ecx,ecx
+100003f80 mov  DWORD PTR [rbp-0x20],eax
+100003f83 mov  eax,ecx
+100003f85 add  rsp,0x20
+100003f89 pop  rbp
+100003f8a ret
 ```
 ## 显示字符
 #### 显示指定行
@@ -446,6 +491,14 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 第三列
 第四列
 第五列
+```
+#### 指定位置替换
+```
+➜ echo 123456|sed 's/../XX/2'
+12XX56
+
+➜ echo '110120200107042976' | sed 's/^/00/ ; s/..../XXXX/4 ; s/^00//'
+1101202001XXXX2976
 ```
 #### 匹配字符后再替换
 ```
