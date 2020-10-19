@@ -314,97 +314,154 @@ sum:     file format mach-o-x86-64
 
 Disassembly of section .text:
 
-0000000100003f40 <_main>:
-   100003f40: 55                    push   rbp
-   100003f41: 48 89 e5              mov    rbp,rsp
-   100003f44: 48 83 ec 20           sub    rsp,0x20
-   100003f48: c7 45 fc 00 00 00 00  mov    DWORD PTR [rbp-0x4],0x0
-   100003f4f: 89 7d f8              mov    DWORD PTR [rbp-0x8],edi
-   100003f52: 48 89 75 f0           mov    QWORD PTR [rbp-0x10],rsi
-   100003f56: c7 45 ec 01 00 00 00  mov    DWORD PTR [rbp-0x14],0x1
-   100003f5d: c7 45 e8 02 00 00 00  mov    DWORD PTR [rbp-0x18],0x2
-   100003f64: 8b 45 ec              mov    eax,DWORD PTR [rbp-0x14]
-   100003f67: 03 45 e8              add    eax,DWORD PTR [rbp-0x18]
-   100003f6a: 89 45 e4              mov    DWORD PTR [rbp-0x1c],eax
-   100003f6d: 8b 75 e4              mov    esi,DWORD PTR [rbp-0x1c]
-   100003f70: 48 8d 3d 37 00 00 00  lea    rdi,[rip+0x37]        # 100003fae <_main+0x6e>
-   100003f77: b0 00                 mov    al,0x0
-   100003f79: e8 0e 00 00 00        call   100003f8c <_main+0x4c>
-   100003f7e: 31 c9                 xor    ecx,ecx
-   100003f80: 89 45 e0              mov    DWORD PTR [rbp-0x20],eax
-   100003f83: 89 c8                 mov    eax,ecx
-   100003f85: 48 83 c4 20           add    rsp,0x20
-   100003f89: 5d                    pop    rbp
-   100003f8a: c3                    ret
+0000000100003f30 <_main>:
+   100003f30: 55                    push   rbp
+   100003f31: 48 89 e5              mov    rbp,rsp
+   100003f34: 48 83 ec 30           sub    rsp,0x30
+   100003f38: c7 45 fc 00 00 00 00  mov    DWORD PTR [rbp-0x4],0x0
+   100003f3f: 89 7d f8              mov    DWORD PTR [rbp-0x8],edi
+   100003f42: 48 89 75 f0           mov    QWORD PTR [rbp-0x10],rsi
+   100003f46: c7 45 ec 01 00 00 00  mov    DWORD PTR [rbp-0x14],0x1
+   100003f4d: c7 45 e8 02 00 00 00  mov    DWORD PTR [rbp-0x18],0x2
+   100003f54: c6 45 e3 41           mov    BYTE PTR [rbp-0x1d],0x41
+   100003f58: 8b 45 ec              mov    eax,DWORD PTR [rbp-0x14]
+   100003f5b: 03 45 e8              add    eax,DWORD PTR [rbp-0x18]
+   100003f5e: 89 45 e4              mov    DWORD PTR [rbp-0x1c],eax
+   100003f61: 8b 75 e4              mov    esi,DWORD PTR [rbp-0x1c]
+   100003f64: 48 8d 3d 37 00 00 00  lea    rdi,[rip+0x37]        # 100003fa2 <_main+0x72>
+   100003f6b: b0 00                 mov    al,0x0
+   100003f6d: e8 0e 00 00 00        call   100003f80 <_main+0x50>
+   100003f72: 31 c9                 xor    ecx,ecx
+   100003f74: 89 45 dc              mov    DWORD PTR [rbp-0x24],eax
+   100003f77: 89 c8                 mov    eax,ecx
+   100003f79: 48 83 c4 30           add    rsp,0x30
+   100003f7d: 5d                    pop    rbp
+   100003f7e: c3                    ret
 
-➜ objdump -d -j .text -M intel sum|gsed '1,7d ; s/^.\{36\}//'
+➜ objdump -d -j .text -M intel sum|gsed '1,6d ; s/^.\{36\}//'
+0000000100003f30 <_main>:
 push   rbp
 mov    rbp,rsp
-sub    rsp,0x20
+sub    rsp,0x30
 mov    DWORD PTR [rbp-0x4],0x0
 mov    DWORD PTR [rbp-0x8],edi
 mov    QWORD PTR [rbp-0x10],rsi
 mov    DWORD PTR [rbp-0x14],0x1
 mov    DWORD PTR [rbp-0x18],0x2
+mov    BYTE PTR [rbp-0x1d],0x41
 mov    eax,DWORD PTR [rbp-0x14]
 add    eax,DWORD PTR [rbp-0x18]
 mov    DWORD PTR [rbp-0x1c],eax
 mov    esi,DWORD PTR [rbp-0x1c]
-lea    rdi,[rip+0x37]        # 100003fae <_main+0x6e>
+lea    rdi,[rip+0x37]        # 100003fa2 <_main+0x72>
 mov    al,0x0
-call   100003f8c <_main+0x4c>
+call   100003f80 <_main+0x50>
 xor    ecx,ecx
-mov    DWORD PTR [rbp-0x20],eax
+mov    DWORD PTR [rbp-0x24],eax
 mov    eax,ecx
-add    rsp,0x20
+add    rsp,0x30
 pop    rbp
 ret
 
-➜ objdump -d -j .text -M intel sum|gsed '1,7d ; s/^.\{3\}// ; s/:.\{23\}/ /'
-100003f40 push   rbp
-100003f41 mov    rbp,rsp
-100003f44 sub    rsp,0x20
-100003f48 mov    DWORD PTR [rbp-0x4],0x0
-100003f4f mov    DWORD PTR [rbp-0x8],edi
-100003f52 mov    QWORD PTR [rbp-0x10],rsi
-100003f56 mov    DWORD PTR [rbp-0x14],0x1
-100003f5d mov    DWORD PTR [rbp-0x18],0x2
-100003f64 mov    eax,DWORD PTR [rbp-0x14]
-100003f67 add    eax,DWORD PTR [rbp-0x18]
-100003f6a mov    DWORD PTR [rbp-0x1c],eax
-100003f6d mov    esi,DWORD PTR [rbp-0x1c]
-100003f70 lea    rdi,[rip+0x37]        # 100003fae <_main+0x6e>
-100003f77 mov    al,0x0
-100003f79 call   100003f8c <_main+0x4c>
-100003f7e xor    ecx,ecx
-100003f80 mov    DWORD PTR [rbp-0x20],eax
-100003f83 mov    eax,ecx
-100003f85 add    rsp,0x20
-100003f89 pop    rbp
-100003f8a ret
+➜ objdump -d -j .text -M intel sum|gsed '1,6d ; s/^.\{3\}// ; s/:.\{23\}/ /'
+0000100003f30 <_main>:
+100003f30 push   rbp
+100003f31 mov    rbp,rsp
+100003f34 sub    rsp,0x30
+100003f38 mov    DWORD PTR [rbp-0x4],0x0
+100003f3f mov    DWORD PTR [rbp-0x8],edi
+100003f42 mov    QWORD PTR [rbp-0x10],rsi
+100003f46 mov    DWORD PTR [rbp-0x14],0x1
+100003f4d mov    DWORD PTR [rbp-0x18],0x2
+100003f54 mov    BYTE PTR [rbp-0x1d],0x41
+100003f58 mov    eax,DWORD PTR [rbp-0x14]
+100003f5b add    eax,DWORD PTR [rbp-0x18]
+100003f5e mov    DWORD PTR [rbp-0x1c],eax
+100003f61 mov    esi,DWORD PTR [rbp-0x1c]
+100003f64 lea    rdi,[rip+0x37]        # 100003fa2 <_main+0x72>
+100003f6b mov    al,0x0
+100003f6d call   100003f80 <_main+0x50>
+100003f72 xor    ecx,ecx
+100003f74 mov    DWORD PTR [rbp-0x24],eax
+100003f77 mov    eax,ecx
+100003f79 add    rsp,0x30
+100003f7d pop    rbp
+100003f7e ret
 
-➜ objdump -d -j .text -M intel sum|gsed '1,7d ; s/^.\{3\}// ; s/:.\{23\}/ / ; /^.\{14\}/ s/  //'
-100003f40 push rbp
-100003f41 mov  rbp,rsp
-100003f44 sub  rsp,0x20
-100003f48 mov  DWORD PTR [rbp-0x4],0x0
-100003f4f mov  DWORD PTR [rbp-0x8],edi
-100003f52 mov  QWORD PTR [rbp-0x10],rsi
-100003f56 mov  DWORD PTR [rbp-0x14],0x1
-100003f5d mov  DWORD PTR [rbp-0x18],0x2
-100003f64 mov  eax,DWORD PTR [rbp-0x14]
-100003f67 add  eax,DWORD PTR [rbp-0x18]
-100003f6a mov  DWORD PTR [rbp-0x1c],eax
-100003f6d mov  esi,DWORD PTR [rbp-0x1c]
-100003f70 lea  rdi,[rip+0x37]        # 100003fae <_main+0x6e>
-100003f77 mov  al,0x0
-100003f79 call 100003f8c <_main+0x4c>
-100003f7e xor  ecx,ecx
-100003f80 mov  DWORD PTR [rbp-0x20],eax
-100003f83 mov  eax,ecx
-100003f85 add  rsp,0x20
-100003f89 pop  rbp
-100003f8a ret
+➜ objdump -d -j .text -M intel sum|gsed '1,6d ; s/^.\{3\}// ; s/:.\{23\}/ / ; /^.\{14\}/ s/  //'
+0000100003f30 <_main>:
+100003f30 push rbp
+100003f31 mov  rbp,rsp
+100003f34 sub  rsp,0x30
+100003f38 mov  DWORD PTR [rbp-0x4],0x0
+100003f3f mov  DWORD PTR [rbp-0x8],edi
+100003f42 mov  QWORD PTR [rbp-0x10],rsi
+100003f46 mov  DWORD PTR [rbp-0x14],0x1
+100003f4d mov  DWORD PTR [rbp-0x18],0x2
+100003f54 mov  BYTE PTR [rbp-0x1d],0x41
+100003f58 mov  eax,DWORD PTR [rbp-0x14]
+100003f5b add  eax,DWORD PTR [rbp-0x18]
+100003f5e mov  DWORD PTR [rbp-0x1c],eax
+100003f61 mov  esi,DWORD PTR [rbp-0x1c]
+100003f64 lea  rdi,[rip+0x37]        # 100003fa2 <_main+0x72>
+100003f6b mov  al,0x0
+100003f6d call 100003f80 <_main+0x50>
+100003f72 xor  ecx,ecx
+100003f74 mov  DWORD PTR [rbp-0x24],eax
+100003f77 mov  eax,ecx
+100003f79 add  rsp,0x30
+100003f7d pop  rbp
+100003f7e ret
+
+➜ objdump -d -j .text -M intel fun|gsed '1,6d ; s/^.\{3\}// ; s/:.\{23\}/ / ; /^.\{14\}/ s/  //'
+0000100003ee0 <_func1>:
+100003ee0 push rbp
+100003ee1 mov  rbp,rsp
+100003ee4 sub  rsp,0x10
+100003ee8 mov  DWORD PTR [rbp-0x4],0x62
+100003eef mov  DWORD PTR [rbp-0x8],0x3cc
+100003ef6 mov  eax,DWORD PTR [rbp-0x4]
+100003ef9 add  eax,DWORD PTR [rbp-0x8]
+100003efc mov  DWORD PTR [rbp-0xc],eax
+100003eff mov  esi,DWORD PTR [rbp-0x4]
+100003f02 mov  edx,DWORD PTR [rbp-0x8]
+100003f05 mov  ecx,DWORD PTR [rbp-0xc]
+100003f08 lea  rdi,[rip+0x83]        # 100003f92 <_main+0x42>
+100003f0f mov  al,0x0
+100003f11 call 100003f72 <_main+0x22>
+100003f16 add  rsp,0x10
+100003f1a pop  rbp
+100003f1b ret
+100003f1c nop  DWORD PTR [rax+0x0]
+
+0000100003f20 <_func2>:
+100003f20 push rbp
+100003f21 mov  rbp,rsp
+100003f24 sub  rsp,0x10
+100003f28 mov  esi,DWORD PTR [rbp-0x4]
+100003f2b mov  edx,DWORD PTR [rbp-0x8]
+100003f2e mov  ecx,DWORD PTR [rbp-0xc]
+100003f31 lea  rdi,[rip+0x5a]        # 100003f92 <_main+0x42>
+100003f38 mov  al,0x0
+100003f3a call 100003f72 <_main+0x22>
+100003f3f add  rsp,0x10
+100003f43 pop  rbp
+100003f44 ret
+100003f45 nop  WORD PTR cs:[rax+rax*1+0x0]
+100003f4c:  00 00 00
+100003f4f nop
+
+0000100003f50 <_main>:
+100003f50 push rbp
+100003f51 mov  rbp,rsp
+100003f54 sub  rsp,0x10
+100003f58 mov  DWORD PTR [rbp-0x4],0x0
+100003f5f call 100003ee0 <_func1>
+100003f64 call 100003f20 <_func2>
+100003f69 xor  eax,eax
+100003f6b add  rsp,0x10
+100003f6f pop  rbp
+100003f70 ret
 ```
 ## 显示字符
 #### 显示指定行
