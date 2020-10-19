@@ -497,7 +497,7 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 ➜ echo 123456|sed 's/../XX/2'
 12XX56
 
-➜ echo '110120200107042976' | sed 's/^/00/ ; s/..../XXXX/4 ; s/^00//'
+➜ echo '110120200107042976'|sed 's/^/00/ ; s/..../XXXX/4 ; s/^00//'
 1101202001XXXX2976
 ```
 #### 匹配字符后再替换
@@ -545,10 +545,8 @@ N111 1111 1111 1111 1111 1111 1111 1111
 ```
 #### 替换单引号
 ```
-➜ echo "Hi,I'm James"|gsed 's/'"'"/'"''/'
-Hi,I"m James
-
-参考：https://blog.csdn.net/wangbole/article/details/8250271
+➜ echo "Hi,I'm James"|gsed 's/"'"/'"'/'
+Hi,I'm James
 ```
 #### 多个字符匹配
 ```
