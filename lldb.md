@@ -1,3 +1,28 @@
+#### 栈生长方向
+```
+➜ vim address.c
+#include <stdio.h>
+
+int main(int argc, char const *argv[]) {
+  int a, b;
+  printf("Address of a: %p\n", (void *)&a);
+  printf("Address of b: %p\n", (void *)&b);
+}
+
+[ESC] :wq
+
+➜ gcc address.c -o address;./address
+Address of a: 0x7ffee6b9e29c
+Address of b: 0x7ffee6b9e298
+
+➜ python
+>>> 0x7ffee6b9e29c
+140732769362588
+>>> 0x7ffee6b9e298
+140732769362584
+```
+**结论：栈生长方向从高地址到低地址**
+
 ```
 (lldb) x/16x `$rbp`
 0x7ffeefbff1a0: 0xefbff1b0 0x00007ffe 0x6846acc9 0x00007fff
