@@ -127,6 +127,10 @@
   "wvous-tr-modifier" => 0
 }
 ```
+#### 语法错误检测
+```
+plutil -lint /path/to/name.plist
+```
 #### 两种修改数据方法
 ```
 如果 plist 文件存放在 Preferences 目录可以不带 .plist
@@ -196,3 +200,7 @@ com.apple.dock.plist: XML 1.0 document text, UTF-8 Unicode text
 ➜ file com.apple.dock.plist
 com.apple.dock.plist: Apple binary property list
 ```
+
+#### 参考资料
+[Editing Property Lists with plutil](https://scriptingosx.com/2016/11/editing-property-lists/)
+[defaults – the Plist Killer](https://scriptingosx.com/2018/02/defaults-the-plist-killer/)

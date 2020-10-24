@@ -413,3 +413,8 @@ libsystem_c.dylib`__cxa_finalize:
     0x7fff67e6919c <+6>: mov    rbp, rsp
 Target 0: (watch) stopped.
 ```
+
+#### 参考资料
+[A Guide to ARM64 / AArch64 Assembly on Linux with Shellcodes and Cryptography](https://modexp.wordpress.com/2018/10/30/arm64-assembly/)
+[Siguza/ios-resources](https://github.com/Siguza/ios-resources/blob/master/bits/arm64.md)
+[x86-64 函数调用过程中寄存器的使用](https://zhuanlan.zhihu.com/p/25133012)

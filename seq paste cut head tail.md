@@ -231,6 +231,17 @@ seq 100 | pr -10t
 季昌明|易学习|陈岩石|赵东来|郑西坡
 ```
 
+#### 对齐输出
+```
+➜ echo "Steve Jobs\nTim Cook"
+Steve Jobs
+Tim Cook
+
+➜ echo "Steve Jobs\nTim Cook"|column -t
+Steve  Jobs
+Tim    Cook
+```
+
 #### head 默认查看前面十行
 ```
 ➜ ghead number.txt
