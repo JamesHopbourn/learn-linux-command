@@ -55,7 +55,7 @@ endbfchar
 ## 隐写 flag
 #### 编写源文件
 ```
-echo 'password:S02E25T' > password.md
+➜ echo 'password:S02E25T' > password.md
 ```
 
 #### 编译为 PDF
@@ -70,21 +70,17 @@ echo 'password:S02E25T' > password.md
 
 #### 获取 ASCII 码
 ```
-echo word|hexdump
-0000000 77 6f 72 64 0a
-0000005
+➜ echo -en word|xxd -a -g 1
+00000000: 77 6f 72 64                    word
 
-echo flag|hexdump
-0000000 66 6c 61 67 0a
-0000005
+➜ echo -en flag|xxd -a -g 1
+00000000: 66 6c 61 67                    flag
 
-echo ST|hexdump
-0000000 53 54 0a
-0000003
+➜ echo -en ST|xxd -a -g 1
+00000000: 53 54                          ST
 
-echo {}|hexdump
-0000000 7b 7d 0a
-0000003
+➜ echo -en {}|xxd -a -g 1
+00000000: 7b 7d                          {}
 ```
 
 #### 修改字符映射表
