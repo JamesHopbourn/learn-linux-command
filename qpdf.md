@@ -85,6 +85,7 @@ endbfchar
 
 #### 修改字符映射表
 ```
+➜ subl expanded-password.pdf
 12 beginbfchar
 <0018> <0035>
 <001D> <003A>
@@ -112,7 +113,7 @@ endbfchar
 
 #### 预览 PDF 内容
 ```
-➜ open -a Preview NewPassword.pdf
+➜ open -a Preview expanded-password.pdf
 显示字符：password:S02E25T
 实际字符：passflag:{02E25}
 ```
