@@ -470,9 +470,6 @@ ret
 ➜ python3 -c 'print("马".encode("unicode_escape").upper())'
 b'\\U9A6C'
 
-➜ python3 -c 'print("马".encode("unicode_escape").upper())'|sed "s|b'\\\\\\\\U||"
-9A6C'
-
 ➜ echo "'b\\\\\\\\U0067'"
 'b\\U0067'
 
