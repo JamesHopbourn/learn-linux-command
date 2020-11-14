@@ -1,3 +1,14 @@
+#### 更换镜像
+``` {
+  "experimental": false,
+  "debug": true,
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+
+$ docker info
+$ time docker pull node:latest 
+```
+
 #### 安装 Nginx
 ```
 docker pull nginx:latest
@@ -54,3 +65,18 @@ docker run --name runoob-php-nginx -p 8083:80 -d \
 
 open http://127.0.0.1:8083/index.php
 ```
+
+#### mysql
+``` 
+docker pull mysql:5.6
+docker images
+docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
+docker ps
+mysql -h 127.0.0.1 -u root -p 
+``` 
+
+#### nginx
+```
+docker pull nginx:latest
+docker run --name nginx-test -p 8080:80 -d nginx
+``` 
