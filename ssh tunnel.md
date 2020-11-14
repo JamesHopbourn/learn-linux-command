@@ -1,0 +1,5 @@
+[SSH 端口转发简明教程](https://sspai.com/post/61641)
+[SSH隧道：内网穿透实战](https://cherrot.com/tech/2017/01/08/ssh-tunneling-practice.html)
+[articles/2019-05-28-ssh-port-forwarding.Markdown at master · ruanyf/articles · GitHub](https://github.com/ruanyf/articles/blob/master/2019/2019-05-28-ssh-port-forwarding.md)
+[使用SSH反向隧道进行内网穿透](http://arondight.me/2016/02/17/%E4%BD%BF%E7%94%A8SSH%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/)
+[利用ssh/socat做内网穿透(udp)](https://www.goalan.net/2018/05/03/%E5%88%A9%E7%94%A8ssh%E5%92%8Csocat%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/)
