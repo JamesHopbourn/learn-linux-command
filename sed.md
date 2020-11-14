@@ -145,6 +145,14 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ➜ echo 00000000000000000000000000000010 | gsed 's/.\{4\}/& /g ; s/./X/ ; s/0/2/g ; s/1/0/g ; s/2/1/g'
 X111 1111 1111 1111 1111 1111 1111 1101
 ```
+#### 编码相关
+```
+➜ echo \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5 | sed -e 's/\x//g'
+ef2d9dad22f7342c62a9bed2a65dc8b5
+
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | sed 's/.\{2\}/\\x&/g'
+\xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
+```
 #### 中英文间添加空格
 ```
 ➜ echo '这是test文本，sed真的很强大'|sed  's/\([[:upper:][:lower:][:digit:]]\+\)\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)/\1 \2/g'| sed 's/\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)\([[:upper:][:lower:][:digit:]]\+\)/\1 \2/g'
@@ -716,6 +724,12 @@ b'\xe6\x88\x91'
 - [X] 08 陈岩石
 - [X] 09 赵东来
 - [X] 10 郑西坡
+
+➜ echo "C:\Windows\Folder\File.txt" | sed -e 's/\\//g'
+C:WindowsFolderFile.txt
+
+➜ echo "C:\Windows\Folder\File.txt" | sed -e 's/\\/\//g'
+C:/Windows/Folder/File.txt
 ```
 #### 替换正则第 1 次匹配结果 
 ```
