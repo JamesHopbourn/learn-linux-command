@@ -26,7 +26,7 @@
   $       调用变量 (echo $text)
   ()      指令群组 (echo $(date))
   {}      变量设置 (touch File{A..G}、mkdir dir200{0..9})
-  []      条件判断 (rm File[ABC]、rm -rf dir200[!012345])
+  []      条件判断 (rm File[ABC]、rm -rf dir200[!012345] 匹配[ ]之内的任意一个字符)
   &       后台运行 (/Applications/v2ray-macos/v2ray &)
   >       重新定向 (echo 'line 1' > new.txt、echo '' > new.txt)
   :>      清空内容 (:> 文件名、:> test.py)
@@ -35,7 +35,7 @@
   <<<     文本输入 (将输入内容作为参数传递给命令 md5 <<< sting)
   ;       顺序执行 (命令前后没有逻辑关系直接执行 vim test.py ; python test.py)
   |       管道符号 (前面命令执行结果输入后面命令 history | grep ls)
-  [!]     非运算符 (设置排除变量)
+  [!]     非运算符 (匹配除了 [! ] 之外的任意一个字符)
   &&      与运算符 (前面命令执行成功执行后面命令 vim test.py && python test.py)
   ||      或运算符 (前面命令执行失败执行后面命令 python test.py || vim test.py)
   
