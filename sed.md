@@ -537,20 +537,13 @@ ret
 
 #### 右斜杠符号删除
 ```
-➜ python3 -c 'print("马".encode("unicode_escape").upper())'
-b'\\U9A6C'
+➜ python3 -c 'print("马".encode("unicode_escape").lower())'
+b'\\u9a6c'
 
-➜ echo "'b\\\\\\\\U0067'"
-'b\\U0067'
+➜ python3 -c 'print("马".encode("unicode_escape").lower())'|gsed "s|b'\\\\|| ; s|.$||"
+\u9a6c
 
-➜ echo "'b\\\\\\\\U0067'"|sed "s|'b\\\\\\\\U||"
-0067'
-
-➜ echo "'b\\\\\\\\U0067'"|sed "s|'b\\\\\\\\U|| ; s|'||"
-0067
-
-➜ echo "'b\\\\\\\\U0067'"|sed "s/\('b\\\\\\\\U\|'\)//g"
-0067
+➜ python3 -c 'print("马".encode("unicode_escape").lower())'|gsed "s|b'\\\\|| ; s|.$||"|pbcopy
 ```
 
 ## 显示字符
