@@ -151,10 +151,10 @@ X111 1111 1111 1111 1111 1111 1111 1101
 ```
 #### 编码相关
 ```
-➜ echo \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5 | sed -e 's/\x//g'
+➜ echo \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5 | gsed -e 's/\x//g'
 ef2d9dad22f7342c62a9bed2a65dc8b5
 
-➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | sed 's/.\{2\}/\\x&/g'
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/g'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
 ```
 #### 排除后再添加
@@ -184,7 +184,7 @@ ef2d9dad22f7342c62a9bed2a65dc8b5
 谷物大脑
 跑步圣经
 
-➜ sed '/^#/b ; /^$/b ; /^《/b ; s/^/《/g ; s/$/》/g' book.md
+➜ gsed '/^#/b ; /^$/b ; /^《/b ; s/^/《/g ; s/$/》/g' book.md
 /^#/b：排除以 # 开头的 Markdown 标题记号
 /^$/b：排除空白行
 /^《/b：排除已经带有书名号的行
@@ -217,7 +217,7 @@ s/$/》/g：剩余行结尾添加右书名号
 ```
 #### 中英文间添加空格
 ```
-➜ echo '这是test文本，sed真的很强大'|sed  's/\([[:upper:][:lower:][:digit:]]\+\)\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)/\1 \2/g'| sed 's/\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)\([[:upper:][:lower:][:digit:]]\+\)/\1 \2/g'
+➜ echo '这是test文本，sed真的很强大'|gsed  's/\([[:upper:][:lower:][:digit:]]\+\)\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)/\1 \2/g'|gsed 's/\([^[:upper:][:lower:][:space:][:punct:][:digit:]]\)\([[:upper:][:lower:][:digit:]]\+\)/\1 \2/g'
 这是 test 文本，sed 真的很强大
 ```
 
@@ -591,9 +591,9 @@ b'\\u9a6c'
   删除特殊的 \ua00a
   删除开头的空格，不需要缩进
 #### 使用自定义快捷键配合 JS 收集网页资料
-#### 配合 sed 进行二次处理
+#### 配合 gsed 进行二次处理
 
-➜ pbpaste|sed -n '/^-/b ; /^[[:space:]]/b ; /^#/p'
+➜ pbpaste|gsed -n '/^-/b ; /^[[:space:]]/b ; /^#/p'
 #### 使用间断来模拟数据库
 #### 使用杜威标记法给标签命名
 #### 及时处理 以免被删
@@ -604,9 +604,9 @@ b'\\u9a6c'
 #### Drafts save to iCloud 床上整理
 #### 使用 Drafts 格式化笔记内容
 #### 使用自定义快捷键配合 JS 收集网页资料
-#### 配合 sed 进行二次处理
+#### 配合 gsed 进行二次处理
 
-➜ pbpaste|sed -n '/^-/b ; /^[[:space:]]/b ; /^#/p'|nl
+➜ pbpaste|gsed -n '/^-/b ; /^[[:space:]]/b ; /^#/p'|nl
      1  #### 使用间断来模拟数据库
      2  #### 使用杜威标记法给标签命名
      3  #### 及时处理 以免被删
@@ -617,7 +617,7 @@ b'\\u9a6c'
      8  #### Drafts save to iCloud 床上整理
      9  #### 使用 Drafts 格式化笔记内容
     10  #### 使用自定义快捷键配合 JS 收集网页资料
-    11  #### 配合 sed 进行二次处理
+    11  #### 配合 gsed 进行二次处理
 ```
 #### 反向输出字符
 ```
@@ -694,10 +694,10 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 ```
 #### 指定位置替换
 ```
-➜ echo 123456|sed 's/../XX/2'
+➜ echo 123456|gsed 's/../XX/2'
 12XX56
 
-➜ echo '110120200107042976'|sed 's/^/00/ ; s/..../XXXX/4 ; s/^00//'
+➜ echo '110120200107042976'|gsed 's/^/00/ ; s/..../XXXX/4 ; s/^00//'
 1101202001XXXX2976
 ```
 #### 匹配字符后再替换
@@ -744,10 +744,10 @@ Hi,I'm James
 ```
 #### 多个字符匹配
 ```
-➜ echo '0123456789'|sed 's/\(1\|2\)/X/g'
+➜ echo '0123456789'|gsed 's/\(1\|2\)/X/g'
 0XX3456789
 
-➜ echo '你发这些有什么目的？谁指使你的？你的动机是什么？你取得有关部门许可了吗？他们容许你发了吗？你背后是谁，发这些想做 什么？你在讽刺谁？想颠覆什么？破坏什么？影射什么？回答不上来？那么跟我走一趟，顺便把你家户口本带上取证！别说我们瞎抓你，都是有理有据的！'|sed 's/\(？\|！\)/&\n/g'
+➜ echo '你发这些有什么目的？谁指使你的？你的动机是什么？你取得有关部门许可了吗？他们容许你发了吗？你背后是谁，发这些想做 什么？你在讽刺谁？想颠覆什么？破坏什么？影射什么？回答不上来？那么跟我走一趟，顺便把你家户口本带上取证！别说我们瞎抓你，都是有理有据的！'|gsed 's/\(？\|！\)/&\n/g'
 你发这些有什么目的？
 谁指使你的？
 你的动机是什么？
@@ -784,7 +784,7 @@ Hi,I'm James
 │00000000│ e6 b5 8b e8 af 95 e6 96 ┊ 87 e6 9c ac 0a          │××××××××┊××××_   │
 └────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
 
-➜ echo 'e6 b5 8b e8 af 95'|sed 's/ /\\x/g ; s/^/\\x/'
+➜ echo 'e6 b5 8b e8 af 95'|gsed 's/ /\\x/g ; s/^/\\x/'
 \xe6\xb5\x8b\xe8\xaf\x95
 
 ➜ echo '\xe6\xb5\x8b\xe8\xaf\x95'
@@ -801,7 +801,7 @@ b'\xe6\x82\xa8'
 ➜ python3 -c 'print("我".encode("utf-8"))'
 b'\xe6\x88\x91'
 
-➜ sed -i 's/\xe6\x82\xa8/\xe6\x88\x91/' main
+➜ gsed -i 's/\xe6\x82\xa8/\xe6\x88\x91/' main
 
 ➜ ./main
 我
@@ -840,10 +840,10 @@ b'\xe6\x88\x91'
 - [X] 09 赵东来
 - [X] 10 郑西坡
 
-➜ echo "C:\Windows\Folder\File.txt" | sed -e 's/\\//g'
+➜ echo "C:\Windows\Folder\File.txt"|gsed -e 's/\\//g'
 C:WindowsFolderFile.txt
 
-➜ echo "C:\Windows\Folder\File.txt" | sed -e 's/\\/\//g'
+➜ echo "C:\Windows\Folder\File.txt"|gsed -e 's/\\/\//g'
 C:/Windows/Folder/File.txt
 ```
 #### 替换正则第 1 次匹配结果 
@@ -883,19 +883,19 @@ curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connect
 ## 其他用法
 #### 合并为单行建议使用 tr
 ```
-➜ tr "\n" " " <<< $(echo -e "Make\nsed\ngreat\nagain")
-Make sed great again
+➜ tr "\n" " " <<< $(echo -e "Make\ngsed\ngreat\nagain")
+Make gsed great again
 ```
 
 #### 综合测验 生成本文目录
 ```
-grep -E '^##' sed.md | sed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; /- \[目录\]\(.*\)/d ; /^###/d ; 2i ## 目录'|pbcopy
+grep -E '^##' gsed.md | gsed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; /- \[目录\]\(.*\)/d ; /^###/d ; 2i ## 目录'|pbcopy
 ```
 
 #### 生成 TOC 命令注释
 ```
-grep -E '^##' sed.md     | grep 过滤出所有 # 开头的行
-sed '                      开始使用 sed 命令处理文本
+grep -E '^##' gsed.md    | grep 过滤出所有 # 开头的行
+'                          开始使用 gsed 命令处理文本
 s/[[:blank:]]*$//        ; 删除末尾的空格
 s/^## /- /g              ; 二级标题转为列表
 s/^-.*/- \[&\](&)/       ; 二级标题添加链接
@@ -919,7 +919,7 @@ s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
 pbcopy                     将处理好的文本复制到剪切板
 ```
 
-## sed 参考资料  
+## gsed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
 [sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
