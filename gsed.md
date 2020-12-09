@@ -1,5 +1,6 @@
 ## 目录
 - [命令安装](#命令安装)
+- [版本信息](#版本信息)
 - [添加字符](#添加字符)
     - [行首添加](#行首添加)
     - [指定行添加](#指定行添加)
@@ -59,7 +60,24 @@
 brew install gcc prel hexyl binutils python3
 brew install gnu-indent gnu-sed gnutls grep gnu-tar gawk coreutils
 ```
+## 版本信息
+```
+➜ gsed --version
+gsed (GNU sed) 4.8
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 
+Written by Jay Fenlason, Tom Lord, Ken Pizzini,
+Paolo Bonzini, Jim Meyering, and Assaf Gordon.
+
+This sed program was built without SELinux support.
+
+GNU sed home page: <https://www.gnu.org/software/sed/>.
+General help using GNU software: <https://www.gnu.org/gethelp/>.
+E-mail bug reports to: <bug-sed@gnu.org>.
+```
 ## 添加字符  
 #### 行首添加
 ```
