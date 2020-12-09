@@ -912,7 +912,7 @@ curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connect
 ## 其他用法
 #### 递归修改全部匹配文件
 ```
-➜ gsed -i -e 's/###/#####/g' `find . -name "*.md"`
+➜ gsed -i 's/###/#####/g' `find . -name "*.md"`
 ```
 #### 合并为单行建议使用 tr
 ```
