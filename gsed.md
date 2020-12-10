@@ -147,7 +147,7 @@ E-mail bug reports to: <bug-sed@gnu.org>.
 
 第三行
 
-➜ brew list | xargs -n 1 printf "%s  平安，"
+➜ brew list|xargs -n 1 printf "%s  平安，"
 adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 
@@ -160,21 +160,21 @@ adns 平安，aircrack-ng 平安，fzf 平安...
 ```
 #### 间隔添加
 ```
-➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/g'
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5|gsed 's/.\{2\}/\\x&/g'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
 
-➜ echo 00000000000000000000000000000010 | gsed 's/.\{4\}/& /g'
+➜ echo 00000000000000000000000000000010|gsed 's/.\{4\}/& /g'
 0000 0000 0000 0000 0000 0000 0000 0010
 
-➜ echo 00000000000000000000000000000010 | gsed 's/.\{4\}/& /g ; s/./X/ ; s/0/2/g ; s/1/0/g ; s/2/1/g'
+➜ echo 00000000000000000000000000000010|gsed 's/.\{4\}/& /g ; s/./X/ ; s/0/2/g ; s/1/0/g ; s/2/1/g'
 X111 1111 1111 1111 1111 1111 1111 1101
 ```
 #### 编码相关
 ```
-➜ echo \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5 | gsed -e 's/\x//g'
+➜ echo \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5|gsed -e 's/\x//g'
 ef2d9dad22f7342c62a9bed2a65dc8b5
 
-➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5 | gsed 's/.\{2\}/\\x&/g'
+➜ echo ef2d9dad22f7342c62a9bed2a65dc8b5|gsed 's/.\{2\}/\\x&/g'
 \xef\x2d\x9d\xad\x22\xf7\x34\x2c\x62\xa9\xbe\xd2\xa6\x5d\xc8\xb5
 ```
 #### 排除后再添加
@@ -759,7 +759,7 @@ N111 1111 1111 1111 1111 1111 1111 1111
 ```
 #### 图片引用转为 Obsidian 格式
 ```
-➜ echo '![02](../../attachment/02.png]]' | gsed 's|!\[.*\](.*/|![[| ; s|)|]]|'
+➜ echo '![02](../../attachment/02.png]]'|gsed 's|!\[.*\](.*/|![[| ; s|)|]]|'
 ![[02.png]]
 
 ➜ gsed 's|!\[.*\](.*/|![[| ; s|)|]]|' "`find . -name "*.md"`"
@@ -922,7 +922,7 @@ Make gsed great again
 
 #### 综合测验 生成本文目录
 ```
-grep -E '^##' gsed.md | gsed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; /- \[目录\]\(.*\)/d ; /^###/d ; 2i ## 目录'|pbcopy
+grep -E '^##' gsed.md|gsed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; /- \[目录\]\(.*\)/d ; /^###/d ; 2i ## 目录'|pbcopy
 ```
 
 #### 生成 TOC 命令注释
