@@ -1,5 +1,6 @@
 #### service start
 ```
+brew tap homebrew/services
 brew services start mysql@5.7
 ```
 #### mysql python
