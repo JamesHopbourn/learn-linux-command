@@ -1,4 +1,8 @@
-### mysql python
+#### service start
+```
+brew services start mysql@5.7
+```
+#### mysql python
 ```
 mycli -h localhost -u root
 mysql> show databases;
@@ -62,7 +66,8 @@ mysql> select * from EMPLOYEE;
 | Mac        | Mohan     |   40 | M    |   2000 |
 | Mac        | Mohan     |   20 | M    |   2000 |
 +------------+-----------+------+------+--------+
-2 rows in set (0.01 sec) ``` 
+2 rows in set (0.01 sec) 
+``` 
 #### 表格查询
 ``` mysql> show columns from schoolCard;
 +------------+------+------+-----+---------+-------+
