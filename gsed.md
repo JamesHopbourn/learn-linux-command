@@ -56,6 +56,7 @@
     - [合并为单行建议使用 tr](#合并为单行建议使用-tr)
     - [综合测验 生成本文目录](#综合测验-生成本文目录)
     - [生成 TOC 命令注释](#生成-TOC-命令注释)
+- [朋友需求](#朋友需求)
 - [gsed 参考资料](#gsed-参考资料)
 
 ## 命令安装
@@ -1011,7 +1012,17 @@ s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
 2i ## Content'           | 在第一行添加二级标题目录
 pbcopy                     将处理好的文本复制到剪切板
 ```
-
+## 朋友需求
+#### 转为 Obsidian 格式
+```
+➜ echo '![NAS](DIY「NAS」低成本打造家庭数 据管理系统.assets/NAS.png)'|sed 's|!\[.*\](.*/|![[| ; s|)|]]|'
+![[NAS.png]]
+```
+#### 搜索 ![[02.png]] 替换成 ![](02.png)
+```
+➜ echo '![[02请问.jpeg]]'| sed -r 's/!\[\[//g ; s/\]\]//g ; s/(.*)/![\1](\1)/ ; s/!\[(.*)\.(.*)]/![\1]/'
+![02请问](02请问.jpeg)
+```
 ## gsed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
