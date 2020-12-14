@@ -22,6 +22,8 @@
     - [封装删除多余空行函数](#封装删除多余空行函数)
     - [删除开头或者末尾指定数量字符](#删除开头或者末尾指定数量字符)
     - [删除指定数量字符](#删除指定数量字符)
+    - [删除所有字符保留开头 N 个字符](删除所有字符保留开头-N-个字符)
+    - [删除所有字符保留结尾 N 个字符](删除所有字符保留结尾-N-个字符)
     - [右斜杠符号删除](#右斜杠符号删除)
     - [每两行合并为一行](#每两行合并为一行)
 - [显示字符](#显示字符)
@@ -555,7 +557,46 @@ ret
 100003f6f pop  rbp
 100003f70 ret
 ```
+#### 删除所有字符保留开头 N 个字符
+```
+➜ echo 1234567890|gsed -r 's/(.{4}).*/\1/'
+1234
 
+➜ ch2py 赵德汉|xargs -n 1 printf "%s\n"|sed -r 's/(.{1}).*/\1/'|xargs|sed 's/ //g'
+zdh
+
+➜ pbpaste
+侯亮平
+李达康
+高育良
+祁同伟
+沙瑞金
+季昌明
+易学习
+陈岩石
+赵东来
+郑西坡
+
+➜ pbpaste|tr '\n' '1'
+侯亮平1李达康1高育良1祁同伟1沙瑞金1季昌明1易学习1陈岩石1赵东来1郑西坡
+
+➜ ch2py $(pbpaste|tr '\n' '1')|xargs -n 1 printf "%s\n"|sed -r 's/(.{1}).*/\1/'|xargs |sed 's/ //g'|tr '1' '\n'
+hlp
+ldk
+gyl
+qtw
+srj
+jcm
+yxx
+cys
+zdl
+zxp
+```
+#### 删除所有字符保留结尾 N 个字符
+```
+➜ echo 1234567890|gsed -r 's/.*(.{4})/\1/'
+7890
+```
 #### 右斜杠符号删除
 ```
 ➜ python3 -c 'print("马".encode("unicode_escape").lower())'
@@ -974,4 +1015,5 @@ pbcopy                     将处理好的文本复制到剪切板
 ## gsed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
-[sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699)    
+[sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699) 
+[使用 sed 命令替换/删除 文本字符的 20 个例子](https://segmentfault.com/a/1190000020613397)   
