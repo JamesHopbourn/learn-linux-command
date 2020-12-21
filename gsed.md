@@ -1028,3 +1028,4 @@ pbcopy                     将处理好的文本复制到剪切板
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
 [sed 命令详解 & 正则表达式](https://blog.csdn.net/gua___gua/article/details/49304699) 
 [使用 sed 命令替换/删除 文本字符的 20 个例子](https://segmentfault.com/a/1190000020613397)   
+[sed 命令，Linux sed 命令详解：功能强大的流式文本编辑器](https://wangchujiang.com/linux-command/c/sed.html)  
