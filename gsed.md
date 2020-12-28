@@ -459,6 +459,24 @@ add    rsp,0x30
 pop    rbp
 ret
 
+➜ objdump -d -j .text -M intel i++|gsed '1,7d ; s/^.\{36\}//'|awk '{printf("%02d %s\n", NR, $0)}'
+01 push   rbp
+02 mov    rbp,rsp
+03 xor    eax,eax
+04 mov    DWORD PTR [rbp-0x4],0x5
+05 mov    DWORD PTR [rbp-0x8],0x0
+06 mov    ecx,DWORD PTR [rbp-0x4]
+07 add    ecx,0x1
+08 mov    DWORD PTR [rbp-0x4],ecx
+09 mov    DWORD PTR [rbp-0x8],ecx
+10 mov    ecx,DWORD PTR [rbp-0x4]
+11 mov    edx,ecx
+12 add    edx,0x1
+13 mov    DWORD PTR [rbp-0x4],edx
+14 mov    DWORD PTR [rbp-0x8],ecx
+15 pop    rbp
+16 ret
+
 ➜ objdump -d -j .text -M intel sum|gsed '1,6d ; s/^.\{3\}// ; s/:.\{23\}/ /'
 0000100003f30 <_main>:
 100003f30 push   rbp
