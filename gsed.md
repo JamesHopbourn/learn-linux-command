@@ -998,6 +998,10 @@ curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connect
 ```
 ➜ tr "\n" " " <<< $(echo -e "Make\ngsed\ngreat\nagain")
 Make gsed great again
+
+➜ tr -d '\n' <<< $(echo -e "Make\ngsed\ngreat\nagain")
+tr -d '\n' <<< $(echo -e "Make\ngsed\ngreat\nagain")
+Makegsedgreatagain
 ```
 
 #### 生成本文目录
