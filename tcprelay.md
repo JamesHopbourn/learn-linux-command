@@ -38,6 +38,9 @@ Number of key(s) added: 1
 
 Now try logging into the machine, with:   "ssh -p '2222' 'root@localhost'"
 and check to make sure that only the key(s) you wanted were added.
+
+➜ ssh root@localhost -p 2222
+jamesde-iPhone:~ root#
 ```
 
 #### scp over USB
