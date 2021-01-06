@@ -18,6 +18,7 @@
     - [删除末行](#删除末行)
     - [删除指定行，例如第3行](#删除指定行，例如第3行)
     - [删除第1到2行](#删除第1到2行)
+    - [删除第2到最后行](删除第2到最后行)
     - [删除重复空白行 建议使用 cat -s](#删除重复空白行-建议使用-cat--s)
     - [封装删除多余空行函数](#封装删除多余空行函数)
     - [删除开头或者末尾指定数量字符](#删除开头或者末尾指定数量字符)
@@ -59,6 +60,7 @@
 - [朋友需求](#朋友需求)
     - [图片引用转为 Obsidian 格式](图片引用转为-Obsidian-格式)
     - [Anki 填词挖空](Anki-填词挖空)
+    - [Markdown 表格中间批量增加一列](Markdown-表格中间批量增加一列)
 - [gsed 参考资料](#gsed-参考资料)
 
 ## 命令安装
@@ -286,6 +288,11 @@ s/$/》/g：剩余行结尾添加右书名号
 第三行
 第四行
 第五行
+```
+#### 删除第2到最后行  
+```
+➜ echo -e "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '2,$d'
+第一行
 ```
 
 #### 删除重复空白行 建议使用 cat -s
@@ -1097,17 +1104,17 @@ pbcopy                     将处理好的文本复制到剪切板
 | 背景灯带 | Philips Hue LightStrips   | 749¥  | 2m 基础装          |
 | 屏幕挂灯 | BenQ ScreenBar Plus   | 849¥  | 少数派 100¥ 优惠券 |
 
-➜ pbpaste|sed '1s/|/|国家|/2 ; 2s/|/|:--:|/2 ; 3,$s/|/|🇺🇸|/2'
+➜ pbpaste|sed '1s/|/|国家|/2 ; 2s/|/|:--:|/2 ; 3,$s/|/|🇳🇱|/2'
 | 照明设备  |国家| 名称                  | 价格  | 备注               |
 | -------- |:--:| --------------------- | ----- | ------------------ |
-| 音乐板   |🇺🇸| Nanoleaf              | 1499¥    |  |
-| 桥接器   |🇺🇸| Philips Hue Bridge    | 299¥   | |
-| 吸顶灯   |🇺🇸| Philips Hue           | 1299¥ |                    |
-| 传感器   |🇺🇸| Philips Hue Motion Sensor | 279¥  |                    |
-| 控制器   |🇺🇸| Philips Hue Dimmer Switch | 169¥  |                    |
-| 控制器   |🇺🇸| Logitech Pop | 258¥  |                    |
-| 背景灯带 |🇺🇸| Philips Hue LightStrips   | 749¥  | 2m 基础装          |
-| 屏幕挂灯 |🇺🇸| BenQ ScreenBar Plus   | 849¥  | 少数派 100¥ 优惠券 |
+| 音乐板   |🇳🇱| Nanoleaf              | 1499¥    |  |
+| 桥接器   |🇳🇱| Philips Hue Bridge    | 299¥   | |
+| 吸顶灯   |🇳🇱| Philips Hue           | 1299¥ |                    |
+| 传感器   |🇳🇱| Philips Hue Motion Sensor | 279¥  |                    |
+| 控制器   |🇳🇱| Philips Hue Dimmer Switch | 169¥  |                    |
+| 控制器   |🇳🇱| Logitech Pop | 258¥  |                    |
+| 背景灯带 |🇳🇱| Philips Hue LightStrips   | 749¥  | 2m 基础装          |
+| 屏幕挂灯 |🇳🇱| BenQ ScreenBar Plus   | 849¥  | 少数派 100¥ 优惠券 |
 ```
 ## gsed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
