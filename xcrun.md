@@ -24,8 +24,14 @@ main (for architecture armv7):	Mach-O executable arm_v7
 main (for architecture arm64):	Mach-O 64-bit executable arm64
 ```
 ```
-➜ objdump -d -j .text main|gsed '1,6d'|awk '{ print $1" " substr($0, index($0,$3)) }'
-
+➜ objdump -d -j .text main|awk '{ print $1" " substr($0, index($0,$3))}'
+In main:
+ 
+armv5te: format mach-o-arm
+ 
+ 
+Disassembly section .text:
+ 
 0000bf70 0000bf70 <_main>:
 bf70: push	{r7, lr}
 bf72: mov	r7, sp
@@ -50,12 +56,12 @@ bfa4: str	r0, [sp, #8]
 bfa6: mov	r0, r1
 bfa8: add	sp, #24
 bfaa: pop	{r7, pc}
-
+ 
 aarch64: format mach-o-arm64
-
-
+ 
+ 
 Disassembly section .text:
-
+ 
 0000000100007f10 0000000100007f10 <_main>:
 100007f10: sub	sp, sp, #0x50
 100007f14: stp	x29, x30, [sp, #64]
