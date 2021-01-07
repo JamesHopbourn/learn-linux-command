@@ -1,7 +1,7 @@
 ### venv
 ```
 pip3 install virtualenv
- mkdir myproject && cd myproject
+mkdir myproject && cd myproject
 
 virtualenv venv
 
