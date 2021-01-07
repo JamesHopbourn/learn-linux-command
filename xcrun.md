@@ -24,7 +24,7 @@ main (for architecture armv7):	Mach-O executable arm_v7
 main (for architecture arm64):	Mach-O 64-bit executable arm64
 ```
 ```
-➜ objdump -d -j .text main|awk '{ print $1" " substr($0, index($0,$3))}'
+➜ objdump -d -j .text main|awk '{print $1" " substr($0, index($0,$3))}'
 In main:
  
 armv5te: format mach-o-arm
