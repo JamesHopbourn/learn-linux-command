@@ -29,6 +29,7 @@
     - [每两行合并为一行](#每两行合并为一行)
 - [显示字符](#显示字符)
     - [显示指定行](#显示指定行)
+    - [匹配后输出](#匹配后输出)
     - [过滤后输出匹配行](#过滤后输出匹配行)
     - [过滤后统计匹配行](#过滤后统计匹配行)
     - [反向输出字符](#反向输出字符)
@@ -666,6 +667,35 @@ b'\\u9a6c'
 第三行
 第四行
 第五行 
+```
+#### 匹配后输出
+```
+➜ sed -n '/PATH/p' ~/.zshrc
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PATH="/usr/local/opt/ed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH=/opt/local/bin:$PATH
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH=/Library/TeX/texbin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+export PATH=$HOME/dotfile/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/anaconda3/bin:$PATH
+export PKG_CONFIG_PATH=/usr/local/mysql/lib/pkgconfig
+export PATH=$HOME/Library/Python/2.7/bin:$PATH
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 ```
 #### 过滤后输出匹配行
 ```
