@@ -693,7 +693,6 @@ export PATH=$HOME/Library/Python/2.7/bin:$PATH
 export PKG_CONFIG_PATH=/usr/local/mysql/lib/pkgconfig
 export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
 ```
 #### 过滤后输出匹配行
 ```
