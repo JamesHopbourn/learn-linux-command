@@ -40,6 +40,7 @@
     - [全局替换](#全局替换)
     - [正向仅仅匹配一次](#正向仅仅匹配一次)
     - [逆向仅仅匹配一次](#逆向仅仅匹配一次)
+    - [按组匹配然后替换](#按组匹配然后替换)
     - [最后一个替换](#最后一个替换)
     - [指定位置替换](#指定位置替换)
     - [匹配字符后再替换](#匹配字符后再替换)
@@ -876,6 +877,34 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 @
 3
 ```
+#### 按组匹配然后替换
+```
+➜ cat num
+123123123
+123123123
+123123123
+123123123
+123123123
+123123123
+
+第4组 第1个 1 替换为 ~
+➜ cat num|sed '4,//{s/1/~/2}'
+123123123
+123123123
+123123123
+123~23123
+123~23123
+123123123
+
+第4组 全部 1 替换为 ~
+➜ cat num|sed '4,//{s/3/~/g}'
+123123123
+123123123
+123123123
+12~12~12~
+12~12~12~
+123123123
+```
 #### 最后一个替换
 ```
 ➜ echo -en "boy\nboy\ngirl\nboy"|sed '$s/boy/boys/'
@@ -1032,15 +1061,12 @@ b'\xe6\x88\x91'
 - [X] 09 赵东来
 - [X] 10 郑西坡
 
-➜ echo "C:\Windows\Folder\File.txt"|gsed -e 's/\\//g'
-C:WindowsFolderFile.txt
-
-➜ echo "C:\Windows\Folder\File.txt"|gsed -e 's/\\/\//g'
+➜ echo "C:\Windows\Folder\File.txt"|gsed -e 's|\\|/|g'
 C:/Windows/Folder/File.txt
 ```
 #### 替换正则第 1 次匹配结果 
 ```
-➜ echo '1111 2222'|gsed -E 's/[0-9]{4}/0100/'
+➜ echo '1111 2222'|gsed -E 's/[0-9]{4}/0100/1'
 0100 2222
 ```
 #### 替换正则第 4 次匹配结果
@@ -1083,7 +1109,6 @@ curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connect
 Make gsed great again
 
 ➜ tr -d '\n' <<< $(echo -e "Make\ngsed\ngreat\nagain")
-tr -d '\n' <<< $(echo -e "Make\ngsed\ngreat\nagain")
 Makegsedgreatagain
 ```
 
