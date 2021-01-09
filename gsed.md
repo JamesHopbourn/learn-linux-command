@@ -968,7 +968,7 @@ MD5 ("1000001") = 59e711d152de7bec7304a8c2ecaf9f0f
 ```
 #### 最后一个替换
 ```
-➜ echo -en "boy\nboy\ngirl\nboy"|sed '$s/boy/boys/'
+➜ echo "boy\nboy\ngirl\nboy"|sed '$s/boy/boys/'
 boy
 boy
 girl
@@ -1021,8 +1021,8 @@ N111 1111 1111 1111 1111 1111 1111 1111
 ```
 #### 替换单引号
 ```
-➜ echo "Hi,I'm James"|gsed 's/"'"/'"'/'
-Hi,I'm James
+➜ echo "Hi,I'm James"|/usr/bin/sed "s|'|\"|"
+Hi,I"m James
 ```
 #### 多个字符匹配
 ```
