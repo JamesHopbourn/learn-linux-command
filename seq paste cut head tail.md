@@ -646,7 +646,7 @@ Tim    Cook
 ➜ ghead -c 5 number.txt
 1
 2
-3%
+3
 ```
 
 #### tail 默认显示后面十行
