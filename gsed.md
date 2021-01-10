@@ -710,7 +710,7 @@ b'\\u9a6c'
 ```
 #### 匹配后输出
 ```
-➜ sed -n '/PATH/p' ~/.zshrc|sort -u
+➜ sed -n '/PATH/p' ~/.zshrc|uniq|sort -u
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/usr/local/opt/binutils/bin:$PATH"
