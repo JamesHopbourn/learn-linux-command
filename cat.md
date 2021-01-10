@@ -8,8 +8,28 @@ int main(int argc, char const *argv[]){
 	return 0;
 }
 ```
+#### 删除连续换行
+```
+➜ cat test.c
+#include <stdio.h>
 
-#### 显示不可见字符
+
+
+
+int main(int argc, char const *argv[]){
+    printf("Hello World\n");
+    return 0;
+}
+
+➜ cat -s test.c
+#include <stdio.h>
+
+int main(int argc, char const *argv[]){
+    printf("Hello World\n");
+    return 0;
+}
+```
+#### 显示TAB缩进
 ```
 ➜ cat -T test.c
 #include <stdio.h>
@@ -19,7 +39,6 @@ int main(int argc, char const *argv[]){
 ^Ireturn 0;
 }
 ```
-
 #### 显示结尾位置
 ```
 ➜ cat -E test.c
@@ -30,8 +49,7 @@ int main(int argc, char const *argv[]){$
 	return 0;$
 }$
 ```
-
-#### 同时显示结尾和不可见字符
+#### 同时显示结尾和TAB缩进
 ```
 ➜ cat -A test.c
 #include <stdio.h>$
@@ -41,10 +59,17 @@ int main(int argc, char const *argv[]){$
 ^Ireturn 0;$
 }$
 ```
-
-#### 查看 nl 显示效果举例
+#### 显示行号
 ```
-➜ nl test.c
+➜ cat -n test.c
+     1  #include <stdio.h>
+     2
+     3  int main(int argc, char const *argv[]){
+     4      printf("Hello World\n");
+     5      return 0;
+     6  }
+
+➜ cat -b test.c
      1	#include <stdio.h>
 
      2	int main(int argc, char const *argv[]){
@@ -52,7 +77,7 @@ int main(int argc, char const *argv[]){$
      4		return 0;
      5	}
 
-➜ nl test.c|cat -A
+➜ cat -b test.c|cat -A
      1^I#include <stdio.h>$
        $
      2^Iint main(int argc, char const *argv[]){$
@@ -60,7 +85,7 @@ int main(int argc, char const *argv[]){$
      4^I^Ireturn 0;$
      5^I}$
 
-➜ nl test.c|sed "s/$(echo '\011')/ /g"|cat -A
+➜ cat -b test.c|sed "s/$(echo '\011')/ /g"|cat -A
      1 #include <stdio.h>$
        $
      2 int main(int argc, char const *argv[]){$
@@ -68,7 +93,7 @@ int main(int argc, char const *argv[]){$
      4  return 0;$
      5 }$
 
-➜ nl test.c|sed "s/$(echo '\011')/ /g ; s/^[[:space:]]\{5\}//"
+➜ cat -b test.c|sed "s/$(echo '\011')/ /g ; s/^[[:space:]]\{5\}//"
 1 #include <stdio.h>
 
 2 int main(int argc, char const *argv[]){
@@ -76,8 +101,7 @@ int main(int argc, char const *argv[]){$
 4  return 0;
 5 }
 ```
-
-#### M-编码
+#### 使用 ^ 和 M- 引用
 ```
 ➜ echo 你好世界|cat -v
 M-dM-=M- M-eM-%M-=M-dM-8M-^VM-gM-^UM-^L
