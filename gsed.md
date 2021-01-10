@@ -70,6 +70,7 @@
     - [图片引用转为 Obsidian 格式](图片引用转为-Obsidian-格式)
     - [Anki 填词挖空](Anki-填词挖空)
     - [Markdown 表格中间批量增加一列](Markdown-表格中间批量增加一列)
+    - [Markdown 每行某尾空两格](#Markdown-每行某尾空两格)
 - [gsed 参考资料](#gsed-参考资料)
 
 ## 命令安装
