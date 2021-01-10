@@ -1338,9 +1338,7 @@ $
 echo print printf tee    $
 #### 文本处理大杀器  $
 
-➜ sed -i 's/[[:space:]]*$// ; s/$/  /' README.md
-
-➜ cat -E README.md|head
+➜ sed -i 's/[[:space:]]*$// ; s/$/  /' README.md|cat -E README.md|head
 # learn-linux-command  $
   $
 #### 安装 GNU 工具  $
