@@ -3,8 +3,7 @@
 ➜ cat test.c
 #include <stdio.h>
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]){
 	printf("Hello World\n");
 	return 0;
 }
@@ -15,8 +14,7 @@ int main(int argc, char const *argv[])
 ➜ cat -T test.c
 #include <stdio.h>
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]){
 ^Iprintf("Hello World\n");
 ^Ireturn 0;
 }
@@ -27,8 +25,7 @@ int main(int argc, char const *argv[])
 ➜ cat -E test.c
 #include <stdio.h>$
 $
-int main(int argc, char const *argv[])$
-{$
+int main(int argc, char const *argv[]){$
 	printf("Hello World\n");$
 	return 0;$
 }$
@@ -39,8 +36,7 @@ int main(int argc, char const *argv[])$
 ➜ cat -A test.c
 #include <stdio.h>$
 $
-int main(int argc, char const *argv[])$
-{$
+int main(int argc, char const *argv[]){$
 ^Iprintf("Hello World\n");$
 ^Ireturn 0;$
 }$
