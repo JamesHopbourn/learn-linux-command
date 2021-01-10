@@ -1324,6 +1324,34 @@ pbcopy                     将处理好的文本复制到剪切板
 | 背景灯带 |🇳🇱| Philips Hue LightStrips   | 749¥  | 2m 基础装          |
 | 屏幕挂灯 |🇳🇱| BenQ ScreenBar Plus   | 849¥  | 少数派 100¥ 优惠券 |
 ```
+#### Markdown 每行某尾空两格
+```
+➜ cat -E README.md|head
+# learn-linux-command$
+ $
+#### 安装 GNU 工具    $
+```$
+brew install coreutils findutils gnu-sed gnu-tar gnu-which grep gzip screen fswatch wdiff wget less unzip$
+```       $
+$
+#### 输入输出命令 $
+echo print printf tee    $
+#### 文本处理大杀器  $
+
+➜ sed -i 's/[[:space:]]*$// ; s/$/  /' README.md
+
+➜ cat -E README.md|head
+# learn-linux-command  $
+  $
+#### 安装 GNU 工具  $
+```  $
+brew install coreutils findutils gnu-sed gnu-tar gnu-which grep gzip screen fswatch wdiff wget less unzip  $
+```  $
+  $
+#### 输入输出命令  $
+echo print printf tee  $
+#### 文本处理大杀器  $
+```
 ## gsed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  

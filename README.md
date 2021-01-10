@@ -1,19 +1,21 @@
 # learn-linux-command  
-Linux 命令学习  
   
-安装全套 GNU 工具  
+#### 安装 GNU 工具  
 ```  
 brew install coreutils findutils gnu-sed gnu-tar gnu-which grep gzip screen fswatch wdiff wget less unzip  
 ```  
   
+#### 输入输出命令  
+echo print printf tee  
 #### 文本处理大杀器  
 sed awk perl  
 #### 文本处理小杀器  
 tr  
 wc  
+pr  
 seq  
 cat rev  
-cut paste  
+cut paste split  
 #### 行列相关  
 tac  
 unip sort  
