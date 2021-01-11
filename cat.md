@@ -395,6 +395,31 @@ M- : 160 a0
 
 汉字 → 十六进制 → 编码表
 ```
+#### 其他玩法
+```
+➜ echo '你好世界'|cat -v
+M-dM-=M- M-eM-%M-=M-dM-8M-^VM-gM-^UM-^L
+
+➜ echo '你好世界'|cat -v|sed 's/\(M*M\)/&\n/g'|sed '1d ; s/M//g ; s/^/M/g'
+M-d
+M-=
+M-
+M-e
+M-%
+M-=
+M-d
+M-8
+M-^V
+M-g
+M-^U
+M-^L
+
+➜ echo '你好世界'|cat -v|sed 's/M-//g'
+d= e%=d8^Vg^U^L
+
+➜ echo 'd= e%=d8^Vg^U^L'|sed 's/\(.\)/M-&/g ; s/\^M-/^/g'
+M-dM-=M- M-eM-%M-=M-dM-8M-^VM-gM-^UM-^L
+```
 
 #### 参考资料
 [What is the “M- notation” and where is it documented?](https://stackoverflow.com/questions/44694331/what-is-the-m-notation-and-where-is-it-documented)  
