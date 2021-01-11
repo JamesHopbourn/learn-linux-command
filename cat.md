@@ -371,10 +371,19 @@ M-} is 253 fd
 M-~ is 254 fe
 M-^? is 255 ff
 
-➜ echo 你|cat -v|sed -E 's/(...)/\1\n/g'
+➜ echo '你好世界'|cat -v|sed 's/\(M*M\)/&\n/g'|sed '1d ; s/M//g ; s/^/M/g'
 M-d
 M-=
-M- 
+M-
+M-e
+M-%
+M-=
+M-d
+M-8
+M-^V
+M-g
+M-^U
+M-^L
 
 M-d: 228 e4
 M-=: 189 bd
