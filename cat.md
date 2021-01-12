@@ -417,7 +417,7 @@ M-^L
 ➜ echo '你好世界'|cat -v|sed 's/M-//g'
 d= e%=d8^Vg^U^L
 
-➜ echo 'd= e%=d8^Vg^U^L'|sed 's/\(.\)/M-&/g ; s/\^M-/^/g'
+➜ echo 'd= e%=d8^Vg^U^L'|sed 's/./M-&/g ; s/\^M-/^/g'
 M-dM-=M- M-eM-%M-=M-dM-8M-^VM-gM-^UM-^L
 ```
 
