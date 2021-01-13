@@ -1241,6 +1241,9 @@ C:/Windows/Folder/File.txt
 ```
 #### 非贪婪匹配建议使用 perl
 ```
+➜ echo 'https://github.com/JamesHopbourn/dotfile'|perl -pe 's/https:\/\/.*?\//ssh:\/\/personal\//'
+ssh://personal/JamesHopbourn/dotfile
+
 ➜ echo 'ssh://personal/JamesHopbourn/dotfile'|perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
 https://github.com/JamesHopbourn/dotfile
 ```
