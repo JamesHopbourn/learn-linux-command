@@ -8,7 +8,7 @@ $ export https_proxy=http://127.0.0.1:1234;export http_proxy=http://127.0.0.1:12
 
 $ curl ipinfo.io
 {
-  "ip": "172.104.123.68",
+  "ip": "xxx.xxx.xxx.xxx",
   "hostname": "li1733-68.members.linode.com",
   "city": "Tokyo",
   "region": "Tokyo",
@@ -29,7 +29,7 @@ $ curl ipinfo.io
 
 $ curl -x socks5h://localhost:1234 ipinfo.io
 {
-  "ip": "172.105.194.185",
+  "ip": "xxx.xxx.xxx.xxx",
   "hostname": "li1836-185.members.linode.com",
   "city": "Tokyo",
   "region": "Tokyo",
@@ -53,6 +53,7 @@ Receiving objects: 100% (1127/1127), 5.91 MiB | 781.00 KiB/s, done.
 Resolving deltas: 100% (665/665), done.
 ```
 
+#### 相关文章
 [SSH高级用法隧道](https://note.yuchaoshui.com/blog/post/yuziyue/SSH%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F#title-5)
 [SSH 端口转发简明教程](https://sspai.com/post/61641)
 [SSH隧道：内网穿透实战](https://cherrot.com/tech/2017/01/08/ssh-tunneling-practice.html)
