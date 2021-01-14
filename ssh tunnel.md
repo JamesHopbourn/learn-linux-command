@@ -53,6 +53,13 @@ Receiving objects: 100% (1127/1127), 5.91 MiB | 781.00 KiB/s, done.
 Resolving deltas: 100% (665/665), done.  
 ```  
   
+#### 报错解决
+```
+➜ ssh -fNTR 1234:localhost:8889 root@VPS_IP  
+Warning: remote port forwarding failed for listen port 1234
+
+原因：1234 端口已被占用，换一个端口试试。
+```
 #### 相关文章  
 [SSH高级用法隧道](https://note.yuchaoshui.com/blog/post/yuziyue/SSH%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F#title-5)  
 [SSH 端口转发简明教程](https://sspai.com/post/61641)  
