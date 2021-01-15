@@ -164,3 +164,57 @@
 9. 沃尔森法则：把信息和情报放在第一位，金钱就会滚滚而来。
 10. 吉德林法则：把难题清清楚楚地写出来，问题便已经解决了一半。
 ```
+
+#### Markdown 表格中间批量增加一列
+```
+➜ pbpaste
+| 照明设备  | 名称                  | 价格  | 备注               |
+| -------- | --------------------- | ----- | ------------------ |
+| 音乐板   | Nanoleaf              | 1499¥    |  |
+| 桥接器   | Philips Hue Bridge    | 299¥   | |
+| 吸顶灯   | Philips Hue           | 1299¥ |                    |
+| 传感器   | Philips Hue Motion Sensor | 279¥  |                    |
+| 控制器   | Philips Hue Dimmer Switch | 169¥  |                    |
+| 控制器   | Logitech Pop | 258¥  |                    |
+| 背景灯带 | Philips Hue LightStrips   | 749¥  | 2m 基础装          |
+| 屏幕挂灯 | BenQ ScreenBar Plus   | 849¥  | 少数派 100¥ 优惠券 |
+
+➜ pbpaste|sed '1s/|/|国家|/2 ; 2s/|/|:--:|/2 ; 3,$s/|/|🇳🇱|/2'
+| 照明设备  |国家| 名称                  | 价格  | 备注               |
+| -------- |:--:| --------------------- | ----- | ------------------ |
+| 音乐板   |🇳🇱| Nanoleaf              | 1499¥    |  |
+| 桥接器   |🇳🇱| Philips Hue Bridge    | 299¥   | |
+| 吸顶灯   |🇳🇱| Philips Hue           | 1299¥ |                    |
+| 传感器   |🇳🇱| Philips Hue Motion Sensor | 279¥  |                    |
+| 控制器   |🇳🇱| Philips Hue Dimmer Switch | 169¥  |                    |
+| 控制器   |🇳🇱| Logitech Pop | 258¥  |                    |
+| 背景灯带 |🇳🇱| Philips Hue LightStrips   | 749¥  | 2m 基础装          |
+| 屏幕挂灯 |🇳🇱| BenQ ScreenBar Plus   | 849¥  | 少数派 100¥ 优惠券 |
+```
+
+#### Markdown 每行某尾空两格
+```
+➜ cat -E README.md|head
+# learn-linux-command$
+ $
+#### 安装 GNU 工具    $
+```$
+brew install coreutils findutils gnu-sed gnu-tar gnu-which grep gzip screen fswatch wdiff wget less unzip$
+```       $
+$
+#### 输入输出命令 $
+echo print printf tee    $
+#### 文本处理大杀器  $
+
+➜ sed -i 's/[[:space:]]*$// ; s/$/  /' README.md|cat -E README.md|head
+# learn-linux-command  $
+  $
+#### 安装 GNU 工具  $
+```  $
+brew install coreutils findutils gnu-sed gnu-tar gnu-which grep gzip screen fswatch wdiff wget less unzip  $
+```  $
+  $
+#### 输入输出命令  $
+echo print printf tee  $
+#### 文本处理大杀器  $
+```
