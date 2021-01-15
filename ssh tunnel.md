@@ -1,29 +1,9 @@
 #### 查看 Surge/Shadowsocks 开放端口
 ```
-➜ scutil --proxy
-<dictionary> {
-  ExceptionsList : <array> {
-    0 : 127.0.0.1
-    1 : 192.168.0.0/16
-    2 : 10.0.0.0/8
-    3 : 172.16.0.0/12
-    4 : 100.64.0.0/10
-    5 : 17.0.0.0/8
-    6 : localhost
-    7 : *.local
-    8 : *.crashlytics.com
-  }
-  ExcludeSimpleHostnames : 1
-  HTTPEnable : 1
+➜ scutil --proxy|sed -n '/Port/p'
   HTTPPort : 8888
-  HTTPProxy : 127.0.0.1
-  HTTPSEnable : 1
   HTTPSPort : 8888
-  HTTPSProxy : 127.0.0.1
-  SOCKSEnable : 1
   SOCKSPort : 8889
-  SOCKSProxy : 127.0.0.1
-}
 ```
 
 #### HTTP/HTTPS 协议  
