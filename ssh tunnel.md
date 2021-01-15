@@ -49,6 +49,12 @@ $ curl -x socks5h://localhost:1234 ipinfo.io
   "readme": "https://ipinfo.io/missingauth"  
 }  
   
+#### 检查配置是否成功
+```
+➜ git config --get http.proxy
+socks5://127.0.0.1:8889
+```
+
 $ git config --global http.proxy 'socks5://127.0.0.1:1234'  
   
 $ git clone https://github.com/JamesHopbourn/learn-linux-command  
