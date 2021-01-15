@@ -1,11 +1,11 @@
-#### 查看 Surge/Shadowsocks 开放端口
-```
-➜ scutil --proxy|sed -n '/Port/p'
-  HTTPPort : 8888
-  HTTPSPort : 8888
-  SOCKSPort : 8889
-```
-
+#### 查看 Surge/Shadowsocks 开放端口  
+```  
+➜ scutil --proxy|sed -n '/Port/p'  
+  HTTPPort : 8888  
+  HTTPSPort : 8888  
+  SOCKSPort : 8889  
+```  
+  
 #### HTTP/HTTPS 协议  
 ```  
 ➜ ssh -fNTR 1234:localhost:8888 root@VPS_IP  
@@ -48,21 +48,21 @@ $ curl -x socks5h://localhost:1234 ipinfo.io
   "timezone": "Asia/Tokyo",  
   "readme": "https://ipinfo.io/missingauth"  
 }  
-```
-
-#### 配置 git sock5 代理
-```
-$ git config --global http.proxy 'socks5://127.0.0.1:1234'  
-```
+```  
   
-#### 检查配置是否成功
-```
-➜ git config --get http.proxy
-socks5://127.0.0.1:8889
-```
-
-#### git clone 测试
-```
+#### 配置 git sock5 代理  
+```  
+$ git config --global http.proxy 'socks5://127.0.0.1:1234'  
+```  
+  
+#### 检查配置是否成功  
+```  
+➜ git config --get http.proxy  
+socks5://127.0.0.1:8889  
+```  
+  
+#### git clone 测试  
+```  
 $ git clone https://github.com/JamesHopbourn/learn-linux-command  
 Cloning into 'learn-linux-command'...  
 remote: Enumerating objects: 100, done.  
@@ -72,15 +72,38 @@ remote: Total 1127 (delta 62), reused 69 (delta 31), pack-reused 1027
 Receiving objects: 100% (1127/1127), 5.91 MiB | 781.00 KiB/s, done.  
 Resolving deltas: 100% (665/665), done.  
 ```  
+#### SSH 配置 sock5 代理  
+```  
+$ vim ~/.ssh/config  
+Host *  
+  AddKeysToAgent yes  
+  ServerAliveInterval 60  
+  ProxyCommand nc -X 5 -x 127.0.0.1:8889 %h %p  
   
-#### 报错解决
-```
+$ vim ~/.zshrc  
+sgcl(){  
+  url=$(pbpaste|sed 's/https:\/\/github.com\//ssh:\/\/james\//')  
+  git clone $url ~/Documents/$(basename $(pbpaste)) && cd ~/Documents/$(basename $(pbpaste))  
+}  
+  
+$ sgcl  
+Cloning into '/Users/james/Documents/learn-linux-command'...  
+remote: Enumerating objects: 130, done.  
+remote: Counting objects: 100% (130/130), done.  
+remote: Compressing objects: 100% (90/90), done.  
+remote: Total 1157 (delta 81), reused 89 (delta 40), pack-reused 1027  
+Receiving objects: 100% (1157/1157), 5.91 MiB | 2.01 MiB/s, done.  
+Resolving deltas: 100% (684/684), done.  
+```  
+  
+#### 报错解决  
+```  
 ➜ ssh -fNTR 1234:localhost:8889 root@VPS_IP  
-Warning: remote port forwarding failed for listen port 1234
-
-原因：1234 端口已被占用，换一个端口试试。
-```
-
+Warning: remote port forwarding failed for listen port 1234  
+  
+原因：1234 端口已被占用，换一个端口试试。  
+```  
+  
 #### 相关文章  
 [SSH高级用法隧道](https://note.yuchaoshui.com/blog/post/yuziyue/SSH%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F#title-5)  
 [SSH 端口转发简明教程](https://sspai.com/post/61641)  
