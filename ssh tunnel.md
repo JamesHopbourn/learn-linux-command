@@ -1,3 +1,31 @@
+#### 查看 Surge/Shadowsocks 开放端口
+```
+➜ scutil --proxy
+<dictionary> {
+  ExceptionsList : <array> {
+    0 : 127.0.0.1
+    1 : 192.168.0.0/16
+    2 : 10.0.0.0/8
+    3 : 172.16.0.0/12
+    4 : 100.64.0.0/10
+    5 : 17.0.0.0/8
+    6 : localhost
+    7 : *.local
+    8 : *.crashlytics.com
+  }
+  ExcludeSimpleHostnames : 1
+  HTTPEnable : 1
+  HTTPPort : 8888
+  HTTPProxy : 127.0.0.1
+  HTTPSEnable : 1
+  HTTPSPort : 8888
+  HTTPSProxy : 127.0.0.1
+  SOCKSEnable : 1
+  SOCKSPort : 8889
+  SOCKSProxy : 127.0.0.1
+}
+```
+
 #### HTTP/HTTPS 协议  
 ```  
 ➜ ssh -fNTR 1234:localhost:8888 root@VPS_IP  
@@ -60,6 +88,7 @@ Warning: remote port forwarding failed for listen port 1234
 
 原因：1234 端口已被占用，换一个端口试试。
 ```
+
 #### 相关文章  
 [SSH高级用法隧道](https://note.yuchaoshui.com/blog/post/yuziyue/SSH%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F#title-5)  
 [SSH 端口转发简明教程](https://sspai.com/post/61641)  
