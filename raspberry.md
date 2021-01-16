@@ -1,3 +1,38 @@
+#### 修改 hosts
+```
+➜ sudo vi /etc/hosts
+199.232.96.133 raw.githubusercontent.com
+```
+
+#### 转发网络代理
+```
+ ssh -fNTR 1234:localhost:8888 pi@192.168.0.106
+➜ export https_proxy=http://127.0.0.1:1234;export http_proxy=http://127.0.0.1:1234
+➜ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+➜ echo 'export https_proxy=http://127.0.0.1:1234;export http_proxy=http://127.0.0.1:1234' >> ~/.zshrc
+➜ source ~/.zshrc
+```
+
+#### 查看 Debian 版本
+```
+➜ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 10 (buster)
+Release:	10
+Codename:	buster
+```
+
+#### 替换清华源
+```
+➜ sudo vi /etc/apt/sources.list
+deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
+
+➜ sudo vi /etc/apt/sources.list.d/raspi.list
+deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+```
+
 ### 初始化安装
 ```
 export https_proxy=http://192.168.0.103:8888;export http_proxy=http://192.168.0.103:8888;export all_proxy=socks5://192.168.0.103:8889
