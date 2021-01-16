@@ -5,10 +5,16 @@
   HTTPSPort : 8888  
   SOCKSPort : 8889  
 ```  
+
+#### 配置 SSH 设置心跳检测
+```
+➜ sudo sed -i 's/#ClientAliveInterval 0/ClientAliveInterval 30/' /etc/ssh/sshd_config
+➜ sudo sed -i 's/#ClientAliveCountMax 3/ClientAliveCountMax 6/'  /etc/ssh/sshd_config
+```
   
 #### HTTP/HTTPS 协议  
 ```  
-➜ ssh -o "ServerAliveInterval 30" -fNTR 1234:localhost:8888 root@VPS_IP  
+➜ ssh -fNTR 1234:localhost:8888 root@VPS_IP  
   
 ➜ ssh root@VPS_IP  
   
@@ -31,7 +37,7 @@ $ curl ipinfo.io
   
 #### SOCK5 协议  
 ```  
-➜ ssh -o "ServerAliveInterval 30" -fNTR 1234:localhost:8889 root@VPS_IP  
+➜ ssh -fNTR 1234:localhost:8889 root@VPS_IP  
   
 ➜ ssh root@VPS_IP  
   
@@ -77,7 +83,6 @@ Resolving deltas: 100% (665/665), done.
 $ vim ~/.ssh/config  
 Host *  
   AddKeysToAgent yes  
-  ServerAliveInterval 60  
   ProxyCommand nc -X 5 -x 127.0.0.1:8889 %h %p  
   
 $ vim ~/.zshrc  
