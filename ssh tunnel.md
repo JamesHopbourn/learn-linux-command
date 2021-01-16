@@ -8,7 +8,7 @@
   
 #### HTTP/HTTPS 协议  
 ```  
-➜ ssh -fNTR 1234:localhost:8888 root@VPS_IP  
+➜ ssh -o "ServerAliveInterval 30" -fNTR 1234:localhost:8888 root@VPS_IP  
   
 ➜ ssh root@VPS_IP  
   
@@ -31,7 +31,7 @@ $ curl ipinfo.io
   
 #### SOCK5 协议  
 ```  
-➜ ssh -fNTR 1234:localhost:8889 root@VPS_IP  
+➜ ssh -o "ServerAliveInterval 30" -fNTR 1234:localhost:8889 root@VPS_IP  
   
 ➜ ssh root@VPS_IP  
   
@@ -101,7 +101,16 @@ Resolving deltas: 100% (684/684), done.
 ➜ ssh -fNTR 1234:localhost:8889 root@VPS_IP  
 Warning: remote port forwarding failed for listen port 1234  
   
-原因：1234 端口已被占用，换一个端口试试。  
+原因：1234 端口已被占用
+方法一：换一个端口试试。
+
+方法二：结束占用 1234 端口的进程
+➜ ps -e|grep ssh
+  722 ??         0:00.28 ssh-agent -s
+10667 ??         0:00.00 ssh -o ServerAliveInterval 30 -fNTR 1234:localhost:8888 root@128.199.173.144
+10859 ttys001    0:00.01 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox ssh
+
+➜ kill -9 10667
 ```  
   
 #### 相关文章  
