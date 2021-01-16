@@ -26,10 +26,14 @@ Codename:	buster
 #### 替换清华源
 ```
 ➜ sudo vi /etc/apt/sources.list
+ggdG
+
 deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
 deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
 
 ➜ sudo vi /etc/apt/sources.list.d/raspi.list
+ggdG
+
 deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
 ```
 
