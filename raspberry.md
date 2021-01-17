@@ -93,6 +93,11 @@ root@raspberrypi:~# vi /etc/hosts
 
 #### 转发网络代理
 ```
+ scutil --proxy|sed -n '/Port/p'
+  HTTPPort : 8888
+  HTTPSPort : 8888
+  SOCKSPort : 8889
+
  ssh -fNTR 1234:localhost:8888 root@raspberrypi.local
 
 root@raspberrypi:~# export https_proxy=http://127.0.0.1:1234;export http_proxy=http://127.0.0.1:1234
