@@ -100,6 +100,8 @@ root@raspberrypi:~# vi /etc/hosts
 
  ssh -fNTR 1234:localhost:8888 root@raspberrypi.local
 
+ ssh root@raspberrypi.local
+
 root@raspberrypi:~# export https_proxy=http://127.0.0.1:1234;export http_proxy=http://127.0.0.1:1234
 
 root@raspberrypi:~# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
