@@ -146,7 +146,7 @@ Before you scream Oh My Zsh! please look over the ~/.zshrc file to select plugin
 ➜ lsb_release -a
 No LSB modules are available.
 Distributor ID:	Raspbian
-Description:	Ra spbian GNU/Linux 10 (buster)
+Description:	Raspbian GNU/Linux 10 (buster)
 Release:	10
 Codename:	buster
 ```
