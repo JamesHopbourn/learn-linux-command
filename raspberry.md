@@ -43,7 +43,7 @@ Last login: Sun Jan 17 03:33:24 2021 from 192.168.0.107
 ➜  ~ exit
 Connection to raspberrypi.local closed.
 
- ssh  root@raspberrypi.local
+ ssh root@raspberrypi.local
 ➜  ~
 ```
 
@@ -154,4 +154,11 @@ deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-f
 ➜ :> /etc/apt/sources.list.d/raspi.list
 ➜ vi /etc/apt/sources.list.d/raspi.list
 deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+
+➜ apt-get update
+Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB]
+Get:2 http://mirrors.tuna.tsinghua.edu.cn/raspberrypi buster InRelease [32.8 kB]
+Get:3 http://mirrors.tuna.tsinghua.edu.cn/raspberrypi buster/main armhf Packages [351 kB]
+Fetched 399 kB in 7s (61.0 kB/s)
+Reading package lists... Done
 ```
