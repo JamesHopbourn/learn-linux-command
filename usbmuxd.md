@@ -5,7 +5,7 @@
 Resolving cdn.iosre.com (cdn.iosre.com)... 36.156.81.226
 Connecting to cdn.iosre.com (cdn.iosre.com)|36.156.81.226|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 9522 (9.3K) [application/zip]
+Length: 9522 (9.3K) [application/zip] 
 Saving to: ‘aa9cecf05b47d08a59324edeaaeea3f17e0608ee.zip’
 
 aa9cecf05b47d08a593 100%[==================>]   9.30K  --.-KB/s    in 0s
@@ -26,10 +26,6 @@ Archive:  aa9cecf05b47d08a59324edeaaeea3f17e0608ee.zip
 ```
 ➜ ./USBSSH/tcprelay.py -t 22:2222
 Forwarding local port 2222 to remote port 22
-Incoming connection to 2222
-Waiting for devices...
-Connecting to device <MuxDevice: ID 9 ProdID 0x1297 Serial '1da41acc0d2a7b49dc2ae82bea47f4c0691e9f4f' Location 0x14100000>
-Connection established, relaying data
 
 ➜ ssh root@localhost -p 2222
 The authenticity of host '[localhost]:2222 ([127.0.0.1]:2222)' can't be established.
