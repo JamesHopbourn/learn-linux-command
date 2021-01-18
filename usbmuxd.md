@@ -35,11 +35,45 @@ Warning: Permanently added '[localhost]:2222' (RSA) to the list of known hosts.
 jamesde-iPhone:~ root#
 ```
 
+#### debugserver添加权限
+```
+➜ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/9.0
+
+➜ open DeveloperDiskImage.dmg
+
+➜ file /Volumes/DeveloperDiskImage/usr/bin/debugserver
+/Volumes/DeveloperDiskImage/usr/bin/debugserver: Mach-O universal binary with 3 architectures: [arm_v7:Mach-O executable arm_v7] [arm_v7s] [arm64]
+/Volumes/DeveloperDiskImage/usr/bin/debugserver (for architecture armv7): Mach-O executable arm_v7
+/Volumes/DeveloperDiskImage/usr/bin/debugserver (for architecture armv7s):  Mach-O executable arm_v7s
+/Volumes/DeveloperDiskImage/usr/bin/debugserver (for architecture arm64): Mach-O 64-bit executable arm64
+➜ cp /Volumes/DeveloperDiskImage/usr/bin/debugserver ~/Desktop
+
+➜ vim entitlement.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/ PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>com.apple.springboard.debugapplications</key>
+<true/>
+<key>run-unsigned-code</key>
+<true/>
+<key>get-task-allow</key>
+<true/>
+<key>task_for_pid-allow</key>
+<true/>
+</dict>
+</plist>
+
+➜ codesign -s - --entitlements entitlement.plist -f debugserver
+debugserver: replacing existing signature
+```
+
 #### 拷贝 debugserver 给 iOS
 ```
 ➜ scp -P 2222 debugserver root@localhost:/usr/bin
-debugserver                                  100%   13MB   2.8MB/s   00:04
+debugserver         100%   13MB   2.8MB/s   00:04
 
+➜ ssh root@localhost -p 2222
 jamesde-iPhone:~ root# chmod 777 /usr/bin/debugserver
 ```
 
