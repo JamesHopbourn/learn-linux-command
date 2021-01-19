@@ -297,10 +297,10 @@ s/$/》/g：剩余行结尾添加右书名号
 0000003 e8 bf 9b
 0000006 e5 88 b6
 
-➜ echo 八进制|od -tx1 -w3 -An|sed '$d'|sed 's/ /\\x/g'
-\xe5\x85\xab
-\xe8\xbf\x9b
-\xe5\x88\xb6
+➜ echo 八进制|od -tx1 -w3 -An|sed '$d'|sed "s|^|'| ; s|$|'| ; s| |\\\\x|g"
+'\xe5\x85\xab'
+'\xe8\xbf\x9b'
+'\xe5\x88\xb6'
 ```
 #### 删除指定行，例如第3行  
 ```
