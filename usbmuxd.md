@@ -39,7 +39,7 @@ RSA key fingerprint is SHA256:M8d0YLjVSbKxl4bqRWHKbPsC22o9vNVASdBhHo55BW8.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '[localhost]:2222' (RSA) to the list of known hosts.
 root@localhost's password:
-jamesde-iPhone:~ root#
+iPhone:~ root#
 ```
 
 #### SSH 免密登陆
@@ -55,7 +55,7 @@ Now try logging into the machine, with:   "ssh -p '2222' 'root@localhost'"
 and check to make sure that only the key(s) you wanted were added.
 
 ➜ ssh root@localhost -p 2222
-jamesde-iPhone:~ root#
+iPhone:~ root#
 ```
 
 #### debugserver 添加权限
@@ -69,6 +69,7 @@ jamesde-iPhone:~ root#
 /Volumes/DeveloperDiskImage/usr/bin/debugserver (for architecture armv7): Mach-O executable arm_v7
 /Volumes/DeveloperDiskImage/usr/bin/debugserver (for architecture armv7s):  Mach-O executable arm_v7s
 /Volumes/DeveloperDiskImage/usr/bin/debugserver (for architecture arm64): Mach-O 64-bit executable arm64
+
 ➜ cp /Volumes/DeveloperDiskImage/usr/bin/debugserver ~/Desktop
 
 ➜ vim entitlement.plist
@@ -141,12 +142,12 @@ Apple-Automation/LICENSE
 debugserver         100%   13MB   2.8MB/s   00:04
 
 ➜ ssh root@localhost -p 2222
-jamesde-iPhone:~ root# chmod 777 /usr/bin/debugserver
+iPhone:~ root# chmod 777 /usr/bin/debugserver
 ```
 
 #### debugserver attach SpringBoard
 ```
-jamesde-iPhone:~ root# debugserver *:1234 -a "SpringBoard"
+iPhone:~ root# debugserver *:1234 -a "SpringBoard"
 debugserver-@(#)PROGRAM:debugserver  PROJECT:debugserver-320.2.89 for armv7.
 Attaching to process SpringBoard...
 Listening to port 1234 for a connection from *...
