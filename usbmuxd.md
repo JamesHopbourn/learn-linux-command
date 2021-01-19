@@ -187,3 +187,11 @@ libsystem_kernel.dylib`___lldb_unnamed_symbol20$$libsystem_kernel.dylib:
 Process 29 resuming
 (lldb)
 ```
+
+#### 结束 tcprelay.py 进程
+```
+➜ kill -9 $(ps -e|grep tcprelay.py|sed '$d'|awk '{print  $1}'|tr '\n' ' ')
+
+[2]  + 85143 killed     tcprelay.py -t 1234:1234
+[1]  + 85108 killed     tcprelay.py -t 22:2222
+```
