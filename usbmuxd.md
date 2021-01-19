@@ -21,7 +21,13 @@ Archive:  aa9cecf05b47d08a59324edeaaeea3f17e0608ee.zip
   inflating: USBSSH/usbmux.py
   inflating: USBSSH/usbmux.pyc
 
+➜ mkdir -p ~/dotfile/bin
+
 ➜ cp USBSSH/* ~/dotfile/bin
+
+➜ echo 'export PATH=$HOME/dotfile/bin:$PATH' >> ~/.zshrc
+
+➜ source ~/.zshrc
 ```
 
 #### iPhone SSH 端口转发到 macOS 2222 端口
