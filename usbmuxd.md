@@ -35,6 +35,8 @@ Archive:  aa9cecf05b47d08a59324edeaaeea3f17e0608ee.zip
 ➜ tcprelay.py -t 22:2222 &
 [1] 79831
 
+Forwarding local port 2222 to remote port 22
+
 ➜ ssh root@localhost -p 2222
 Incoming connection to 2222
 Waiting for devices...
@@ -161,7 +163,9 @@ Listening to port 1234 for a connection from *...
 
 #### macOS 本地端口转发
 ```
-➜ tcprelay.py -t 1234:1234
+➜ tcprelay.py -t 1234:1234 &
+[2] 84155
+
 Forwarding local port 1234 to remote port 1234
 ```
 
