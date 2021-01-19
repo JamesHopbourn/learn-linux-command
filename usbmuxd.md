@@ -161,7 +161,7 @@ Listening to port 1234 for a connection from *...
 
 #### macOS 本地端口转发
 ```
-➜ ./USBSSH/tcprelay.py -t 1234:1234
+➜ tcprelay.py -t 1234:1234
 Forwarding local port 1234 to remote port 1234
 ```
 
