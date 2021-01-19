@@ -20,6 +20,8 @@ Archive:  aa9cecf05b47d08a59324edeaaeea3f17e0608ee.zip
   inflating: USBSSH/tcprelay.py
   inflating: USBSSH/usbmux.py
   inflating: USBSSH/usbmux.pyc
+
+➜ cp USBSSH/* ~/dotfile/bin
 ```
 
 #### iPhone SSH 端口转发到 macOS 2222 端口
