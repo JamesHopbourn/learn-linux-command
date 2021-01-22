@@ -78,6 +78,7 @@
 - [朋友需求](#朋友需求)
     - [图片引用转为 Obsidian 格式](图片引用转为-Obsidian-格式)
     - [Anki 填词挖空](Anki-填词挖空)
+- [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
 ## 命令安装
@@ -1241,12 +1242,12 @@ C:/Windows/Folder/File.txt
 ```
 #### 替换正则第 1 次匹配结果 
 ```
-➜ echo '1111 2222'|gsed -E 's/[0-9]{4}/0100/1'
+➜ echo '1111 2222'|gsed 's/[0-9]\{4\}/0100/1'
 0100 2222
 ```
 #### 替换正则第 4 次匹配结果
 ```
-➜ echo '1111 2222 3333 4444'|gsed -E 's/[0-9]{4}/0100/4'
+➜ echo '1111 2222 3333 4444'|gsed 's/[0-9]\{4\}/0100/4'
 1111 2222 3333 0100
 ```
 #### 非贪婪匹配建议使用 perl
@@ -1404,6 +1405,33 @@ int main(int argc, char const *argv[]) {
 ····flag = 0;
 ··}
 }
+```
+#### 调试工具
+```
+➜ pip install --user sedsed
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support pip 21.0 will remove support for this functionality.
+Collecting sedsed
+  Using cached sedsed-2.0.0-py2.py3-none-any.whl (27 kB)
+Collecting sedparse==0.1.*
+  Using cached sedparse-0.1.2-py2.py3-none-any.whl (30 kB)
+Installing collected packages: sedparse, sedsed
+Successfully installed sedparse-0.1.2 sedsed-2.0.0
+
+➜ echo '1111 2222 3333 4444'|sedsed -d 's/[0-9]\{4\}/0100/4'
+PATT:1111 2222 3333 4444$
+HOLD:$
+COMM:s/[0-9]\{4\}/0100/4
+PATT:1111 2222 3333 0100$
+HOLD:$
+1111 2222 3333 0100
+
+➜ echo 'e6 b5 8b e8 af 95'|sedsed -d --hide=hold 's/ /\\x/g ; s/^/\\x/'
+PATT:e6 b5 8b e8 af 95$
+COMM:s/ /\\x/g
+PATT:e6\\xb5\\x8b\\xe8\\xaf\\x95$
+COMM:s/^/\\x/
+PATT:\\xe6\\xb5\\x8b\\xe8\\xaf\\x95$
+\xe6\xb5\x8b\xe8\xaf\x95
 ```
 
 ## gsed 参考资料  
