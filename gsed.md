@@ -74,6 +74,7 @@
     - [合并为单行建议使用 tr](#合并为单行建议使用-tr)
     - [生成本文目录](#综合测验-生成本文目录)
     - [生成 TOC 命令注释](#生成-TOC-命令注释)
+    - [代码开头空格转圆点](#代码开头空格转圆点)
 - [朋友需求](#朋友需求)
     - [图片引用转为 Obsidian 格式](图片引用转为-Obsidian-格式)
     - [Anki 填词挖空](Anki-填词挖空)
@@ -1371,6 +1372,43 @@ pbcopy                     将处理好的文本复制到剪切板
 期项下E信托单位
 期项下F信托单位
 ```
+#### 代码开头空格转圆点
+```
+➜ cat 素数.c
+#include <math.h>
+#include <stdio.h>
+
+int main(int argc, char const *argv[]) {
+  int flag = 0;
+  for (int i = 2; i <= 100; i++) {
+    for (int j = 2; j <= sqrt(i); j++)
+      if (i % j == 0) {
+        flag = 1;
+        break;
+      }
+    if (flag == 0) printf("%d ", i);
+    flag = 0;
+  }
+}
+
+➜ cat 素数.c |sed ':a;s/^\([[:space:]]*\)[[:space:]]/\1·/;ta'
+#include <math.h>
+#include <stdio.h>
+
+int main(int argc, char const *argv[]) {
+··int flag = 0;
+··for (int i = 2; i <= 100; i++) {
+····for (int j = 2; j <= sqrt(i); j++)
+······if (i % j == 0) {
+········flag = 1;
+········break;
+······}
+····if (flag == 0) printf("%d ", i);
+····flag = 0;
+··}
+}
+```
+
 ## gsed 参考资料  
 [SED 简明教程](https://coolshell.cn/articles/9104.html)  
 [三十分钟学会SED](https://github.com/mylxsw/growing-up/blob/master/doc/三十分钟学会SED.md)  
