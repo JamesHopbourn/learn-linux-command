@@ -165,7 +165,7 @@ E-mail bug reports to: <bug-sed@gnu.org>.
 第二行
 第三行
 
-➜ cat test.txt|gsed 's/(.*)/&1/;G'
+➜ cat test.txt|gsed 's/(.*)//;G'
 第一行
 
 第二行
