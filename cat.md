@@ -136,6 +136,27 @@ int main(int argc, char const *argv[]) {
 ····flag = 0;
 ··}
 }
+
+➜ echo "sat=\"sed ':a;s/^\([[:space:]]*\)[[:space:]]/\1·/;ta'\"" >> ~/.zshrc
+
+➜ source ~/.zshrc
+
+➜ sat 素数.c
+#include <math.h>
+#include <stdio.h>
+
+int main(int argc, char const *argv[]) {
+··int flag = 0;
+··for (int i = 2; i <= 100; i++) {
+····for (int j = 2; j <= sqrt(i); j++)
+······if (i % j == 0) {
+········flag = 1;
+········break;
+······}
+····if (flag == 0) printf("%d ", i);
+····flag = 0;
+··}
+}
 ```
 #### 使用 ^ 和 M- 引用
 ```
