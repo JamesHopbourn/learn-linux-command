@@ -1421,7 +1421,7 @@ World$
 Hello$
 World$
 
-➜ echo 'Hello\nWorld'|sed 's/$/^M/'|cat -A
+➜ echo 'Hello\nWorld'|sed 's/$/\r/'|cat -A
 Hello^M$
 World^M$
 ```
