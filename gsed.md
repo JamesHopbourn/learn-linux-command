@@ -78,7 +78,8 @@
 - [朋友需求](#朋友需求)
     - [图片引用转为 Obsidian 格式](#图片引用转为-Obsidian-格式)
     - [Anki 填词挖空](#Anki-填词挖空)
-    - [LF-和-CRLF-互换](#LF-和-CRLF-互换)
+    - [LF to CRLF](#LF-to-CRLF)
+    - [CRLF to LF](#CRLF-to-LF)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1407,16 +1408,8 @@ int main(int argc, char const *argv[]) {
 ··}
 }
 ```
-#### LF 和 CRLF 互换
+#### LF to CRLF
 ```
-➜ echo 'Hello\r\nWorld'|cat -A
-Hello^M$
-World$
-
-➜ echo 'Hello\r\nWorld'|sed 's/\r//'|cat -A
-Hello$
-World$
-
 ➜ echo 'Hello\nWorld'|cat -A
 Hello$
 World$
@@ -1424,6 +1417,16 @@ World$
 ➜ echo 'Hello\nWorld'|sed 's/$/\r/'|cat -A
 Hello^M$
 World^M$
+```
+#### CRLF to LF
+```
+➜ echo 'Hello\r\nWorld\r'|cat -A
+Hello^M$
+World^M$
+
+➜ echo 'Hello\r\nWorld\r'|sed 's/\r//'|cat -A
+Hello$
+World$
 ```
 #### 调试工具
 ```
