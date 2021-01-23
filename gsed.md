@@ -1384,12 +1384,12 @@ int main(int argc, char const *argv[]) {
         flag = 1;
         break;
       }
-    if (flag == 0) printf("%d ", i);
+    if (!flag) printf("%d ", i);
     flag = 0;
   }
 }
 
-➜ cat 素数.c |sed ':a;s/^\([[:space:]]*\)[[:space:]]/\1·/;ta'
+➜ sed ':a;s/^\([[:space:]]*\)[[:space:]]/\1·/;ta' su.c
 #include <math.h>
 #include <stdio.h>
 
@@ -1401,7 +1401,7 @@ int main(int argc, char const *argv[]) {
 ········flag = 1;
 ········break;
 ······}
-····if (flag == 0) printf("%d ", i);
+····if (!flag) printf("%d ", i);
 ····flag = 0;
 ··}
 }
