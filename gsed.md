@@ -76,8 +76,9 @@
     - [生成 TOC 命令注释](#生成-TOC-命令注释)
     - [代码开头空格转圆点](#代码开头空格转圆点)
 - [朋友需求](#朋友需求)
-    - [图片引用转为 Obsidian 格式](图片引用转为-Obsidian-格式)
-    - [Anki 填词挖空](Anki-填词挖空)
+    - [图片引用转为 Obsidian 格式](#图片引用转为-Obsidian-格式)
+    - [Anki 填词挖空](#Anki-填词挖空)
+    - [LF-和-CRLF-互换](#LF-和-CRLF-互换)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1405,6 +1406,24 @@ int main(int argc, char const *argv[]) {
 ····flag = 0;
 ··}
 }
+```
+#### LF 和 CRLF 互换
+```
+➜ echo 'Hello\r\nWorld'|cat -A
+Hello^M$
+World$
+
+➜ echo 'Hello\r\nWorld'|sed 's/\r//'|cat -A
+Hello$
+World$
+
+➜ echo 'Hello\nWorld'|cat -A
+Hello$
+World$
+
+➜ echo 'Hello\nWorld'|sed 's/$/^M/'|cat -A
+Hello^M$
+World^M$
 ```
 #### 调试工具
 ```
