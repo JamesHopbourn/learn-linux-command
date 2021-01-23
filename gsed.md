@@ -1378,33 +1378,43 @@ pbcopy                     将处理好的文本复制到剪切板
 #include <math.h>
 #include <stdio.h>
 
-int main(int argc, char const *argv[]) {
-  int flag = 0;
-  for (int i = 2; i <= 100; i++) {
-    for (int j = 2; j <= sqrt(i); j++)
-      if (i % j == 0) {
+int main() {
+  int flag = 0, count = 0;
+  for(int i = 2; i <= 100; i++) {
+    for(int j = 2; j <= sqrt(i); j++)
+      if(i % j == 0) {
         flag = 1;
         break;
       }
-    if (!flag) printf("%d ", i);
-    flag = 0;
+    // 输出素数 十个一行
+    if(!flag) {
+      printf("%d\t", i);
+      if((count++) % 10 == 9) printf("\n");
+    } else
+      flag = 0;
+    // 输出素数 十个一行
   }
 }
 
-➜ sed ':a;s/^\([[:space:]]*\)[[:space:]]/\1·/;ta' su.c
+➜ sed ':a;s/^\([[:space:]]*\)[[:space:]]/\1·/;ta' 素数.c
 #include <math.h>
 #include <stdio.h>
 
-int main(int argc, char const *argv[]) {
-··int flag = 0;
-··for (int i = 2; i <= 100; i++) {
-····for (int j = 2; j <= sqrt(i); j++)
-······if (i % j == 0) {
+int main() {
+··int flag = 0, count = 0;
+··for(int i = 2; i <= 100; i++) {
+····for(int j = 2; j <= sqrt(i); j++)
+······if(i % j == 0) {
 ········flag = 1;
 ········break;
 ······}
-····if (!flag) printf("%d ", i);
-····flag = 0;
+····// 输出素数 十个一行
+····if(!flag) {
+······printf("%d\t", i);
+······if((count++) % 10 == 9) printf("\n");
+····} else
+······flag = 0;
+····// 输出素数 十个一行
 ··}
 }
 ```
