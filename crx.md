@@ -1,10 +1,10 @@
 #### download extension
-```shell
+```
 ➜ wget -q https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/SwitchyOmega_Chromium.crx
 ```
 
 #### fix offset
-```shell
+```
 ➜ zip -F SwitchyOmega_Chromium.crx --out extension.zip
 Fix archive (-F) - assume mostly intact archive
 Zip entry offsets appear off by 566 bytes - correcting...
@@ -127,8 +127,8 @@ Zip entry offsets appear off by 566 bytes - correcting...
 
 #### unzip
 ```shell
-➜ unzip new.zip
-Archive:  new.zip
+➜ unzip extension.zip
+Archive:  extension.zip
   inflating: AUTHORS
   inflating: COPYING
   inflating: _locales/cs/messages.json
@@ -283,7 +283,7 @@ Archive:  new.zip
 00000142  0a 14 a1 f5 bf a0 6e 21  6f 80 7e 04 3e 92 36 e5  |......n!o.~.>.6.|
 ```
 #### dd split
-```shell
+```
 ➜ dd if=SwitchyOmega_Chromium.crx of=extension.zip bs=1 skip=$((0x000000b2))
 957640+0 records in
 957640+0 records out
