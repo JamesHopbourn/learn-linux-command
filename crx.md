@@ -293,5 +293,5 @@ Archive:  extension.zip
 ```
 
 #### reference
-[List of file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
+[List of file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)  
 [About CRX Extractor – Chrome Extension source code downloading tool](https://crxextractor.com/about.html)
