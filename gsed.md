@@ -1267,19 +1267,19 @@ https://github.com/JamesHopbourn/dotfile
 ➜ pbpaste|tr "'" '"'
 curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connection: keep-alive" -H "Origin: http://172.25.249.8" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" -H "Accept: */*" -H "Referer: http://172.25.249.8/eportal/index.jsp?userip=${CURRENT_IP}&wlanacname=&nasip=171.88.130.251&wlanparameter=${MAC_ADDRESS}&url=http://baidu.com/&userlocation=ethtrunk/3:691.3201" -H "Accept-Encoding: gzip, deflate" -H "Accept-Language: zh-CN,zh;q=0.9,zh;q=0.8,en;q=0.7" -H "Cookie: EPORTAL_COOKIE_OPERATORPWD=; EPORTAL_COOKIE_USERNAME=; EPORTAL_COOKIE_PASSWORD=; EPORTAL_COOKIE_SERVER=; EPORTAL_COOKIE_SERVER_NAME=; EPORTAL_AUTO_LAND=; EPORTAL_USER_GROUP=null; JSESSIONID=2B36EA2F20A0CE7361D592CE7DBDFED3" --data "userId=<宽带账号>&password=<宽带密码>&service=&queryString=userip%253D${CURRENT_IP}%2526wlanacname%253D%2526nasip%253D171.88.130.251%2526wlanparameter%253D${MAC_ADDRESS}%2526url%253Dhttp%253A%252F%252Fbaidu.com%252F%2526userlocation%253Dethtrunk%252F3%253A691.3201&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false"
 
-➜ pbpaste|tr "'" '"'|perl -pe 's/-H ".*?"/\\\n$&/g ; s/--.*? ".*?"/\\\n$&/g'
+➜ pbpaste|tr "'" '"'|perl -pe 's/-H ".*?"/\\\n $&/g ; s/--.*? ".*?"/\\\n $&/g'
 curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" \
--H "Connection: keep-alive" \
--H "Origin: http://172.25.249.8" \
--H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" \
--H "DNT: 1" \
--H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
--H "Accept: */*" \
--H "Referer: http://172.25.249.8/eportal/index.jsp?userip=${CURRENT_IP}&wlanacname=&nasip=171.88.130.251&wlanparameter=${MAC_ADDRESS}&url=http://baidu.com/&userlocation=ethtrunk/3:691.3201" \
--H "Accept-Encoding: gzip, deflate" \
--H "Accept-Language: zh-CN,zh;q=0.9,zh;q=0.8,en;q=0.7" \
--H "Cookie: EPORTAL_COOKIE_OPERATORPWD=; EPORTAL_COOKIE_USERNAME=; EPORTAL_COOKIE_PASSWORD=; EPORTAL_COOKIE_SERVER=; EPORTAL_COOKIE_SERVER_NAME=; EPORTAL_AUTO_LAND=; EPORTAL_USER_GROUP=null; JSESSIONID=2B36EA2F20A0CE7361D592CE7DBDFED3" \
---data "userId=<宽带账号>&password=<宽带密码>&service=&queryString=userip%253D${CURRENT_IP}%2526wlanacname%253D%2526nasip%253D171.88.130.251%2526wlanparameter%253D${MAC_ADDRESS}%2526url%253Dhttp%253A%252F%252Fbaidu.com%252F%2526userlocation%253Dethtrunk%252F3%253A691.3201&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false"
+ -H "Connection: keep-alive" \
+ -H "Origin: http://172.25.249.8" \
+ -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" \
+ -H "DNT: 1" \
+ -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
+ -H "Accept: */*" \
+ -H "Referer: http://172.25.249.8/eportal/index.jsp?userip=${CURRENT_IP}&wlanacname=&nasip=171.88.130.251&wlanparameter=${MAC_ADDRESS}&url=http://baidu.com/&userlocation=ethtrunk/3:691.3201" \
+ -H "Accept-Encoding: gzip, deflate" \
+ -H "Accept-Language: zh-CN,zh;q=0.9,zh;q=0.8,en;q=0.7" \
+ -H "Cookie: EPORTAL_COOKIE_OPERATORPWD=; EPORTAL_COOKIE_USERNAME=; EPORTAL_COOKIE_PASSWORD=; EPORTAL_COOKIE_SERVER=; EPORTAL_COOKIE_SERVER_NAME=; EPORTAL_AUTO_LAND=; EPORTAL_USER_GROUP=null; JSESSIONID=2B36EA2F20A0CE7361D592CE7DBDFED3" \
+ --data "userId=<宽带账号>&password=<宽带密码>&service=&queryString=userip%253D${CURRENT_IP}%2526wlanacname%253D%2526nasip%253D171.88.130.251%2526wlanparameter%253D${MAC_ADDRESS}%2526url%253Dhttp%253A%252F%252Fbaidu.com%252F%2526userlocation%253Dethtrunk%252F3%253A691.3201&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false"
 ```
 
 ## 其他用法
@@ -1446,20 +1446,20 @@ World$
 ➜ pbpaste
 curl 'http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://banjimofang.com' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'Upgrade-Insecure-Requests: 1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'form_id=45&formdata%5Bfn_1%5D=36.2&formdata%5Bfn_2%5D=0&formdata%5Bfn_3%5D=0&formdata%5Bfn_4%5D=0&formdata%5Bfn_5%5D=%E6%97%A0&formdata%5Bfn_6%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_addr%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_xy%5D=123.45676%2C456.11488'
 
-➜ pbpaste|tr "'" '"'|perl -pe 's/-H ".*?"/\\\n $&/g ; s/--.*? ".*?"/\\\n$&/g'|sed 's|%|\\x|g'|parallel echo
+➜ pbpaste|tr "'" '"'|perl -pe 's/-H ".*?"/\\\n $&/g ; s/--.*? ".*?"/\\\n $&/g'|sed 's|%|\\x|g'|parallel echo
 curl "http://banjimofang.com/student/course/25256/profiles/29?_=add" \
  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36" \
  -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
  -H "Accept-Language: en-US,en;q=0.5" --compressed \
+ -H "Content-Type: application/x-www-form-urlencoded" \
  -H "Origin: http://banjimofang.com" \
  -H "DNT: 1" \
+ -H "Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add" \
  -H "Connection: keep-alive" \
- -H "Content-Type: application/x-www-form-urlencoded" \
+ -H "Upgrade-Insecure-Requests: 1" \
  -H "Pragma: no-cache" \
  -H "Cache-Control: no-cache" \
- -H "Upgrade-Insecure-Requests: 1" \
- -H "Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add" \
---data-raw "form_id=45&formdata[fn_1]=36.2&formdata[fn_2]=0&formdata[fn_3]=0&formdata[fn_4]=0&formdata[fn_5]=无&formdata[fn_6]=汉东省京州市省委大院&formdata[gps_addr]=汉东省京州市省委大院&formdata[gps_xy]=123.45676,456.11488"
+ --data-raw "form_id=45&formdata[fn_1]=36.2&formdata[fn_2]=0&formdata[fn_3]=0&formdata[fn_4]=0&formdata[fn_5]=无&formdata[fn_6]=汉东省京州市省委大院&formdata[gps_addr]=汉东省京州市省委大院&formdata[gps_xy]=123.45676,456.11488"
 ```
 #### 日期格式化
 ```
