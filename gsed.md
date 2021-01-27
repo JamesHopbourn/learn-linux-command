@@ -1515,3 +1515,4 @@ PATT:\\xe6\\xb5\\x8b\\xe8\\xaf\\x95$
 [Sed and awk 笔记之 sed 篇：实战](https://www.jianshu.com/p/b63770600129)  
 [Sed and awk 笔记之 sed 篇：基础命令](https://kodango.com/sed-and-awk-notes-part-3)  
 [Sed and awk 笔记之 sed 篇：高级命令（一）](https://kodango.com/sed-and-awk-notes-part-4)  
+[Sed substitution and external command](https://stackoverflow.com/questions/18957889/sed-substitution-and-external-command)
