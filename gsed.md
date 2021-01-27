@@ -1286,12 +1286,12 @@ curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" \
 ## 其他用法
 #### 调用外部命令
 ```
-➜ echo "第一行\n第二行\n第三行\n第四行\n第五行"|sed 's|\(.*\)|md5sum <<< &|ge'
-ff6a894bd37b996fb7e5f6250e0cdca3  -
-17c39e67505908650757257e04b998b7  -
-2e182cd9d98c98d95d408d19db1677f1  -
-d7877517088c28eced4e1b61959f9cc0  -
-af2553f1a7da67dbb3d6b9b775708e66  -
+➜ echo "第一行\n第二行\n第三行\n第四行\n第五行"|sed 's|\(.*\)|md5 <<< &|ge'
+ff6a894bd37b996fb7e5f6250e0cdca3
+17c39e67505908650757257e04b998b7
+2e182cd9d98c98d95d408d19db1677f1
+d7877517088c28eced4e1b61959f9cc0
+af2553f1a7da67dbb3d6b9b775708e66
 ```
 #### 递归修改全部匹配文件
 ```
@@ -1305,12 +1305,10 @@ af2553f1a7da67dbb3d6b9b775708e66  -
 ➜ tr "\n" " " <<< $(echo "你\n好\n世\n界")
 你 好 世 界
 ```
-
 #### 生成本文目录
 ```
 grep -E '^##' gsed.md|gsed 's/[[:blank:]]*$// ;  s/^## /- /g ; s/^-.*/- \[&\](&)/ ; s/- //2 ; s/- /#/2 ; s/####/    tag/g ; s/tag /\- [/g ; s/    - \[.*/&\](&)/ ; s/    - \[/#/2 ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/; s/(#.* /&ITISSP/g ; s/ ITISSP/-/ ; /- \[目录\]\(.*\)/d ; /^###/d ; 2i ## 目录'|pbcopy
 ```
-
 #### 生成 TOC 命令注释
 ```
 grep -E '^##' gsed.md    | grep 过滤出所有 # 开头的行
