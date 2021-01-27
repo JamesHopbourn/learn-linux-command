@@ -1464,18 +1464,18 @@ XXXXXXXXXX
 - 2021-01-03 23:52 Sunday
 XXXXXXXXXXXXX
 
-➜ pbpaste|sed 's/- \(.*\)/LC_ALL=zh_CN.UTF-8 date -d"\1" "+%Y年%m月%d日 星期%a %H:%M"/ge'
-2021年01月23日 星期六 19:59
+➜ pbpaste|sed 's/- \(.*\)/LC_ALL=zh_CN.UTF-8 date -d"\1" "+- %Y年%m月%d日  星期%a %H:%M"/ge'
+- 2021年01月23日 星期六 19:59
 XX XXX XXXX
 
-2021年01月21日 星期四 22:26
+- 2021年01月21日 星期四 22:26
 XXXXXXXXXXXXXX
 
-2021年01月21日 星期四 22:26
+- 2021年01月21日 星期四 22:26
 XXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXX
 
-2021年01月03日 星期日 23:52
+- 2021年01月03日 星期日 23:52
 XXXXXXXXXXXXX
 ```
 #### 调试工具
