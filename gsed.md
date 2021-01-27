@@ -75,11 +75,13 @@
     - [生成本文目录](#综合测验-生成本文目录)
     - [生成 TOC 命令注释](#生成-TOC-命令注释)
     - [代码开头空格转圆点](#代码开头空格转圆点)
-- [朋友需求](#朋友需求)
+- [生活实际需求](#生活实际需求)
     - [图片引用转为 Obsidian 格式](#图片引用转为-Obsidian-格式)
     - [Anki 填词挖空](#Anki-填词挖空)
     - [LF to CRLF](#LF-to-CRLF)
     - [CRLF to LF](#CRLF-to-LF)
+    - [cURL decode](#cURL-decode)
+    - [日期格式化](#日期格式化)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1324,7 +1326,7 @@ s/ ITISSP/-/             ; 删除 ITISSP 临时标签及空格
 2i ## Content'           | 在第一行添加二级标题目录
 pbcopy                     将处理好的文本复制到剪切板
 ```
-## 朋友需求
+## 生活实际需求
 #### 图片引用转为 Obsidian 格式
 ```
 输入：![02](../../attachment/02.png)
@@ -1437,6 +1439,44 @@ World^M$
 ➜ echo 'Hello\r\nWorld\r'|sed 's/\r//'|cat -A
 Hello$
 World$
+```
+#### cURL decode
+```
+➜ pbpaste
+curl 'http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://banjimofang.com' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'Upgrade-Insecure-Requests: 1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'form_id=45&formdata%5Bfn_1%5D=36.2&formdata%5Bfn_2%5D=0&formdata%5Bfn_3%5D=0&formdata%5Bfn_4%5D=0&formdata%5Bfn_5%5D=%E6%97%A0&formdata%5Bfn_6%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_addr%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_xy%5D=123.45676%2C456.11488'
+
+➜ pbpaste|sed 's|%|\\x|g'|parallel echo
+curl 'http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://banjimofang.com' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'Upgrade-Insecure-Requests: 1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'form_id=45&formdata[fn_1]=36.2&formdata[fn_2]=0&formdata[fn_3]=0&formdata[fn_4]=0&formdata[fn_5]=无&formdata[fn_6]=汉东省京州市省委大院&formdata[gps_addr]=汉东省京州市省委大院&formdata[gps_xy]=123.45676,456.11488'
+```
+#### 日期格式化
+```
+➜ pbpaste
+- 2021-01-23 19:59 Saturday
+XX XXX XXXX
+
+- 2021-01-21 22:26 Thursday
+XXXXXXXXXXXXXX
+
+- 2021-01-21 22:26 Thursday
+XXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXX
+
+- 2021-01-03 23:52 Sunday
+XXXXXXXXXXXXX
+
+➜ pbpaste|sed 's/- \(.*\)/LC_ALL=zh_CN.UTF-8 date -d"\1" "+%Y年%m月%d日  星期%a"/ge'
+2021年01月23日 星期六
+XX XXX XXXX
+
+2021年01月21日 星期四
+XXXXXXXXXXXXXX
+
+2021年01月21日 星期四
+XXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXX
+
+2021年01月03日 星期日
+XXXXXXXXXXXXX
 ```
 #### 调试工具
 ```
