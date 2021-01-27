@@ -1452,17 +1452,17 @@ World$
 #### cURL decode
 ```
 ➜ pbpaste
-curl 'http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://banjimofang.com' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add' -H 'Upgrade-Insecure-Requests: 1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'form_id=45&formdata%5Bfn_1%5D=36.2&formdata%5Bfn_2%5D=0&formdata%5Bfn_3%5D=0&formdata%5Bfn_4%5D=0&formdata%5Bfn_5%5D=%E6%97%A0&formdata%5Bfn_6%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_addr%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_xy%5D=123.45676%2C456.11488'
+curl 'http://banjimofang.com/student/course/66666/profiles/29?_=add' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://banjimofang.com' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Referer: http://banjimofang.com/student/course/66666/profiles/29?_=add' -H 'Upgrade-Insecure-Requests: 1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'form_id=45&formdata%5Bfn_1%5D=36.2&formdata%5Bfn_2%5D=0&formdata%5Bfn_3%5D=0&formdata%5Bfn_4%5D=0&formdata%5Bfn_5%5D=%E6%97%A0&formdata%5Bfn_6%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_addr%5D=%e6%b1%89%e4%b8%9c%e7%9c%81%e4%ba%ac%e5%b7%9e%e5%b8%82%e7%9c%81%e5%a7%94%e5%a4%a7%e9%99%a2&formdata%5Bgps_xy%5D=123.45676%2C456.11488'
 
 ➜ pbpaste|tr "'" '"'|perl -pe 's/-H ".*?"/\\\n $&/g ; s/--.*? ".*?"/\\\n $&/g'|sed 's|%|\\x|g'|parallel echo
-curl "http://banjimofang.com/student/course/25256/profiles/29?_=add" \
+curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36" \
  -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
  -H "Accept-Language: en-US,en;q=0.5" --compressed \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -H "Origin: http://banjimofang.com" \
  -H "DNT: 1" \
- -H "Referer: http://banjimofang.com/student/course/25256/profiles/29?_=add" \
+ -H "Referer: http://banjimofang.com/student/course/66666/profiles/29?_=add" \
  -H "Connection: keep-alive" \
  -H "Upgrade-Insecure-Requests: 1" \
  -H "Pragma: no-cache" \
