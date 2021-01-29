@@ -1514,10 +1514,7 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 ```
 #### 汉字内码
 ```
-➜ printf 汉字内码|xxd -plain -u
-E6B189E5AD97E58685E7A081
-
-➜ pbpaste|gsed -z "s|..|echo 'ibase=16;obase=8;'&\|bc;|ge ; s/\n//g ; s|...|\\\&|g"
+➜ printf 汉字内码|xxd -plain -u|gsed -z "s|..|echo 'ibase=16;obase=8;'&\|bc;|ge ; s/\n//g ; s|...|\\\&|g"
 \346\261\211\345\255\227\345\206\205\347\240\201
 
 ➜ echo $'\346\261\211\345\255\227\345\206\205\347\240\201'
