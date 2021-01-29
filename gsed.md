@@ -67,8 +67,7 @@
     - [Tab 缩进删除](#Tab-缩进删除)
     - [替换正则第 1 次匹配结果](#替换正则第-1-次匹配结果)
     - [替换正则第 4 次匹配结果](#替换正则第-4-次匹配结果)
-    - [非贪婪匹配建议使用 perl](#非贪婪匹配建议使用-perl)
-    - [非贪婪匹配处理 post 请求](#非贪婪匹配处理-post-请求)
+    - [非贪婪匹配](#非贪婪匹配)
 - [其他用法](#其他用法)
     - [调用外部命令](#调用外部命令)
     - [递归修改全部匹配文件](#递归修改全部匹配文件)
@@ -1257,7 +1256,7 @@ C:/Windows/Folder/File.txt
 ➜ echo '1111 2222 3333 4444'|gsed 's/[0-9]\{4\}/0100/4'
 1111 2222 3333 0100
 ```
-#### 非贪婪匹配建议使用 perl
+#### 非贪婪匹配
 ```
 ➜ echo 'https://github.com/JamesHopbourn/dotfile'|perl -pe 's/https:\/\/.*?\//ssh:\/\/personal\//'
 ssh://personal/JamesHopbourn/dotfile
@@ -1282,25 +1281,6 @@ CDABCDAB
 
 ➜ echo 'ABCDABCDAB'|sed 's/\([A]*B\)$//'
 ABCDABCD
-```
-#### 非贪婪匹配处理 post 请求
-```
-➜ pbpaste|tr "'" '"'
-curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" -H "Connection: keep-alive" -H "Origin: http://172.25.249.8" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" -H "Accept: */*" -H "Referer: http://172.25.249.8/eportal/index.jsp?userip=${CURRENT_IP}&wlanacname=&nasip=171.88.130.251&wlanparameter=${MAC_ADDRESS}&url=http://baidu.com/&userlocation=ethtrunk/3:691.3201" -H "Accept-Encoding: gzip, deflate" -H "Accept-Language: zh-CN,zh;q=0.9,zh;q=0.8,en;q=0.7" -H "Cookie: EPORTAL_COOKIE_OPERATORPWD=; EPORTAL_COOKIE_USERNAME=; EPORTAL_COOKIE_PASSWORD=; EPORTAL_COOKIE_SERVER=; EPORTAL_COOKIE_SERVER_NAME=; EPORTAL_AUTO_LAND=; EPORTAL_USER_GROUP=null; JSESSIONID=2B36EA2F20A0CE7361D592CE7DBDFED3" --data "userId=<宽带账号>&password=<宽带密码>&service=&queryString=userip%253D${CURRENT_IP}%2526wlanacname%253D%2526nasip%253D171.88.130.251%2526wlanparameter%253D${MAC_ADDRESS}%2526url%253Dhttp%253A%252F%252Fbaidu.com%252F%2526userlocation%253Dethtrunk%252F3%253A691.3201&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false"
-
-➜ pbpaste|tr "'" '"'|perl -pe 's/-H ".*?"/\\\n $&/g ; s/--.*? ".*?"/\\\n $&/g'
-curl -X POST "http://172.25.249.8/eportal/InterFace.do?method=login" \
- -H "Connection: keep-alive" \
- -H "Origin: http://172.25.249.8" \
- -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" \
- -H "DNT: 1" \
- -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
- -H "Accept: */*" \
- -H "Referer: http://172.25.249.8/eportal/index.jsp?userip=${CURRENT_IP}&wlanacname=&nasip=171.88.130.251&wlanparameter=${MAC_ADDRESS}&url=http://baidu.com/&userlocation=ethtrunk/3:691.3201" \
- -H "Accept-Encoding: gzip, deflate" \
- -H "Accept-Language: zh-CN,zh;q=0.9,zh;q=0.8,en;q=0.7" \
- -H "Cookie: EPORTAL_COOKIE_OPERATORPWD=; EPORTAL_COOKIE_USERNAME=; EPORTAL_COOKIE_PASSWORD=; EPORTAL_COOKIE_SERVER=; EPORTAL_COOKIE_SERVER_NAME=; EPORTAL_AUTO_LAND=; EPORTAL_USER_GROUP=null; JSESSIONID=2B36EA2F20A0CE7361D592CE7DBDFED3" \
- --data "userId=<宽带账号>&password=<宽带密码>&service=&queryString=userip%253D${CURRENT_IP}%2526wlanacname%253D%2526nasip%253D171.88.130.251%2526wlanparameter%253D${MAC_ADDRESS}%2526url%253Dhttp%253A%252F%252Fbaidu.com%252F%2526userlocation%253Dethtrunk%252F3%253A691.3201&operatorPwd=&operatorUserId=&validcode=&passwordEncrypt=false"
 ```
 
 ## 其他用法
