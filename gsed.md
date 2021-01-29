@@ -1270,6 +1270,18 @@ ssh://personal/JamesHopbourn/dotfile
 
 ➜ echo 'ssh://personal/JamesHopbourn/dotfile'|sed 's|\(ssh://[^/]*/\)\(.*\)|https://github.com/\2|g'
 https://github.com/JamesHopbourn/dotfile
+
+➜ echo '1111-2222-3333-4444'| sed 's/\([^-]*-\)\{2\}//'
+3333-4444
+
+➜ echo '1111-2222-3333-4444'| sed 's/\([^-]*-\)\{1\}//'
+2222-3333-4444
+
+➜ echo 'ABCDABCDAB'|sed 's/^\([A]*B\)//'
+CDABCDAB
+
+➜ echo 'ABCDABCDAB'|sed 's/\([A]*B\)$//'
+ABCDABCD
 ```
 #### 非贪婪匹配处理 post 请求
 ```
