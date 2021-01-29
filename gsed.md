@@ -1264,6 +1264,12 @@ ssh://personal/JamesHopbourn/dotfile
 
 ➜ echo 'ssh://personal/JamesHopbourn/dotfile'|perl -pe 's/ssh:\/\/.*?\//https:\/\/github.com\//'
 https://github.com/JamesHopbourn/dotfile
+
+➜ echo 'https://github.com/JamesHopbourn/dotfile'|sed 's|\(https://[^/]*/\)\(.*\)|ssh://personal/\2|g'
+ssh://personal/JamesHopbourn/dotfile
+
+➜ echo 'ssh://personal/JamesHopbourn/dotfile'|sed 's|\(ssh://[^/]*/\)\(.*\)|https://github.com/\2|g'
+https://github.com/JamesHopbourn/dotfile
 ```
 #### 非贪婪匹配处理 post 请求
 ```
