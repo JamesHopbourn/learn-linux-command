@@ -1521,8 +1521,8 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 ```
 #### 汉字国际码
 ```
-➜ echo '\274\354\262\342\261\250\270\346'|sed 's|\\||g ; s|.|&\n|g'|sed "s|.|echo 'obase=2;ibase=10;'&\|bc\|xargs printf '%03d\n';|ge"|sed -z "s|\n||g ; s|\(.\{9\}\)|echo 'obase=16;ibase=2;'\1\|bc;|ge ; s|\n||g ; s|\(..\)|\\\\x\1|g"
-\xBC\xEC\xB2\xE2\xB1\xA8\xB8\xE6
+➜ echo '\306\354\275\242\260\346\274\354\262\342\261\250\270\346'|gsed -z "s|\\\\||g ; s|\(.\{3\}\)|echo 'obase=16;ibase=8;'\1\|bc;|ge ; s|\n||g ; s|\(..\)|\\\\x\1|g ; s|^|\"| ; s|$|\"|"|xargs echo -e|iconv -t UTF-8 -f GBK
+旗舰版检测报告
 ```
 #### 调试工具
 ```
