@@ -85,6 +85,7 @@
     - [列表分行](#列表分行)
     - [汉字内码](#汉字内码)
     - [汉字国际码](#汉字国际码)
+    - [RFC 2822格式解码](#RFC-2822格式解码)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1524,6 +1525,11 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 ➜ echo '\306\354\275\242\260\346\274\354\262\342\261\250\270\346'|gsed -z "s|\\\\||g ; s|\(.\{3\}\)|echo 'obase=16;ibase=8;'\1\|bc;|ge ; s|\n||g ; s|\(..\)|\\\\x\1|g ; s|^|\"| ; s|$|\"|"|xargs echo -e|iconv -f GBK -t UTF-8
 旗舰版检测报告
 ```
+#### RFC 2822格式解码
+```
+➜ echo "=?UTF8?B?5a6e6aqMM++8mumdouWQkeW1jOWFpeW8j+ezu+e7n+eoiw==?= =?UTF8?B?5bqP55qE5Lqk5Y+J57yW6K+R5LiO56e75qSNLnBkZg==?=.pdf" |sed 's/\([^?UTF8?B?]*==?=\)/\1\n/g ; s/\(=?UTF8?B?\|?=\)//g'|sed 's/\(.*\)/echo \1\|base64 -d;/ge' 2>/dev/null|tr -d '\n'
+实验3：面向嵌入式系统程序的交叉编译与移植.pdf
+```
 #### 调试工具
 ```
 ➜ pip install --user sedsed
@@ -1562,3 +1568,5 @@ PATT:\\xe6\\xb5\\x8b\\xe8\\xaf\\x95$
 [Sed and awk 笔记之 sed 篇：基础命令](https://kodango.com/sed-and-awk-notes-part-3)  
 [Sed and awk 笔记之 sed 篇：高级命令（一）](https://kodango.com/sed-and-awk-notes-part-4)  
 [Sed substitution and external command](https://stackoverflow.com/questions/18957889/sed-substitution-and-external-command)
+RFC 2822
+[What the =UTF](https://dmorgan.info/posts/encoded-word-syntax/)  
