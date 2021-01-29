@@ -84,6 +84,7 @@
     - [cURL decode](#cURL-decode)
     - [日期格式化](#日期格式化)
     - [列表分行](#列表分行)
+    - [汉字内码](#汉字内码)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1516,10 +1517,7 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 ➜ printf 汉字内码|xxd -plain -u
 E6B189E5AD97E58685E7A081
 
-➜ pbpaste
-E6B189E5AD97E58685E7A081
-
-➜ pbpaste|sed "s|..|&\n|g"|sed "s|..|echo 'ibase=16;obase=8;'&\|bc|ge"|tr -d '\n'|sed 's/.\{3\}/\\&/g'
+➜ pbpaste|gsed -z "s|..|echo 'ibase=16;obase=8;'&\|bc;|ge ; s/\n//g ; s|...|\\\&|g"
 \346\261\211\345\255\227\345\206\205\347\240\201
 
 ➜ echo $'\346\261\211\345\255\227\345\206\205\347\240\201'
