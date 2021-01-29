@@ -1511,6 +1511,20 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 9. 我的枪口再低半寸，你们就会看到自己老大的脑浆！（燕双鹰特别喜欢脑浆）
 10. 我有个习惯，会杀死向自己开枪的人，哪怕他的枪里没有子弹。
 ```
+#### 汉字内码
+```
+➜ printf 汉字内码|xxd -plain -u
+E6B189E5AD97E58685E7A081
+
+➜ pbpaste
+E6B189E5AD97E58685E7A081
+
+➜ pbpaste|sed "s|..|&\n|g"|sed "s|..|echo 'ibase=16;obase=8;'&\|bc|ge"|tr -d '\n'|sed 's/.\{3\}/\\&/g'
+\346\261\211\345\255\227\345\206\205\347\240\201
+
+➜ echo $'\346\261\211\345\255\227\345\206\205\347\240\201'
+汉字内码
+```
 #### 调试工具
 ```
 ➜ pip install --user sedsed
