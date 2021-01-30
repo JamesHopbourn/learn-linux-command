@@ -83,7 +83,7 @@
     - [cURL decode](#cURL-decode)
     - [日期格式化](#日期格式化)
     - [列表分行](#列表分行)
-    - [OmniFocus TaskPaper to Markdown](#TaskPaper-to-Markdown)
+    - [OmniFocus TaskPaper to Markdown](#OmniFocus-TaskPaper-to-Markdown)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1569,5 +1569,5 @@ PATT:\\xe6\\xb5\\x8b\\xe8\\xaf\\x95$
 [Sed and awk 笔记之 sed 篇：实战](https://www.jianshu.com/p/b63770600129)  
 [Sed and awk 笔记之 sed 篇：基础命令](https://kodango.com/sed-and-awk-notes-part-3)  
 [Sed and awk 笔记之 sed 篇：高级命令（一）](https://kodango.com/sed-and-awk-notes-part-4)  
-[Sed substitution and external command](https://stackoverflow.com/questions/18957889/sed-substitution-and-external-command)
-[Remove newline character just every N lines](https://unix.stackexchange.com/questions/304389/remove-newline-character-just-every-n-lines)  
+[Sed substitution and external command](https://stackoverflow.com/questions/18957889/sed-substitution-and-external-command)  
+[Remove newline character just every N lines](https://unix.stackexchange.com/questions/304389/remove-newline-character-just-every-n-lines)   
