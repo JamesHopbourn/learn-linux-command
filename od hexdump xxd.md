@@ -15,7 +15,7 @@
 #### URIdecode
 ```
 ➜ pbpaste
-%e4%bd%a0%e5%a5%bd%e4%b8%96%e7%95%8c
+%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C
 
 ➜ echo $(pbpaste|sed 's|%|\\x|g')
 你好世界

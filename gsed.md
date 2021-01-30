@@ -83,8 +83,6 @@
     - [cURL decode](#cURL-decode)
     - [日期格式化](#日期格式化)
     - [列表分行](#列表分行)
-    - [GBK 编码](#GBK-编码)
-    - [RFC2822 解码](#RFC2822-解码)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1510,31 +1508,6 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 8. 小心背后啊。
 9. 我的枪口再低半寸，你们就会看到自己老大的脑浆！（燕双鹰特别喜欢脑浆）
 10. 我有个习惯，会杀死向自己开枪的人，哪怕他的枪里没有子弹。
-```
-#### GBK 编码
-```
-➜ pbpaste
-\306\354\275\242\260\346\274\354\262\342\261\250\270\346
-
-➜ pbpaste|gsed -z "s|\\\\||g ; s|\(.\{3\}\)|echo 'obase=16;ibase=8;'\1\|bc;|ge ; s|\n||g ; s|\(..\)|\\\\x\1|g ; s|^|\"| ; s|$|\"|"|xargs printf|iconv -f GBK -t UTF-8
-旗舰版检测报告
-
-➜ echo $'\306\354\275\242\260\346\274\354\262\342\261\250\270\346'|xargs printf|iconv -f GBK -t UTF-8
-旗舰版检测报告
-
-➜ printf 汉字内码|xxd -plain -u|gsed -z "s|..|echo 'ibase=16;obase=8;'&\|bc;|ge ; s/\n//g ; s|...|\\\&|g"
-\346\261\211\345\255\227\345\206\205\347\240\201
-
-➜ echo $'\346\261\211\345\255\227\345\206\205\347\240\201'
-汉字内码
-```
-#### RFC2822 解码
-```
-➜ pbpaste
-=?UTF8?B?5a6e6aqMM++8mumdouWQkeW1jOWFpeW8j+ezu+e7n+eoiw==?= =?UTF8?B?5bqP55qE5Lqk5Y+J57yW6K+R5LiO56e75qSNLnBkZg==?=.pdf
-
-➜ pbpaste|sed 's/\([^?UTF8?B?]*==?=\)/\1\n/g ; s/\(=?UTF8?B?\|?=\)//g'|sed 's/\(.*\)/echo \1\|base64 -d;/ge' 2>/dev/null|tr -d '\n'
-实验3：面向嵌入式系统程序的交叉编译与移植.pdf
 ```
 #### 调试工具
 ```
