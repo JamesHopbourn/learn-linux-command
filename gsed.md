@@ -83,6 +83,7 @@
     - [cURL decode](#cURL-decode)
     - [日期格式化](#日期格式化)
     - [列表分行](#列表分行)
+    - [OmniFocus TaskPaper to Markdown](#TaskPaper-to-Markdown)
 - [调试工具](#调试工具)
 - [gsed 参考资料](#gsed-参考资料)
 
@@ -1508,6 +1509,19 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 8. 小心背后啊。
 9. 我的枪口再低半寸，你们就会看到自己老大的脑浆！（燕双鹰特别喜欢脑浆）
 10. 我有个习惯，会杀死向自己开枪的人，哪怕他的枪里没有子弹。
+```
+#### OmniFocus TaskPaper to Markdown
+```
+➜ pbpaste
+- 万字长文讲解编码知识，看这文就够了！| 原力计划 @parallel(true) @autodone(false) @context(1️⃣) @due(2021-01-30 23:30)
+   https://mp.weixin.qq.com/s/8QEYD8U6Bx2rqO56cuU2KQ
+
+- 一文帮你搞懂GBK码协议，让你真正理解和搞定它！ @parallel(true) @autodone(false) @context(1️⃣) @due(2021-01-30 23:30)
+   https://mp.weixin.qq.com/s/w3Y-ijhsdWW7R-FnWqawuw
+
+➜ pbpaste|sed 's/^- //g ; s/ @.*$// ; s/^\x09//; /^$/d'|sed '1~2s/^/[/g ; 1~2s/$/](/g ;  N ; s/\n// ; s/$/)  /g'
+[万字长文讲解编码知识，看这文就够了！| 原力计划](https://mp.weixin.qq.com/s/8QEYD8U6Bx2rqO56cuU2KQ)
+[一文帮你搞懂GBK码协议，让你真正理解和搞定它！](https://mp.weixin.qq.com/s/w3Y-ijhsdWW7R-FnWqawuw)
 ```
 #### 调试工具
 ```
