@@ -307,6 +307,15 @@ s/$/》/g：剩余行结尾添加右书名号
 0000003 e8 bf 9b
 0000006 e5 88 b6
 ```
+#### 删除奇数行换行
+```
+➜ seq 1 10 | sed -rz 's/\n([^\n]*\n)/ \1/g'
+1 2
+3 4
+5 6
+7 8
+9 10
+```
 #### 删除指定行，例如第3行  
 ```
 ➜ echo "第一行\n第二行\n第三行\n第四行\n第五行"|gsed '3d'
@@ -1519,7 +1528,7 @@ curl "http://banjimofang.com/student/course/66666/profiles/29?_=add" \
 - 一文帮你搞懂GBK码协议，让你真正理解和搞定它！ @parallel(true) @autodone(false) @context(1️⃣) @due(2021-01-30 23:30)
    https://mp.weixin.qq.com/s/w3Y-ijhsdWW7R-FnWqawuw
 
-➜ pbpaste|sed 's/^- //g ; s/ @.*$// ; s/^\x09//; /^$/d'|sed '1~2s/^/[/g ; 1~2s/$/](/g ;  N ; s/\n// ; s/$/)  /g'
+➜ pbpaste |sed '/^$/d ; s/^- /[/ ; s/ @.*)/](/ ; N ; s/\n// ; s/\x09// ; s/$/)/'
 [万字长文讲解编码知识，看这文就够了！| 原力计划](https://mp.weixin.qq.com/s/8QEYD8U6Bx2rqO56cuU2KQ)
 [一文帮你搞懂GBK码协议，让你真正理解和搞定它！](https://mp.weixin.qq.com/s/w3Y-ijhsdWW7R-FnWqawuw)
 ```
@@ -1561,5 +1570,4 @@ PATT:\\xe6\\xb5\\x8b\\xe8\\xaf\\x95$
 [Sed and awk 笔记之 sed 篇：基础命令](https://kodango.com/sed-and-awk-notes-part-3)  
 [Sed and awk 笔记之 sed 篇：高级命令（一）](https://kodango.com/sed-and-awk-notes-part-4)  
 [Sed substitution and external command](https://stackoverflow.com/questions/18957889/sed-substitution-and-external-command)
-RFC 2822
-[What the =UTF](https://dmorgan.info/posts/encoded-word-syntax/)  
+[Remove newline character just every N lines](https://unix.stackexchange.com/questions/304389/remove-newline-character-just-every-n-lines)  
